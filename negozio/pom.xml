@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
@@ -14,10 +15,9 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		    <!-- <jacoco.data.file>${project.build.directory}/coveragereports/jacoco.exec</jacoco.data.file> 
-			<jacoco.report.path>${project.reporting.outputDirectory}/jacocout</jacoco.report.path> 
-			<jacoco.data.file>${project.build.directory}/coverage-reports/jacoco.exec</jacoco.data.file>
-			-->
+		<jacoco.data.file>${project.build.directory}/coveragereports/jacoco.exec</jacoco.data.file>
+		<jacoco.report.path>${project.reporting.outputDirectory}/jacocout</jacoco.report.path>
+		<jacoco.data.file>${project.build.directory}/coverage-reports/jacoco.exec</jacoco.data.file>
 		<sonar.language>java</sonar.language>
 		<sonar.jacoco.reportPath>${jacoco.data.file}</sonar.jacoco.reportPath>
 	</properties>
@@ -36,7 +36,6 @@
 			</plugin>
 		</plugins>
 	</build>
-
 
 	<!-- DIPENDENZE -->
 
@@ -65,17 +64,21 @@
 				<activeByDefault>true</activeByDefault>
 			</activation>
 			<build>
+				<pluginManagement>
+					<plugins>
+						<plugin>
+							<groupId>org.eluder.coveralls</groupId>
+							<artifactId>coveralls-maven-plugin</artifactId>
+							<version>4.3.0</version>
+							<configuration>
+								<jacocoReports>
+									<jacocoReport>${jacoco.report.path}/jacoco.xml</jacocoReport>
+								</jacocoReports>
+							</configuration>
+						</plugin>
+					</plugins>
+				</pluginManagement>
 				<plugins>
-					<plugin>
-						<groupId>org.eluder.coveralls</groupId>
-						<artifactId>coveralls-maven-plugin</artifactId>
-						<version>4.3.0</version>
-						<configuration>
-							<jacocoReports>
-								<jacocoReport>${jacoco.report.path}/jacoco.xml</jacocoReport>
-							</jacocoReports>
-						</configuration>
-					</plugin>
 					<plugin>
 						<groupId>org.jacoco</groupId>
 						<artifactId>jacoco-maven-plugin</artifactId>
@@ -87,9 +90,7 @@
 									<goal>prepare-agent</goal>
 								</goals>
 								<configuration>
-									<!--<destFile>${jacoco.data.file}</destFile>-->
-									<destFile>${project.basedir}/target/jacoco.exec</destFile>
-									<append>true</append>
+									<destFile>${jacoco.data.file}</destFile>
 									<propertyName>surefireArgLine</propertyName>
 								</configuration>
 							</execution>
@@ -130,6 +131,8 @@
 	</profiles>
 
 	<modules>
+		<module>negozio-concreto</module>
 		<module>negozio-redis</module>
 	</modules>
+
 </project>

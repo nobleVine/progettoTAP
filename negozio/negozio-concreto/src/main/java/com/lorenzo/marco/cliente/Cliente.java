@@ -11,7 +11,7 @@ public class Cliente {
 	private String cognome;
 	private String password;
 	private String nickname;
-
+	
 	private Database database;
 
 	public Cliente(String nome, String cognome, String nickname, String password, Database database) {
@@ -40,7 +40,7 @@ public class Cliente {
 	}
 
 	public String richiestaRegistrazione() throws UnknownHostException {
-		return this.database.registrazioneCliente(nome, cognome);
+		return this.database.registrazioneCliente(nome, cognome, nickname, password);
 	}
 
 	private void controlloParametriDiInizializzazioneCliente(String nome, String cognome, String nickname,

@@ -93,19 +93,19 @@ public class ClienteTest {
 	@Test
 	public void testRichiestaRegistrazioneRiuscita() throws UnknownHostException {
 		this.cliente = creazioneCliente("Marco", "Vignini", "", "", database);
-		when(database.registrazioneCliente(cliente.getNome(), cliente.getCognome()))
+		when(database.registrazioneCliente(cliente.getNome(), cliente.getCognome(), "", ""))
 				.thenReturn("Registrazione riuscita");
 		assertEquals("Registrazione riuscita", this.cliente.richiestaRegistrazione());
-		verify(database, times(1)).registrazioneCliente(cliente.getNome(), cliente.getCognome());
+		verify(database, times(1)).registrazioneCliente(cliente.getNome(), cliente.getCognome(), "", "");
 	}
 
 	@Test
 	public void testRichiestaRegistrazioneNonRiuscita() throws UnknownHostException {
 		this.cliente = creazioneCliente("Marco", "Vignini", "", "", database);
-		when(database.registrazioneCliente(cliente.getNome(), cliente.getCognome()))
+		when(database.registrazioneCliente(cliente.getNome(), cliente.getCognome(), "", ""))
 				.thenReturn("Registrazione non riuscita");
 		assertNotEquals("Registrazione riuscita", this.cliente.richiestaRegistrazione());
-		verify(database, times(1)).registrazioneCliente(cliente.getNome(), cliente.getCognome());
+		verify(database, times(1)).registrazioneCliente(cliente.getNome(), cliente.getCognome(), "", "");
 	}
 
 	private Cliente creazioneCliente(String nome, String cognome, String nickname, String password, Database database) {

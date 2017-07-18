@@ -7,8 +7,6 @@ import java.util.List;
 
 import org.junit.*;
 
-import com.lorenzo.marco.cliente.Cliente;
-
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.exceptions.JedisConnectionException;
 
@@ -19,9 +17,9 @@ public class RedisDatabaseWrapperTest {
 
 	@Before
 	public void setUp() {
-		this.jedis = new Jedis("localhost", 6379);
 		this.redisDatabaseWrapper = new RedisDatabaseWrapper();
-		this.jedis.flushDB();
+		this.jedis = new Jedis("localhost", 6379);
+		this.jedis.flushDB(); // Clean key
 	}
 
 	@Test
@@ -36,27 +34,23 @@ public class RedisDatabaseWrapperTest {
 	}
 
 	@Test
-	public void testRegistrazioneAvvenutaConSuccesso() {
-		Cliente cliente = new Cliente("Marco", "Vignini", "nick", "pass", redisDatabaseWrapper);
-		assertEquals("Registrazione riuscita", this.redisDatabaseWrapper.aggiungiCliente(cliente, "nick", "pass"));
+	public void testRegistrazioneAvvenutaConSuccesso() throws UnknownHostException {
+		assertEquals("Registrazione riuscita", this.redisDatabaseWrapper.registrazioneCliente("Marco", "Vignini","nick", "pass"));
 		List<String> listaNick = profiloCliente("nick");
-		assertEquals(cliente.getNome(), listaNick.get(2));
-		assertEquals(cliente.getCognome(), listaNick.get(1));
+		assertEquals("Marco", listaNick.get(2));
+		assertEquals("Vignini", listaNick.get(1));
 		assertEquals("pass", listaNick.get(0));
 	}
 
 	@Test(expected = IllegalArgumentException.class)
-	public void testRegistrazioneSbagliata() {
-		Cliente cliente = new Cliente("Marco", "Vignini", "nick", "pass", redisDatabaseWrapper);
-		Cliente cliente2 = new Cliente("Marco2", "Vignini2", "nick", "pass1", redisDatabaseWrapper);
-		this.redisDatabaseWrapper.aggiungiCliente(cliente, "nick", "pass");
-		this.redisDatabaseWrapper.aggiungiCliente(cliente2, "nick", "pass1");
+	public void testRegistrazioneSbagliata() throws UnknownHostException {
+		this.redisDatabaseWrapper.registrazioneCliente("Alessio","Rossi", "nick", "pass");
+		this.redisDatabaseWrapper.registrazioneCliente("Alberto","Verdi", "nick", "pass1");
 	}
 
 	@Test
 	public void testLoginCorretto() throws UnknownHostException {
-		Cliente cliente = new Cliente("Marco", "Vignini", "nick", "pass", redisDatabaseWrapper);
-		this.redisDatabaseWrapper.aggiungiCliente(cliente, "nick", "pass");
+		this.redisDatabaseWrapper.registrazioneCliente("Alessio","Rossi", "nick", "pass");
 		assertEquals("Login riuscito", this.redisDatabaseWrapper.login("nick", "pass"));	
 	}
 

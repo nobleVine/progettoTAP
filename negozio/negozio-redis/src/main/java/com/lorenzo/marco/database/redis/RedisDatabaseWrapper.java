@@ -2,6 +2,7 @@ package com.lorenzo.marco.database.redis;
 
 import java.net.UnknownHostException;
 import java.util.List;
+import java.util.Set;
 
 import com.lorenzo.marco.database.Database;
 
@@ -35,4 +36,13 @@ public class RedisDatabaseWrapper implements Database {
 		return "Registrazione riuscita";
 	}
 
+	public Set<String> restituzioneNickname() {
+		Set<String> listaNickname =	this.jedis.keys("*");
+		return listaNickname;
+	}
+
+	public List<String> restituzioneProfiloCliente(String chiave) {
+		List<String> listaValori = this.jedis.lrange(chiave, 0, 2);
+		return listaValori;
+	}
 }

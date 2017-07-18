@@ -3,7 +3,10 @@ package com.lorenzo.marco.database.redis;
 import static org.junit.Assert.*;
 
 import java.net.UnknownHostException;
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.junit.*;
 
@@ -35,7 +38,8 @@ public class RedisDatabaseWrapperTest {
 
 	@Test
 	public void testRegistrazioneAvvenutaConSuccesso() throws UnknownHostException {
-		assertEquals("Registrazione riuscita", this.redisDatabaseWrapper.registrazioneCliente("Marco", "Vignini","nick", "pass"));
+		assertEquals("Registrazione riuscita",
+				this.redisDatabaseWrapper.registrazioneCliente("Marco", "Vignini", "nick", "pass"));
 		List<String> listaNick = profiloCliente("nick");
 		assertEquals("Marco", listaNick.get(2));
 		assertEquals("Vignini", listaNick.get(1));
@@ -44,14 +48,46 @@ public class RedisDatabaseWrapperTest {
 
 	@Test(expected = IllegalArgumentException.class)
 	public void testRegistrazioneSbagliata() throws UnknownHostException {
-		this.redisDatabaseWrapper.registrazioneCliente("Alessio","Rossi", "nick", "pass");
-		this.redisDatabaseWrapper.registrazioneCliente("Alberto","Verdi", "nick", "pass1");
+		this.redisDatabaseWrapper.registrazioneCliente("Alessio", "Rossi", "nick", "pass");
+		this.redisDatabaseWrapper.registrazioneCliente("Alberto", "Verdi", "nick", "pass1");
 	}
 
 	@Test
 	public void testLoginCorretto() throws UnknownHostException {
-		this.redisDatabaseWrapper.registrazioneCliente("Alessio","Rossi", "nick", "pass");
-		assertEquals("Login riuscito", this.redisDatabaseWrapper.login("nick", "pass"));	
+		this.redisDatabaseWrapper.registrazioneCliente("Alessio", "Rossi", "nick", "pass");
+		assertEquals("Login riuscito", this.redisDatabaseWrapper.login("nick", "pass"));
+	}
+
+	@Test(expected = IllegalAccessError.class)
+	public void testNicknameNonRegistrato() throws UnknownHostException {
+		this.redisDatabaseWrapper.registrazioneCliente("Alessio", "Rossi", "nick", "pass");
+		this.redisDatabaseWrapper.login("Lorenzo", "java");
+	}
+
+	@Test(expected = IllegalAccessError.class)
+	public void testPasswordErrata() throws UnknownHostException {
+		this.redisDatabaseWrapper.registrazioneCliente("Alessio", "Rossi", "nick", "pass");
+		this.redisDatabaseWrapper.login("nick", "java");
+	}
+
+	@Test
+	public void testRestituzioneNickname() throws UnknownHostException {
+		this.redisDatabaseWrapper.registrazioneCliente("Alessio", "Rossi", "nick1", "pass");
+		this.redisDatabaseWrapper.registrazioneCliente("Ugo", "Rolando", "nick2", "pass2");
+		Set<String> listaNickname = new HashSet<>();
+		listaNickname.add("nick1");
+		listaNickname.add("nick2");
+		assertEquals(listaNickname, this.redisDatabaseWrapper.restituzioneNickname());
+	}
+
+	@Test
+	public void testRestituzioneProfiloCliente() throws UnknownHostException {
+		this.redisDatabaseWrapper.registrazioneCliente("Alessio", "Rossi", "nick1", "pass");
+		List<String> listaValori = new ArrayList<>();
+		listaValori.add("pass");
+		listaValori.add("Rossi");
+		listaValori.add("Alessio");
+		assertEquals(listaValori, this.redisDatabaseWrapper.restituzioneProfiloCliente("nick1"));
 	}
 
 	private List<String> profiloCliente(String nickname) {

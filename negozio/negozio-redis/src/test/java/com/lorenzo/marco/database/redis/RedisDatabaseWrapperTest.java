@@ -89,7 +89,7 @@ public class RedisDatabaseWrapperTest {
 		listaValori.add("Alessio");
 		assertEquals(listaValori, this.redisDatabaseWrapper.restituzioneProfiloCliente("nick1"));
 	}
-
+	
 	private List<String> profiloCliente(String nickname) {
 		List<String> listaNick = this.jedis.lrange(nickname, 0, 2);
 		return listaNick;

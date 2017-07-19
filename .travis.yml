@@ -13,5 +13,6 @@ jdk:
 
 script:
 - mvn -f negozio/negozio-concreto/pom.xml clean verify -Pjacoco coveralls:report
-- mvn -f negozio/negozio-redis/pom.xml clean verify -Pjacoco coveralls:report
+
+
 

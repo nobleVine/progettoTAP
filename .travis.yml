@@ -12,6 +12,7 @@ jdk:
 - oraclejdk8
 
 script:
+- mvn clean install
 - mvn -f negozio/negozio-concreto/pom.xml -U clean install -Pjacoco coveralls:report
 - mvn -f negozio/negozio-redis/pom.xml -U clean verify -Pjacoco coveralls:report
 - mvn -f negozio/negozio-orientDB/pom.xml -U clean verify -Pjacoco coveralls:report

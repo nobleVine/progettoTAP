@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
@@ -5,6 +6,7 @@
 	<groupId>com.lorenzo.marco</groupId>
 	<artifactId>negozio</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+	<packaging>pom</packaging>
 
 	<name>negozio</name>
 	<url>http://maven.apache.org</url>
@@ -13,11 +15,10 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<jacoco.data.file>${project.build.directory}/coveragereports/jacoco.exec</jacoco.data.file>
-		<jacoco.report.path>${project.reporting.outputDirectory}/jacocout</jacoco.report.path>
+		<jacoco.report.path>${project.reporting.outputDirectory}/jacoco-ut</jacoco.report.path>
 		<jacoco.data.file>${project.build.directory}/coverage-reports/jacoco.exec</jacoco.data.file>
 		<sonar.language>java</sonar.language>
-		<sonar.jacoco.reportPath>${jacoco.data.file}</sonar.jacoco.reportPath>
+		<sonar.jacoco.reportPaths>${jacoco.data.file}</sonar.jacoco.reportPaths>
 	</properties>
 
 	<!-- BUILD -->
@@ -35,26 +36,27 @@
 		</plugins>
 	</build>
 
-
 	<!-- DIPENDENZE -->
 
 	<dependencies>
-
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<version>4.12</version>
 			<scope>test</scope>
 		</dependency>
-
-		<dependency>
-			<groupId>org.mockito</groupId>
-			<artifactId>mockito-all</artifactId>
-			<version>1.10.19</version>
-			<scope>test</scope>
-		</dependency>
-
 	</dependencies>
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.mockito</groupId>
+				<artifactId>mockito-all</artifactId>
+				<version>1.10.19</version>
+				<scope>test</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
 
 	<profiles>
 		<profile>
@@ -63,21 +65,17 @@
 				<activeByDefault>true</activeByDefault>
 			</activation>
 			<build>
-				<pluginManagement>
-					<plugins>
-						<plugin>
-							<groupId>org.eluder.coveralls</groupId>
-							<artifactId>coveralls-maven-plugin</artifactId>
-							<version>4.3.0</version>
-							<configuration>
-								<jacocoReports>
-									<jacocoReport>${jacoco.report.path}/jacoco.xml</jacocoReport>
-								</jacocoReports>
-							</configuration>
-						</plugin>
-					</plugins>
-				</pluginManagement>
 				<plugins>
+					<plugin>
+						<groupId>org.eluder.coveralls</groupId>
+						<artifactId>coveralls-maven-plugin</artifactId>
+						<version>4.3.0</version>
+						<configuration>
+							<jacocoReports>
+								<jacocoReport>${jacoco.report.path}/jacoco.xml</jacocoReport>
+							</jacocoReports>
+						</configuration>
+					</plugin>
 					<plugin>
 						<groupId>org.jacoco</groupId>
 						<artifactId>jacoco-maven-plugin</artifactId>
@@ -114,19 +112,15 @@
 							<argLine>${surefireArgLine}</argLine>
 						</configuration>
 					</plugin>
-					<plugin>
-						<groupId>org.eluder.coveralls</groupId>
-						<artifactId>coveralls-maven-plugin</artifactId>
-						<version>4.3.0</version><!--$NO-MVN-MAN-VER$ -->
-						<configuration>
-							<jacocoReports>
-								<jacocoReport>${jacoco.report.path}/jacoco.xml</jacocoReport>
-							</jacocoReports>
-						</configuration>
-					</plugin>
 				</plugins>
 			</build>
 		</profile>
 	</profiles>
+
+	<modules>
+		<module>negozio-concreto</module>
+		<module>negozio-redis</module>
+		<module>negozio-orientDB</module>
+	</modules>
 
 </project>

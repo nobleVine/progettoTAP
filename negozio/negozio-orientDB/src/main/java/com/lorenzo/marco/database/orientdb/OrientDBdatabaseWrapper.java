@@ -63,7 +63,7 @@ public class OrientDBdatabaseWrapper implements Database {
 			return profiloCliente;
 		throw new IllegalArgumentException("Nickname non esistente");
 	}
-
+	
 	private String creazioneCliente(String nome, String cognome, String nickname, String password) {
 		ODocument cliente = new ODocument("Cliente");
 		cliente.field("nome", nome);

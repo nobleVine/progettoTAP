@@ -39,8 +39,7 @@ public class OrientDBdatabaseWrapperTest {
 
 	@Test
 	public void testRegistrazioneClienteConSuccesso() throws UnknownHostException {
-		assertEquals("Registrazione riuscita",
-				this.orientDBdatabaseWrapper.registrazioneCliente("Marco", "James", "vigna", "pass"));
+		assertEquals("Registrazione riuscita", this.orientDBdatabaseWrapper.registrazioneCliente("Marco", "James", "vigna", "pass"));
 		assertEquals("Marco", this.orientDBdatabaseWrapper.getElencoClienti().get(0).field("nome"));
 		assertEquals("James", this.orientDBdatabaseWrapper.getElencoClienti().get(0).field("cognome"));
 		assertEquals("vigna", this.orientDBdatabaseWrapper.getElencoClienti().get(0).field("nickname"));
@@ -106,14 +105,14 @@ public class OrientDBdatabaseWrapperTest {
 		listaNickname.add(creaCliente("Marco2", "James2", "vigna2", "pass2").field("nickname"));
 		assertEquals(listaNickname, this.orientDBdatabaseWrapper.restituzioneNickname());
 	}
-	
+
 	@Test
 	public void testRestituzioneProfiloCliente() throws UnknownHostException {
 		List<String> profiloCliente = new ArrayList<>();
 		this.orientDBdatabaseWrapper.registrazioneCliente("Marco1", "James1", "vigna1", "pass1");
 		profiloCliente.add("Marco1");
 		profiloCliente.add("James1");
-		profiloCliente.add("pass1");		
+		profiloCliente.add("pass1");
 		assertEquals(profiloCliente, this.orientDBdatabaseWrapper.restituzioneProfiloCliente("vigna1"));
 	}
 

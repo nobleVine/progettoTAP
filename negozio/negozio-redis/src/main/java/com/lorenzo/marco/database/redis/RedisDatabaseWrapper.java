@@ -20,8 +20,8 @@ public class RedisDatabaseWrapper implements Database {
 	public String login(String nickname, String password) throws UnknownHostException {
 		if (!this.jedis.exists(nickname))
 			throw new IllegalAccessError("Nickname non registrato!");
-		List<String> l = this.jedis.lrange(nickname, 0, 0);
-		if(l.get(0).equals(password))
+		List<String> listaCampi = this.jedis.lrange(nickname, 0, 0);
+		if(listaCampi.get(0).equals(password))
 			return "Login riuscito";
 		throw new IllegalAccessError("Password errata!");
 	}
@@ -37,12 +37,10 @@ public class RedisDatabaseWrapper implements Database {
 	}
 
 	public Set<String> restituzioneNickname() {
-		Set<String> listaNickname =	this.jedis.keys("*");
-		return listaNickname;
+		return this.jedis.keys("*");
 	}
 
 	public List<String> restituzioneProfiloCliente(String chiave) {
-		List<String> listaValori = this.jedis.lrange(chiave, 0, 2);
-		return listaValori;
+		return this.jedis.lrange(chiave, 0, 2);
 	}
 }

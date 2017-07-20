@@ -8,63 +8,67 @@ import com.orientechnologies.orient.core.record.impl.ODocument;
 
 public class OrientDBdatabaseWrapper implements Database {
 
-	private ODocument cliente;
+	private static final String NICKNAME = "nickname";
+	private static final String CAMPOPASS = "password";
 	private List<ODocument> elencoClienti;
-
-	public List<ODocument> getElencoClienti() {
-		return elencoClienti;
-	}
-
+	
 	public OrientDBdatabaseWrapper() {
 		this.elencoClienti = new ArrayList<>();
 	}
 
 	@Override
-	public String registrazioneCliente(String nome, String cognome, String nickname, String password)
-			throws UnknownHostException {
-		for (ODocument o : this.elencoClienti) {
-			if (o.field("nickname") == nickname) {
+	public String registrazioneCliente(String nome, String cognome, String nickname, String password) throws UnknownHostException {
+		for (ODocument documentoCliente : this.elencoClienti) {
+			if (documentoCliente.field(NICKNAME) == nickname) {
 				throw new IllegalAccessError("Nickname già esistente");
 			}
 		}
-		this.cliente = new ODocument("Cliente");
-		this.cliente.field("nome", nome);
-		this.cliente.field("cognome", cognome);
-		this.cliente.field("nickname", nickname);
-		this.cliente.field("password", password);
-		this.cliente.save();
-		this.elencoClienti.add(cliente);
-		return "Registrazione riuscita";
+		return creazioneCliente(nome, cognome, nickname, password);
 	}
 
 	@Override
 	public String login(String nickname, String password) throws UnknownHostException {
-		for (ODocument o : this.elencoClienti) {
-			if (o.field("nickname") == nickname && o.field("password") == password) {
+		for (ODocument documentoCliente : this.elencoClienti) {
+			if (documentoCliente.field(NICKNAME) == nickname && documentoCliente.field(CAMPOPASS) == password) {
 				return "Login riuscito";
 			}
 		}
 		throw new IllegalAccessError("Credenziali errate!");
 	}
+	
+	public List<ODocument> getElencoClienti() {
+		return elencoClienti;
+	}
 
 	public List<String> restituzioneNickname() {
 		List<String> listaNickname = new ArrayList<>();
-		for (ODocument cliente : this.elencoClienti) {
-			listaNickname.add(cliente.field("nickname"));
+		for (ODocument documentoCliente : this.elencoClienti) {
+			listaNickname.add(documentoCliente.field(NICKNAME));
 		}
 		return listaNickname;
 	}
 
 	public List<String> restituzioneProfiloCliente(String nickname) {
 		List<String> profiloCliente = new ArrayList<>();
-		for (ODocument cliente : this.elencoClienti) {
-			if (cliente.field("nickname") == nickname) {
-				profiloCliente.add(cliente.field("nome"));
-				profiloCliente.add(cliente.field("cognome"));
-				profiloCliente.add(cliente.field("password"));
+		for (ODocument documentoCliente : this.elencoClienti) {
+			if (documentoCliente.field(NICKNAME) == nickname) {
+				profiloCliente.add(documentoCliente.field("nome"));
+				profiloCliente.add(documentoCliente.field("cognome"));
+				profiloCliente.add(documentoCliente.field(CAMPOPASS));
 			}
 		}
 		return profiloCliente;
+	}
+
+	private String creazioneCliente(String nome, String cognome, String nickname, String password) {
+		ODocument cliente = new ODocument("Cliente");
+		cliente.field("nome", nome);
+		cliente.field("cognome", cognome);
+		cliente.field(NICKNAME, nickname);
+		cliente.field(CAMPOPASS, password);
+		cliente.save();
+		elencoClienti.add(cliente);
+		return "Registrazione riuscita";
 	}
 
 }

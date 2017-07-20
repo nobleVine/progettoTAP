@@ -11,7 +11,7 @@ public class OrientDBdatabaseWrapper implements Database {
 	private static final String NICKNAME = "nickname";
 	private static final String CAMPOPASS = "password";
 	private List<ODocument> elencoClienti;
-	
+		
 	public OrientDBdatabaseWrapper() {
 		this.elencoClienti = new ArrayList<>();
 	}

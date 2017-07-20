@@ -11,7 +11,7 @@
 	</parent>
 
 	<artifactId>negozio-orientDB</artifactId>
-	<name>negozio-oprienteDB</name>
+	<name>negozio-orientDB</name>
 	<url>http://maven.apache.org</url>
 
 	<dependencies>

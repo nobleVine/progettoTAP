@@ -36,6 +36,11 @@ public class ClienteTest {
 	public void testNomeVuoto() {
 		this.cliente = creazioneCliente("", "Vignini", "nick", "pass", database);
 	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void testNomeNull() {
+		this.cliente = creazioneCliente(null, "Vignini", "nick", "pass", database);
+	}
 
 	@Test(expected = IllegalArgumentException.class)
 	public void testCognomeVuoto() {
@@ -43,69 +48,64 @@ public class ClienteTest {
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
-	public void testNicknameVuoto() {
+	public void testCognomeNull() {
+		this.cliente = creazioneCliente("Marco", null, "nick", "pass", database);
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void testNicknameNull() {
 		this.cliente = creazioneCliente("Marco", "Vignini", null, "pass", database);
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
-	public void testPasswordVuoto() {
+	public void testNicknameVuoto() {
+		this.cliente = creazioneCliente("Marco", "Vignini", "", "pass", database);
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void testPasswordNull() {
 		this.cliente = creazioneCliente("Marco", "Vignini", "nick", null, database);
 	}
 
-	/*@Test(expected = IllegalArgumentException.class)
-	public void testTuttiCampiVuoti() {
-		this.cliente = creazioneCliente("", "", "", "", database);
-	}
-
 	@Test(expected = IllegalArgumentException.class)
-	public void testTuttiCampiNull() {
-		this.cliente = creazioneCliente(null, null, "", "", database);
+	public void testPasswordVuoto() {
+		this.cliente = creazioneCliente("Marco", "Vignini", "nick", "", database);
 	}
-
-	@Test(expected = IllegalArgumentException.class)
-	public void testNomeNull() {
-		this.cliente = creazioneCliente(null, "", "", "", database);
-	}
-
-	@Test(expected = IllegalArgumentException.class)
-	public void testCognomeNull() {
-		this.cliente = creazioneCliente("", null, "", "", database);
-	}*/
 	
 	/* Metodi che usano il mock */
 
 	@Test
 	public void testRichiestaAutenticazioneRiuscita() throws UnknownHostException {
-		this.cliente = creazioneCliente("Marco", "Vignini", "nick", "", database);
-		when(database.login("nick", "")).thenReturn("Richiesta di autenticatione riuscita");
+		this.cliente = creazioneCliente("Marco", "Vignini", "nick", "pass", database);
+		when(database.login("nick", "pass")).thenReturn("Richiesta di autenticatione riuscita");
 		assertEquals("Richiesta di autenticatione riuscita", this.cliente.richiestaAutenticazione());
-		verify(database, times(1)).login("nick", "");
+		verify(database, times(1)).login("nick", "pass");
 	}
 
 	@Test
 	public void testRichiestaAutenticazioneNonRiuscita() throws UnknownHostException {
-		this.cliente = creazioneCliente("Marco", "Vignini", "nick", "", database);
-		when(database.login("", "")).thenReturn("Richiesta di autenticatione riuscita");
+		this.cliente = creazioneCliente("Marco", "Vignini", "nick", "pass", database);
+		when(database.login("nick", "pass2")).thenReturn("Richiesta di autenticatione riuscita");
 		assertNotEquals("Richiesta di autenticatione riuscita", this.cliente.richiestaAutenticazione());
-		verify(database, times(1)).login("nick", "");
+		verify(database, times(1)).login("nick", "pass");
 	}
 
 	@Test
 	public void testRichiestaRegistrazioneRiuscita() throws UnknownHostException {
-		this.cliente = creazioneCliente("Marco", "Vignini", "", "", database);
-		when(database.registrazioneCliente(cliente.getNome(), cliente.getCognome(), "", ""))
+		this.cliente = creazioneCliente("Marco", "Vignini", "nick", "pass", database);
+		when(database.registrazioneCliente(cliente.getNome(), cliente.getCognome(), "nick", "pass"))
 				.thenReturn("Registrazione riuscita");
 		assertEquals("Registrazione riuscita", this.cliente.richiestaRegistrazione());
-		verify(database, times(1)).registrazioneCliente(cliente.getNome(), cliente.getCognome(), "", "");
+		verify(database, times(1)).registrazioneCliente(cliente.getNome(), cliente.getCognome(), "nick", "pass");
 	}
 
 	@Test
 	public void testRichiestaRegistrazioneNonRiuscita() throws UnknownHostException {
-		this.cliente = creazioneCliente("Marco", "Vignini", "", "", database);
-		when(database.registrazioneCliente(cliente.getNome(), cliente.getCognome(), "", ""))
+		this.cliente = creazioneCliente("Marco", "Vignini", "nick", "pass", database);
+		when(database.registrazioneCliente(cliente.getNome(), cliente.getCognome(), "nick", "pass"))
 				.thenReturn("Registrazione non riuscita");
 		assertNotEquals("Registrazione riuscita", this.cliente.richiestaRegistrazione());
-		verify(database, times(1)).registrazioneCliente(cliente.getNome(), cliente.getCognome(), "", "");
+		verify(database, times(1)).registrazioneCliente(cliente.getNome(), cliente.getCognome(), "nick", "pass");
 	}
 
 	private Cliente creazioneCliente(String nome, String cognome, String nickname, String password, Database database) {

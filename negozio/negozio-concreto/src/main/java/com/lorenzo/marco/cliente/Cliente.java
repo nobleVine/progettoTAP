@@ -57,14 +57,14 @@ public class Cliente {
 			this.cognome = cognome;
 		}
 
-		if (nickname == null) {
-			throw new IllegalArgumentException("nickname non può essere vuoto");
+		if (nickname == "" || nickname == null) {
+			throw new IllegalArgumentException("Il nickname non può essere vuoto");
 		} else {
 			this.nickname = nickname;
 		}
 		
-		if (password == null) {
-			throw new IllegalArgumentException("password non può essere vuoto");
+		if (password == "" || password == null) {
+			throw new IllegalArgumentException("La password non può essere vuota");
 		} else {
 			this.password = password;
 		}

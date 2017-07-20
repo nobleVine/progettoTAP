@@ -8,7 +8,6 @@
 		<groupId>com.lorenzo.marco</groupId>
 		<artifactId>negozio</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
-		<relativePath>../negozio/pom.xml</relativePath>
 	</parent>
 
 	<artifactId>negozio-orientDB</artifactId>

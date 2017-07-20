@@ -32,14 +32,25 @@ public class ProdottoSingoloTest extends ProdottoGenericoAstratto {
 	}
 
 	@Test(expected = IllegalArgumentException.class)
-	public void testNomeNonVuoto() {
+	public void testNomeNull() {
 		prodotto = creazioneProdottoSingolo(null, 5, "Maglietta basket");
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void testNomeVuoto() {
+		prodotto = creazioneProdottoSingolo("", 5, "Maglietta basket");
 	}
 
 	@Test(expected = IllegalArgumentException.class)
-	public void testDescrizioneNonVuoto() {
+	public void testDescrizioneVuota() {
 		prodotto = creazioneProdottoSingolo("Maglietta", 5, "");
 	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void testDescrizioneNull() {
+		prodotto = creazioneProdottoSingolo("Maglietta", 5, null);
+	}
+	
 
 	@Test
 	public void testTipoNome() {

@@ -59,13 +59,23 @@ public class PacchettoTest extends ProdottoGenericoAstratto {
 	}
 
 	@Test(expected = IllegalArgumentException.class)
-	public void testNomeNonVuoto() {
+	public void testNomeNull() {
 		pacchetto = creazionePacchetto(null, "Pacchetto basket");
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void testNomeVuoto() {
+		pacchetto = creazionePacchetto("", "Pacchetto basket");
 	}
 
 	@Test(expected = IllegalArgumentException.class)
-	public void testDescrizioneNonVuoto() {
+	public void testDescrizioneVuota() {
 		pacchetto = creazionePacchetto("Pacchetto", "");
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void testDescrizioneNull() {
+		pacchetto = creazionePacchetto("Pacchetto", null);
 	}
 	
 	@Test

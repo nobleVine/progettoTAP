@@ -10,9 +10,12 @@ public abstract class ProdottoGenericoAstratto {
 	
 	public abstract void testNome();
 	public abstract void testDescrizione();
-	public abstract void testNomeNonVuoto();
-	public abstract void testDescrizioneNonVuoto();
+	public abstract void testNomeVuoto();
+	public abstract void testDescrizioneVuota();
 	public abstract void testTipoNome();
 	public abstract void testTipoDescrizione();
+	public abstract void testNomeNull();
+	public abstract void testDescrizioneNull();
+
 
 }

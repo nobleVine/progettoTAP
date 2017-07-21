@@ -5,7 +5,7 @@ import static org.junit.Assert.*;
 import org.junit.*;
 
 public class ProdottoSingoloTest extends ProdottoGenericoAstratto {
-	
+
 	@Before
 	public void setUp() {
 		prodotto = creazioneProdottoSingolo("Maglietta", 50, "Maglietta basket");
@@ -35,7 +35,7 @@ public class ProdottoSingoloTest extends ProdottoGenericoAstratto {
 	public void testNomeNull() {
 		prodotto = creazioneProdottoSingolo(null, 5, "Maglietta basket");
 	}
-	
+
 	@Test(expected = IllegalArgumentException.class)
 	public void testNomeVuoto() {
 		prodotto = creazioneProdottoSingolo("", 5, "Maglietta basket");
@@ -45,12 +45,11 @@ public class ProdottoSingoloTest extends ProdottoGenericoAstratto {
 	public void testDescrizioneVuota() {
 		prodotto = creazioneProdottoSingolo("Maglietta", 5, "");
 	}
-	
+
 	@Test(expected = IllegalArgumentException.class)
 	public void testDescrizioneNull() {
 		prodotto = creazioneProdottoSingolo("Maglietta", 5, null);
 	}
-	
 
 	@Test
 	public void testTipoNome() {
@@ -61,5 +60,5 @@ public class ProdottoSingoloTest extends ProdottoGenericoAstratto {
 	public void testTipoDescrizione() {
 		assertTrue(prodotto.getDescrizione() instanceof String);
 	}
-
+	
 }

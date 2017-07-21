@@ -61,7 +61,7 @@ public class RedisDatabaseWrapperTest {
 	@Test(expected = IllegalAccessError.class)
 	public void testNicknameNonRegistrato() throws UnknownHostException {
 		this.redisDatabaseWrapper.registrazioneCliente("Alessio", "Rossi", "nick", "pass");
-		this.redisDatabaseWrapper.login("Lorenzo", "java");
+		this.redisDatabaseWrapper.login("Lorenzo", "pass");
 	}
 
 	@Test(expected = IllegalAccessError.class)
@@ -74,7 +74,7 @@ public class RedisDatabaseWrapperTest {
 	public void testRestituzioneNickname() throws UnknownHostException {
 		this.redisDatabaseWrapper.registrazioneCliente("Alessio", "Rossi", "nick1", "pass");
 		this.redisDatabaseWrapper.registrazioneCliente("Ugo", "Rolando", "nick2", "pass2");
-		Set<String> listaNickname = new HashSet<>();
+		List<String> listaNickname = new ArrayList<>();
 		listaNickname.add("nick1");
 		listaNickname.add("nick2");
 		assertEquals(listaNickname, this.redisDatabaseWrapper.restituzioneNickname());

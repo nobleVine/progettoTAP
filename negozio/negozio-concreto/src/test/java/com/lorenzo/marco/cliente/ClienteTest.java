@@ -78,7 +78,7 @@ public class ClienteTest {
 	public void testRichiestaAutenticazioneRiuscita() throws UnknownHostException {
 		this.cliente = creazioneCliente("Marco", "Vignini", "nick", "pass", database);
 		when(database.login("nick", "pass")).thenReturn("Richiesta di autenticatione riuscita");
-		assertEquals("Richiesta di autenticatione riuscita", this.cliente.richiestaAutenticazione());
+		assertEquals("Richiesta di autenticatione riuscita", this.cliente.richiestaAutenticazione("nick", "pass"));
 		verify(database, times(1)).login("nick", "pass");
 	}
 
@@ -86,7 +86,7 @@ public class ClienteTest {
 	public void testRichiestaAutenticazioneNonRiuscita() throws UnknownHostException {
 		this.cliente = creazioneCliente("Marco", "Vignini", "nick", "pass", database);
 		when(database.login("nick", "pass2")).thenReturn("Richiesta di autenticatione riuscita");
-		assertNotEquals("Richiesta di autenticatione riuscita", this.cliente.richiestaAutenticazione());
+		assertNotEquals("Richiesta di autenticatione riuscita", this.cliente.richiestaAutenticazione("nick", "pass"));
 		verify(database, times(1)).login("nick", "pass");
 	}
 

@@ -2,6 +2,7 @@
 package com.lorenzo.marco.cliente;
 
 import java.net.UnknownHostException;
+import java.util.List;
 
 import com.lorenzo.marco.database.Database;
 
@@ -27,16 +28,8 @@ public class Cliente {
 		return cognome;
 	}
 
-	private String getPassword() {
-		return password;
-	}
-
-	private String getNickname() {
-		return nickname;
-	}
-
-	public String richiestaAutenticazione() throws UnknownHostException {
-		return this.database.login(this.getNickname(), this.getPassword());
+	public String richiestaAutenticazione(String nickname, String password) throws UnknownHostException {
+		return this.database.login(nickname, password);
 	}
 
 	public String richiestaRegistrazione() throws UnknownHostException {
@@ -70,4 +63,13 @@ public class Cliente {
 		}
 
 	}
+
+	public List<String> restituzioneNicknamePresentiNelDatabase() {
+		return this.database.restituzioneNickname();
+	}
+
+	public List<String> restituzioneProfiloClientePresenteNelDatabase() {
+		return this.database.restituzioneProfiloCliente(nickname);
+	}
+	
 }

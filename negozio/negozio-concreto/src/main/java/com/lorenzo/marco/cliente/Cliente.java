@@ -64,12 +64,12 @@ public class Cliente {
 
 	}
 
-	public List<String> restituzioneNicknamePresentiNelDatabase() {
+	/*public List<String> restituzioneNicknamePresentiNelDatabase() {
 		return this.database.restituzioneNickname();
 	}
 
 	public List<String> restituzioneProfiloClientePresenteNelDatabase() {
 		return this.database.restituzioneProfiloCliente(nickname);
-	}
+	}*/
 	
 }

@@ -45,7 +45,7 @@ public class PacchettoTest extends ProdottoGenericoAstratto {
 		assertEquals(0, pacchetto.numProdotti());
 	}
 
-	@Test(expected = RuntimeException.class)
+	@Test(expected = IllegalArgumentException.class)
 	public void testRimuoviProdottoDaPacchettoVuoto() {
 		pacchetto.rimuoviProdotto(prodotto);
 	}
@@ -90,7 +90,7 @@ public class PacchettoTest extends ProdottoGenericoAstratto {
 	
 	@Test
 	public void testControlloPrezzo() {
-		pacchetto.controlloPrezzo(pacchetto.getPrezzo());
+		pacchetto.controlloPrezzo(pacchetto.getPrezzo(), 0);
 	}
 
 	private Pacchetto creazionePacchetto(String nome, String descrizione) {

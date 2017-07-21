@@ -66,5 +66,10 @@ public class CarrelloTest {
 		this.carrello.aggiungiAlCarrello(pacchetto);
 		assertEquals(160, this.carrello.spesaTotale(),0);
 	}
+	
+	@Test
+	public void testSpesaTotaleZero() {
+		assertEquals(0, carrello.spesaTotale(), 0);
+	}
 
 }

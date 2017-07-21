@@ -16,7 +16,7 @@ public class ClienteRedisIT extends ClienteIT {
 
 	private Jedis jedis;
 	
-	@Test
+	/*@Test
 	public void testNicknameRestiuiti() throws UnknownHostException {
 		Cliente cliente1 = new Cliente("Lorenzo", "Rossi", "nickname2", "pass", database);
 		this.cliente.richiestaRegistrazione();
@@ -35,13 +35,13 @@ public class ClienteRedisIT extends ClienteIT {
 		listaValori.add("Vignini");
 		listaValori.add("password");
 		assertEquals(listaValori, cliente.restituzioneProfiloClientePresenteNelDatabase());
-	}
+	}*/
 
 	@Override
 	protected void inizializzazioneDatabase() {
 		database = new RedisDatabaseWrapper();
 		this.jedis = new Jedis("localhost", 6379);
 		this.jedis.flushDB();
-	}	
+	}
 
 }

@@ -37,7 +37,7 @@ public class Pacchetto extends ProdottoGenerico {
 	}
 
 	@Override
-	public void controlloPrezzo(double prezzo) {
+	public void controlloPrezzo(double prezzo, int limiteInferiore) {
 		//Controllo sul prezzo non necessario
 	}
 

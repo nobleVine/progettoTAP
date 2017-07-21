@@ -20,15 +20,20 @@ public class ProdottoSingoloTest extends ProdottoGenericoAstratto {
 	public void testPrezzo() {
 		assertEquals(50, prodotto.getPrezzo(), 0);
 	}
-
+	
 	@Test
 	public void testDescrizione() {
 		assertEquals("Maglietta basket", prodotto.getDescrizione());
 	}
 
 	@Test(expected = IllegalArgumentException.class)
-	public void testInputNegativo() {
+	public void testPrezzoNegativo() {
 		prodotto = creazioneProdottoSingolo("Maglietta", -9, "Maglietta basket");
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void testPrezzoZero() {
+		prodotto = creazioneProdottoSingolo("Maglietta", 0, "Maglietta basket");
 	}
 
 	@Test(expected = IllegalArgumentException.class)

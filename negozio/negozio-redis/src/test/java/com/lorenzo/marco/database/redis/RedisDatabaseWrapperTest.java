@@ -1,14 +1,12 @@
 package com.lorenzo.marco.database.redis;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import java.net.UnknownHostException;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
-
-import org.junit.*;
+import org.junit.Before;
+import org.junit.Test;
 
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.exceptions.JedisConnectionException;
@@ -41,9 +39,9 @@ public class RedisDatabaseWrapperTest {
 		assertEquals("Registrazione riuscita",
 				this.redisDatabaseWrapper.registrazioneCliente("Marco", "Vignini", "nick", "pass"));
 		List<String> listaNick = profiloCliente("nick");
-		assertEquals("Marco", listaNick.get(2));
+		assertEquals("Marco", listaNick.get(0));
 		assertEquals("Vignini", listaNick.get(1));
-		assertEquals("pass", listaNick.get(0));
+		assertEquals("pass", listaNick.get(2));
 	}
 
 	@Test(expected = IllegalArgumentException.class)
@@ -84,12 +82,12 @@ public class RedisDatabaseWrapperTest {
 	public void testRestituzioneProfiloCliente() throws UnknownHostException {
 		this.redisDatabaseWrapper.registrazioneCliente("Alessio", "Rossi", "nick1", "pass");
 		List<String> listaValori = new ArrayList<>();
-		listaValori.add("pass");
-		listaValori.add("Rossi");
 		listaValori.add("Alessio");
+		listaValori.add("Rossi");
+		listaValori.add("pass");
 		assertEquals(listaValori, this.redisDatabaseWrapper.restituzioneProfiloCliente("nick1"));
 	}
-	
+
 	private List<String> profiloCliente(String nickname) {
 		List<String> listaNick = this.jedis.lrange(nickname, 0, 2);
 		return listaNick;

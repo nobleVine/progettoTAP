@@ -20,7 +20,7 @@ public class OrientDBdatabaseWrapper implements Database {
 	public String registrazioneCliente(String nome, String cognome, String nickname, String password) throws UnknownHostException {
 		for (ODocument documentoCliente : this.elencoClienti) {
 			if (documentoCliente.field(NICKNAME) == nickname) {
-				throw new IllegalAccessError("Nickname già esistente");
+				throw new IllegalArgumentException("Nickname già esistente");
 			}
 		}
 		return creazioneCliente(nome, cognome, nickname, password);

@@ -66,7 +66,7 @@ public class OrientDBdatabaseWrapperTest {
 		}
 	}
 
-	@Test(expected = IllegalAccessError.class)
+	@Test(expected = IllegalArgumentException.class)
 	public void testRegistrazioneClienteSbagliata() throws UnknownHostException {
 		this.orientDBdatabaseWrapper.registrazioneCliente("Marco", "James", "vigna", "pass");
 		this.orientDBdatabaseWrapper.registrazioneCliente("Alessio", "Rossi", "vigna", "pass1");

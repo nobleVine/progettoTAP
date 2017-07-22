@@ -7,14 +7,12 @@ public class Pacchetto extends ProdottoGenerico {
 
 	public Pacchetto(String nome, String descrizione) {
 		super(nome, descrizione);
-		controlloParametriProdotti(nome, descrizione);
 		this.listaProdotti = new ArrayList<>();
 	}
 
 	public double getPrezzo() {
-		for (int i = 0; i < listaProdotti.size(); i++) {
-			prezzo = prezzo + listaProdotti.get(i).getPrezzo();
-		}
+		for (ProdottoSingolo o : listaProdotti)
+			prezzo = prezzo + o.getPrezzo();
 		return prezzo;
 	}
 

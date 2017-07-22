@@ -9,12 +9,12 @@ public class ProfiloBancarioCliente {
 	private int idConto;
 	private double saldo;
 	private Banca banca;
-	private Carrello carrello;
+	//private Carrello carrello;
 	
-	public ProfiloBancarioCliente(Cliente cliente, int idConto, int saldo, Banca banca){
+	public ProfiloBancarioCliente(Cliente cliente, int idConto, int saldo, Banca banca) {
 		this.controlloParametri(cliente, idConto, saldo);
 		this.banca = banca;
-		this.carrello = new Carrello();
+		//this.carrello = new Carrello();
 	}
 
 	public Cliente getCliente() {
@@ -49,12 +49,12 @@ public class ProfiloBancarioCliente {
 		}
 	}
 
-	public String faiAcquisto() {
-		return this.banca.pagamento(this.getIdConto(), this.carrello.spesaTotale());
+	public String faiAcquisto(double spesaTotale) {
+		return this.banca.pagamento(this.getIdConto(), spesaTotale);
 	}
 
-	public Carrello getCarrello() {
+	/*public Carrello getCarrello() {
 		return carrello;
-	}
+	}*/
 
 }

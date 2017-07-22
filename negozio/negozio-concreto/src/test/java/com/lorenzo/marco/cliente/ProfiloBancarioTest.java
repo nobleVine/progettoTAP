@@ -6,7 +6,9 @@ import org.junit.*;
 import static org.mockito.Mockito.*;
 
 import com.lorenzo.marco.banca.Banca;
+import com.lorenzo.marco.carrello.Carrello;
 import com.lorenzo.marco.database.Database;
+import com.lorenzo.marco.prodotti.ProdottoSingolo;
 
 public class ProfiloBancarioTest {
 
@@ -56,21 +58,31 @@ public class ProfiloBancarioTest {
 
 	@Test
 	public void testAcquistoRiuscito() {
+		Carrello carrello = new Carrello();
+		ProdottoSingolo prodotto1 = new ProdottoSingolo("Maglietta", 50, "Maglietta basket");
+		ProdottoSingolo prodotto2 = new ProdottoSingolo("Maglietta", 60, "Maglietta basket");
+		carrello.aggiungiAlCarrello(prodotto1);
+		carrello.aggiungiAlCarrello(prodotto2);
 		when(banca.pagamento(this.profiloBancarioCliente.getIdConto(),
-				this.profiloBancarioCliente.getCarrello().spesaTotale())).thenReturn("Acquisto riuscito");
-		String risultatoPagamento = this.profiloBancarioCliente.faiAcquisto();
+				carrello.spesaTotale())).thenReturn("Acquisto riuscito");
+		String risultatoPagamento = this.profiloBancarioCliente.faiAcquisto(carrello.spesaTotale());
 		assertEquals("Acquisto riuscito", risultatoPagamento);
 		verify(banca, times(1)).pagamento(this.profiloBancarioCliente.getIdConto(),
-				this.profiloBancarioCliente.getCarrello().spesaTotale());
+				110);
 	}
 
 	@Test(expected = IllegalArgumentException.class)
 	public void testAcquistoNonRiuscito() {
+		Carrello carrello = new Carrello();
+		ProdottoSingolo prodotto1 = new ProdottoSingolo("Maglietta", 50, "Maglietta basket");
+		ProdottoSingolo prodotto2 = new ProdottoSingolo("Maglietta", 60, "Maglietta basket");
+		carrello.aggiungiAlCarrello(prodotto1);
+		carrello.aggiungiAlCarrello(prodotto2);
 		when(banca.pagamento(this.profiloBancarioCliente.getIdConto(),
-				this.profiloBancarioCliente.getCarrello().spesaTotale())).thenThrow(new IllegalArgumentException("Acquisto non riuscito: non hai abbastanza soldi!"));
-		assertEquals("Acquisto riuscito", this.profiloBancarioCliente.faiAcquisto());
+				carrello.spesaTotale())).thenThrow(new IllegalArgumentException("Acquisto non riuscito: non hai abbastanza soldi!"));
+		assertEquals("Acquisto riuscito", this.profiloBancarioCliente.faiAcquisto(carrello.spesaTotale()));
 		verify(banca, times(1)).pagamento(this.profiloBancarioCliente.getIdConto(),
-				this.profiloBancarioCliente.getCarrello().spesaTotale());
+				110);
 	}
 
 }

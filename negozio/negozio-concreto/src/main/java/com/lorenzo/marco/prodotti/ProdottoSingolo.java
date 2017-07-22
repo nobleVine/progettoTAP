@@ -6,7 +6,6 @@ public class ProdottoSingolo extends ProdottoGenerico {
 
 	public ProdottoSingolo(String nome, double prezzo, String descrizione) {
 		super(nome, descrizione);
-		super.controlloParametriProdotti(nome, descrizione);
 		controlloPrezzo(prezzo, limiteInferiore);
 	}
 

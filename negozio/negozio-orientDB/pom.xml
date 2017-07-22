@@ -14,14 +14,31 @@
 	<name>negozio-orientDB</name>
 	<url>http://maven.apache.org</url>
 
-	<dependencies>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-failsafe-plugin</artifactId>
+				<version>2.19.1</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>integration-test</goal>
+							<goal>verify</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
 
+
+	<dependencies>
 		<dependency>
 			<groupId>com.lorenzo.marco</groupId>
 			<artifactId>negozio-concreto</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
-		
 		<dependency>
 			<groupId>com.lorenzo.marco</groupId>
 			<artifactId>negozio-concreto</artifactId>
@@ -29,13 +46,11 @@
 			<type>test-jar</type>
 			<scope>test</scope>
 		</dependency>
-
 		<dependency>
 			<groupId>com.orientechnologies</groupId>
 			<artifactId>orientdb-core</artifactId>
 			<version>2.2.23</version>
 		</dependency>
-
 	</dependencies>
 
 </project>

@@ -23,7 +23,6 @@ public class RedisDatabaseWrapper implements Database {
 	public String login(String nickname, String password) throws UnknownHostException {
 		if (!this.jedis.exists(nickname))
 			throw new IllegalAccessError("Nickname non registrato!");
-		//List<String> listaCampi = this.jedis.lrange(nickname, 0, 2);
 		if(this.listaCampi.get(2).equals(password))
 			return "Login riuscito";
 		throw new IllegalAccessError("Password errata!");

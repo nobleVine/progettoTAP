@@ -20,16 +20,9 @@ public class CarrelloTest {
 	}
 	
 	@Test
-	public void testCarrelloVuoto() {
-		assertEquals(0, this.carrello.lunghezzaCarrello(), 0);
-	}
-	
-	@Test
 	public void testAggiuntaProdotto() {
 		this.carrello.aggiungiAlCarrello(prodotto);
-		assertEquals(1, carrello.lunghezzaCarrello());
-		assertEquals("Pack King", prodotto.getNome());
-		assertEquals("il pacchetto di Lebron", prodotto.getDescrizione());	
+		this.assertNumeroProdottiAggiunti(1);
 	}
 	
 	@Test
@@ -37,16 +30,14 @@ public class CarrelloTest {
 		this.pacchetto = new Pacchetto("Starter pack 1", "iniziale");
 		this.carrello.aggiungiAlCarrello(prodotto);
 		this.carrello.aggiungiAlCarrello(pacchetto);
-		assertEquals(2, carrello.lunghezzaCarrello());
-		assertEquals("Pack King", prodotto.getNome());
-		assertEquals("il pacchetto di Lebron", prodotto.getDescrizione());		
+		this.assertNumeroProdottiAggiunti(2);		
 	}
-	
+
 	@Test
 	public void testRimuoviProdotto() {
 		this.carrello.aggiungiAlCarrello(prodotto);
 		this.carrello.rimuoviDalCarrello(prodotto);
-		assertEquals(0,carrello.lunghezzaCarrello(), 0);
+		this.assertCarrelloVuoto();
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
@@ -64,12 +55,26 @@ public class CarrelloTest {
 		pacchetto.aggiungiProdotto(prodottoSingolo3);
 		this.carrello.aggiungiAlCarrello(prodottoSingolo1);
 		this.carrello.aggiungiAlCarrello(pacchetto);
-		assertEquals(160, this.carrello.spesaTotale(),0);
+		assertSpesaTotale(160);
 	}
-	
+
 	@Test
 	public void testSpesaTotaleZero() {
-		assertEquals(0, carrello.spesaTotale(), 0);
+		assertSpesaTotale(0);
+	}
+	
+	private void assertNumeroProdottiAggiunti(int numeroProdottiAggiunti) {
+		assertEquals(numeroProdottiAggiunti, carrello.lunghezzaCarrello());
+		assertEquals("Pack King", prodotto.getNome());
+		assertEquals("il pacchetto di Lebron", prodotto.getDescrizione());
+	}
+	
+	private void assertCarrelloVuoto() {
+		assertEquals(0, this.carrello.lunghezzaCarrello(), 0);
+	}
+	
+	private void assertSpesaTotale(double spesaTotale) {
+		assertEquals(spesaTotale, this.carrello.spesaTotale(), 0);
 	}
 
 }

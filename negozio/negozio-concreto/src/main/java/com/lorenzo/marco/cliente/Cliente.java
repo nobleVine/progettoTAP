@@ -2,7 +2,6 @@
 package com.lorenzo.marco.cliente;
 
 import java.net.UnknownHostException;
-import java.util.List;
 
 import com.lorenzo.marco.database.Database;
 

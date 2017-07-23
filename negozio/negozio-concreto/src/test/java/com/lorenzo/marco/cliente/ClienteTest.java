@@ -22,94 +22,97 @@ public class ClienteTest {
 
 	@Test
 	public void testNome() {
-		this.cliente = creazioneCliente("Marco", "Vignini", "nick", "pass", database);
+		this.cliente = creazioneCliente("Marco", "Vignini", "nick", "pass");
 		assertEquals("Marco", this.cliente.getNome());
 	}
 
 	@Test
 	public void testCognome() {
-		this.cliente = creazioneCliente("Marco", "Vignini", "nick", "pass", database);
+		this.cliente = creazioneCliente("Marco", "Vignini", "nick", "pass");
 		assertEquals("Vignini", this.cliente.getCognome());
 	}
 
 	@Test(expected = IllegalArgumentException.class)
 	public void testNomeVuoto() {
-		this.cliente = creazioneCliente("", "Vignini", "nick", "pass", database);
+		this.creazioneCliente("", "Vignini", "nick", "pass");
 	}
-	
+
 	@Test(expected = IllegalArgumentException.class)
 	public void testNomeNull() {
-		this.cliente = creazioneCliente(null, "Vignini", "nick", "pass", database);
+		this.creazioneCliente(null, "Vignini", "nick", "pass");
 	}
 
 	@Test(expected = IllegalArgumentException.class)
 	public void testCognomeVuoto() {
-		this.cliente = creazioneCliente("Marco", "", "nick", "pass", database);
+		this.creazioneCliente("Marco", "", "nick", "pass");
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
 	public void testCognomeNull() {
-		this.cliente = creazioneCliente("Marco", null, "nick", "pass", database);
+		this.creazioneCliente("Marco", null, "nick", "pass");
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
 	public void testNicknameNull() {
-		this.cliente = creazioneCliente("Marco", "Vignini", null, "pass", database);
+		this.creazioneCliente("Marco", "Vignini", null, "pass");
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
 	public void testNicknameVuoto() {
-		this.cliente = creazioneCliente("Marco", "Vignini", "", "pass", database);
+		this.creazioneCliente("Marco", "Vignini", "", "pass");
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
 	public void testPasswordNull() {
-		this.cliente = creazioneCliente("Marco", "Vignini", "nick", null, database);
+		this.creazioneCliente("Marco", "Vignini", "nick", null);
 	}
 
 	@Test(expected = IllegalArgumentException.class)
 	public void testPasswordVuoto() {
-		this.cliente = creazioneCliente("Marco", "Vignini", "nick", "", database);
+		this.creazioneCliente("Marco", "Vignini", "nick", "");
 	}
 	
-	/* Metodi che usano il mock */
+	// Test dei metodi che usano il mock.
 
 	@Test
 	public void testRichiestaAutenticazioneRiuscita() throws UnknownHostException {
-		this.cliente = creazioneCliente("Marco", "Vignini", "nick", "pass", database);
-		when(database.login("nick", "pass")).thenReturn("Richiesta di autenticatione riuscita");
-		assertEquals("Richiesta di autenticatione riuscita", this.cliente.richiestaAutenticazione("nick", "pass"));
-		verify(database, times(1)).login("nick", "pass");
+		assertAutenticazione("Richiesta di autenticatione riuscita", "nick", "pass");
 	}
 
 	@Test
 	public void testRichiestaAutenticazioneNonRiuscita() throws UnknownHostException {
-		this.cliente = creazioneCliente("Marco", "Vignini", "nick", "pass", database);
-		when(database.login("nick", "pass2")).thenReturn("Richiesta di autenticatione riuscita");
-		assertNotEquals("Richiesta di autenticatione riuscita", this.cliente.richiestaAutenticazione("nick", "pass"));
-		verify(database, times(1)).login("nick", "pass");
+		this.assertAutenticazione("Richiesta di autenticatione non riuscita", "nick", "pass2");
 	}
-
+	
 	@Test
 	public void testRichiestaRegistrazioneRiuscita() throws UnknownHostException {
-		this.cliente = creazioneCliente("Marco", "Vignini", "nick", "pass", database);
-		when(database.registrazioneCliente(cliente.getNome(), cliente.getCognome(), "nick", "pass"))
-				.thenReturn("Registrazione riuscita");
-		assertEquals("Registrazione riuscita", this.cliente.richiestaRegistrazione());
-		verify(database, times(1)).registrazioneCliente(cliente.getNome(), cliente.getCognome(), "nick", "pass");
+		this.assertRegistrazione("Registrazione riuscita");
 	}
-
+	
 	@Test
 	public void testRichiestaRegistrazioneNonRiuscita() throws UnknownHostException {
-		this.cliente = creazioneCliente("Marco", "Vignini", "nick", "pass", database);
-		when(database.registrazioneCliente(cliente.getNome(), cliente.getCognome(), "nick", "pass"))
-				.thenReturn("Registrazione non riuscita");
-		assertNotEquals("Registrazione riuscita", this.cliente.richiestaRegistrazione());
-		verify(database, times(1)).registrazioneCliente(cliente.getNome(), cliente.getCognome(), "nick", "pass");
+		this.assertRegistrazione("Registrazione non riuscita");
 	}
 
-	private Cliente creazioneCliente(String nome, String cognome, String nickname, String password, Database database) {
+	private Cliente creazioneCliente(String nome, String cognome, String nickname, String password) {
 		return new Cliente(nome, cognome, nickname, password, database);
+	}
+	
+	private void assertAutenticazione(String esitoAutenticazione, String nickname, String password) throws UnknownHostException {
+		this.cliente = creazioneCliente("Marco", "Vignini", nickname, password);
+		when(database.login(nickname, password)).thenReturn(esitoAutenticazione);
+		assertEquals(esitoAutenticazione, this.cliente.richiestaAutenticazione(nickname, password));
+		verify(database, times(1)).login(nickname, password);
+		verifyNoMoreInteractions(this.database);
+	}
+	
+	private void assertRegistrazione(String esitoRegistrazione) throws UnknownHostException {
+		this.cliente = creazioneCliente("Marco", "Vignini", "nick", "pass");
+		when(database.registrazioneCliente(cliente.getNome(), cliente.getCognome(), "nick", "pass"))
+				.thenReturn(esitoRegistrazione);
+		assertEquals(esitoRegistrazione, this.cliente.richiestaRegistrazione());
+		verify(database, times(1)).registrazioneCliente(cliente.getNome(), cliente.getCognome(), "nick", "pass");
+		verifyNoMoreInteractions(this.database);
 	}
 
 }

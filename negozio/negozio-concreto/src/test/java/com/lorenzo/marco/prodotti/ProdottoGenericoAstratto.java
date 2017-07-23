@@ -17,5 +17,4 @@ public abstract class ProdottoGenericoAstratto {
 	public abstract void testNomeNull();
 	public abstract void testDescrizioneNull();
 
-
 }

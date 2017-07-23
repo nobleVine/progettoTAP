@@ -1,20 +1,16 @@
 package com.lorenzo.marco.cliente;
 
 import com.lorenzo.marco.banca.Banca;
-import com.lorenzo.marco.carrello.Carrello;
 
 public class ProfiloBancarioCliente {
 
 	private Cliente cliente;
 	private int idConto;
-	private double saldo;
 	private Banca banca;
-	//private Carrello carrello;
 	
-	public ProfiloBancarioCliente(Cliente cliente, int idConto, int saldo, Banca banca) {
-		this.controlloParametri(cliente, idConto, saldo);
+	public ProfiloBancarioCliente(Cliente cliente, int idConto, Banca banca) {
+		this.controlloParametri(cliente, idConto);
 		this.banca = banca;
-		//this.carrello = new Carrello();
 	}
 
 	public Cliente getCliente() {
@@ -25,11 +21,7 @@ public class ProfiloBancarioCliente {
 		return idConto;
 	}
 
-	public double getSaldo() {
-		return saldo;
-	}
-		
-	private void controlloParametri(Cliente cliente, int idConto, int saldo) {
+	private void controlloParametri(Cliente cliente, int idConto) {
 		if (cliente == null) {
 			throw new IllegalArgumentException("Il parametro cliente non può essere vuoto");
 		} else {
@@ -41,20 +33,11 @@ public class ProfiloBancarioCliente {
 		} else {
 			this.idConto = idConto;
 		}
-		
-		if (saldo <= 0) {
-			throw new IllegalArgumentException("Il saldo non può essere minore o uguale a zero");
-		} else {
-			this.saldo = saldo;
-		}
+	
 	}
 
 	public String faiAcquisto(double spesaTotale) {
 		return this.banca.pagamento(this.getIdConto(), spesaTotale);
 	}
-
-	/*public Carrello getCarrello() {
-		return carrello;
-	}*/
 
 }

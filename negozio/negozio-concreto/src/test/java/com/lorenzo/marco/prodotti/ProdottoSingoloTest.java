@@ -28,42 +28,46 @@ public class ProdottoSingoloTest extends ProdottoGenericoAstratto {
 
 	@Test(expected = IllegalArgumentException.class)
 	public void testPrezzoNegativo() {
-		prodotto = creazioneProdottoSingolo("Maglietta", -9, "Maglietta basket");
+		creazioneProdottoSingolo("Maglietta", -9, "Maglietta basket");
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
 	public void testPrezzoZero() {
-		prodotto = creazioneProdottoSingolo("Maglietta", 0, "Maglietta basket");
+		creazioneProdottoSingolo("Maglietta", 0, "Maglietta basket");
 	}
 
 	@Test(expected = IllegalArgumentException.class)
 	public void testNomeNull() {
-		prodotto = creazioneProdottoSingolo(null, 5, "Maglietta basket");
+		creazioneProdottoSingolo(null, 5, "Maglietta basket");
 	}
 
 	@Test(expected = IllegalArgumentException.class)
 	public void testNomeVuoto() {
-		prodotto = creazioneProdottoSingolo("", 5, "Maglietta basket");
+		creazioneProdottoSingolo("", 5, "Maglietta basket");
 	}
 
 	@Test(expected = IllegalArgumentException.class)
 	public void testDescrizioneVuota() {
-		prodotto = creazioneProdottoSingolo("Maglietta", 5, "");
+		creazioneProdottoSingolo("Maglietta", 5, "");
 	}
 
 	@Test(expected = IllegalArgumentException.class)
 	public void testDescrizioneNull() {
-		prodotto = creazioneProdottoSingolo("Maglietta", 5, null);
+		creazioneProdottoSingolo("Maglietta", 5, null);
 	}
 
 	@Test
 	public void testTipoNome() {
-		assertTrue(prodotto.getNome() instanceof String);
+		assertAttributiStringhe(prodotto.getNome());
 	}
 
 	@Test
 	public void testTipoDescrizione() {
-		assertTrue(prodotto.getDescrizione() instanceof String);
+		assertAttributiStringhe(prodotto.getDescrizione());
+	}
+	
+	private void assertAttributiStringhe(String stringaDaTestare) {
+		assertTrue(stringaDaTestare instanceof String);
 	}
 	
 }

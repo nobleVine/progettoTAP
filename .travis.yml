@@ -14,6 +14,3 @@ jdk:
 
 script:
 - mvn -f negozio/pom.xml install -Dmaven.javadoc.skip=true -B -V -Pjacoco coveralls:report
-#- mvn -f negozio/negozio-concreto/pom.xml install -Pjacoco coveralls:report
-#- mvn -f negozio/negozio-redis/pom.xml verify -Pjacoco coveralls:report
-#- mvn -f negozio/negozio-orientDB/pom.xml verify -Pjacoco coveralls:report

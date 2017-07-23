@@ -1,13 +1,5 @@
 package com.lorenzo.marco.it;
 
-import static org.junit.Assert.assertEquals;
-
-import java.net.UnknownHostException;
-import java.util.*;
-
-import org.junit.*;
-
-import com.lorenzo.marco.cliente.Cliente;
 import com.lorenzo.marco.database.redis.RedisDatabaseWrapper;
 
 import redis.clients.jedis.Jedis;

@@ -89,7 +89,10 @@
 						<version>4.3.0</version>
 						<configuration>
 							<jacocoReports>
-								<jacocoReport>${jacoco.report.path}/jacoco.xml</jacocoReport>
+								<!-- <jacocoReport>${jacoco.report.path}/jacoco.xml</jacocoReport>-->
+								<jacocoReport>negozio-concreto/target/site/jacoco-ut/jacoco.xml</jacocoReport>
+  								<jacocoReport>negozio-redis/target/site/jacoco-ut/jacoco.xml</jacocoReport>
+								<jacocoReport>negozio-orientDB/target/site/jacoco-ut/jacoco.xml</jacocoReport>
 							</jacocoReports>
 						</configuration>
 					</plugin>
@@ -121,6 +124,7 @@
 							</execution>
 						</executions>
 					</plugin>
+
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-surefire-plugin</artifactId>

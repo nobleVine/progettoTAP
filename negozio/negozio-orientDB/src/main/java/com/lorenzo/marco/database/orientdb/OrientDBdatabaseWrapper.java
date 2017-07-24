@@ -3,10 +3,11 @@ package com.lorenzo.marco.database.orientdb;
 import java.net.UnknownHostException;
 import java.util.*;
 
-import com.lorenzo.marco.database.Database;
+import com.lorenzo.marco.database.DatabaseLatoCliente;
+import com.lorenzo.marco.database.DatabaseLatoAmministratore;
 import com.orientechnologies.orient.core.record.impl.ODocument;
 
-public class OrientDBdatabaseWrapper implements Database {
+public class OrientDBdatabaseWrapper implements DatabaseLatoCliente, DatabaseLatoAmministratore {
 
 	private static final String NICKNAME = "nickname";
 	private static final String CAMPOPASS = "password";

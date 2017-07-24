@@ -7,14 +7,14 @@ import static org.mockito.Mockito.*;
 
 import com.lorenzo.marco.banca.Banca;
 import com.lorenzo.marco.carrello.Carrello;
-import com.lorenzo.marco.database.Database;
+import com.lorenzo.marco.database.DatabaseLatoCliente;
 import com.lorenzo.marco.prodotti.ProdottoSingolo;
 
 public class ProfiloBancarioTest {
 
 	private ProfiloBancarioCliente profiloBancarioCliente;
 	private Cliente cliente;
-	private Database database;
+	private DatabaseLatoCliente database;
 	private Banca banca;
 
 	@Before

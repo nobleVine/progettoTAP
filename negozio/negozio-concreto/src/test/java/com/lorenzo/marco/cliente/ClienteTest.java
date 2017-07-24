@@ -7,17 +7,17 @@ import java.net.UnknownHostException;
 import org.junit.*;
 import static org.mockito.Mockito.*;
 
-import com.lorenzo.marco.database.Database;
+import com.lorenzo.marco.database.DatabaseLatoCliente;
 
 public class ClienteTest {
 
 	private Cliente cliente;
 
-	private Database database;
+	private DatabaseLatoCliente database;
 
 	@Before
 	public void setUp() throws UnknownHostException {
-		database = mock(Database.class);
+		database = mock(DatabaseLatoCliente.class);
 	}
 
 	@Test

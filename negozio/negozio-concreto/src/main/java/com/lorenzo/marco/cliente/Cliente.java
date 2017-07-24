@@ -4,6 +4,7 @@ package com.lorenzo.marco.cliente;
 import java.net.UnknownHostException;
 
 import com.lorenzo.marco.database.Database;
+import com.lorenzo.marco.database.DatabaseLatoCliente;
 
 public class Cliente {
 
@@ -28,11 +29,11 @@ public class Cliente {
 	}
 
 	public String richiestaAutenticazione(String nickname, String password) throws UnknownHostException {
-		return this.database.login(nickname, password);
+		return ((DatabaseLatoCliente) this.database).login(nickname, password);
 	}
 
 	public String richiestaRegistrazione() throws UnknownHostException {
-		return this.database.registrazioneCliente(nome, cognome, nickname, password);
+		return ((DatabaseLatoCliente) this.database).registrazioneCliente(nome, cognome, nickname, password);
 	}
 
 	private void controlloParametriDiInizializzazioneCliente(String nome, String cognome, String nickname,
@@ -62,13 +63,5 @@ public class Cliente {
 		}
 
 	}
-
-	/*public List<String> restituzioneNicknamePresentiNelDatabase() {
-		return this.database.restituzioneNickname();
-	}
-
-	public List<String> restituzioneProfiloClientePresenteNelDatabase() {
-		return this.database.restituzioneProfiloCliente(nickname);
-	}*/
 	
 }

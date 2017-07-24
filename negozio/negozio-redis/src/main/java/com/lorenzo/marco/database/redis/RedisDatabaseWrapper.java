@@ -3,11 +3,12 @@ package com.lorenzo.marco.database.redis;
 import java.net.UnknownHostException;
 import java.util.*;
 
-import com.lorenzo.marco.database.Database;
+import com.lorenzo.marco.database.DatabaseLatoCliente;
+import com.lorenzo.marco.database.DatabaseLatoAmministratore;
 
 import redis.clients.jedis.Jedis;
 
-public class RedisDatabaseWrapper implements Database {
+public class RedisDatabaseWrapper implements DatabaseLatoCliente, DatabaseLatoAmministratore {
 
 	private Jedis jedis;
 	private List<String> listaNickname;

@@ -8,12 +8,12 @@ import org.junit.Before;
 import org.junit.Test;
 
 import com.lorenzo.marco.cliente.Cliente;
-import com.lorenzo.marco.database.Database;
+import com.lorenzo.marco.database.DatabaseLatoCliente;
 
 public abstract class ClienteIT {
 	
 	protected Cliente cliente;
-	protected Database database;
+	protected DatabaseLatoCliente database;
 	
 	@Before
 	public void setUp() {

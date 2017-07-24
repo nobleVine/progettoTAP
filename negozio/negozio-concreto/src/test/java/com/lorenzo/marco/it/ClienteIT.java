@@ -51,6 +51,6 @@ public abstract class ClienteIT {
 		this.cliente.richiestaAutenticazione("nickname", "pass");
 	}
 	
-	protected abstract void inizializzazioneDatabase();
-	
+	protected abstract void inizializzazioneDatabase();		
+
 }

@@ -1,8 +1,13 @@
 package com.lorenzo.marco.it;
 
+import static org.junit.Assert.assertEquals;
+
 import java.net.UnknownHostException;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.junit.Before;
+import org.junit.Test;
 
 import com.lorenzo.marco.amministratore.Amministratore;
 import com.lorenzo.marco.cliente.Cliente;
@@ -19,11 +24,29 @@ public abstract class AmministratoreIT {
 		inizializzazioneDatabase();
 		cliente = new Cliente("Marco", "Vignini", "nickname", "password", database);
 		amministratore = new Amministratore(database);
-
 	}
 
-	public abstract void testNicknameRestiuiti() throws UnknownHostException;
-	public abstract void testProfiloClienteRestituito() throws UnknownHostException;
+	@Test
+	public void testNicknameRestiuiti() throws UnknownHostException {
+		Cliente cliente1 = new Cliente("Lorenzo", "Rossi", "nickname2", "pass", database);
+		this.cliente.richiestaRegistrazione();
+		cliente1.richiestaRegistrazione();
+		List<String> listaNickname = new ArrayList<>();
+		listaNickname.add("nickname");
+		listaNickname.add("nickname2");
+		assertEquals(listaNickname, amministratore.restituzioneListaNickname());
+	}
+	
+	@Test
+	public void testProfiloClienteRestituito() throws UnknownHostException {
+		this.cliente.richiestaRegistrazione();
+		List<String> listaValori = new ArrayList<>();
+		listaValori.add("Marco");
+		listaValori.add("Vignini");
+		listaValori.add("password");
+		assertEquals(listaValori, amministratore.restituzioneListaCampiCliente("nickname"));
+	}
 	
 	protected abstract void inizializzazioneDatabase();
+	
 }

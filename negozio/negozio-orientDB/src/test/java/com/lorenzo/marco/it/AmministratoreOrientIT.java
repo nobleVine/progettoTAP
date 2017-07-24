@@ -3,7 +3,7 @@ package com.lorenzo.marco.it;
 import com.lorenzo.marco.database.orientdb.OrientDBdatabaseWrapper;
 import com.orientechnologies.orient.core.db.document.ODatabaseDocumentTx;
 
-public class ClienteOrientIT extends ClienteIT {
+public class AmministratoreOrientIT extends AmministratoreIT {
 
 	private ODatabaseDocumentTx db;
 
@@ -15,4 +15,5 @@ public class ClienteOrientIT extends ClienteIT {
 		}
 		this.db.open("admin", "admin");
 	}
+
 }

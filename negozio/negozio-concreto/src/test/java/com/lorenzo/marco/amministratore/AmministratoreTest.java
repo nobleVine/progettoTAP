@@ -7,7 +7,9 @@ import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import com.lorenzo.marco.database.DatabaseLatoAmministratore;
 
@@ -15,14 +17,14 @@ public class AmministratoreTest {
 
 	private DatabaseLatoAmministratore databaseLatoAmministratore;
 	private Amministratore amministratore;
-	private List<String> listaNickname;
+	private Set<String> listaNickname;
 	private List<String> listaCampi;
 	
 	@Before
 	public void setUp() {
 		this.databaseLatoAmministratore = mock(DatabaseLatoAmministratore.class);
 		this.amministratore = new Amministratore(databaseLatoAmministratore);
-		this.listaNickname = new ArrayList<String>();
+		this.listaNickname = new HashSet<>();
 		this.listaCampi = new ArrayList<String>();
 	}
 

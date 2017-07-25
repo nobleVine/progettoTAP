@@ -4,7 +4,9 @@ import static org.junit.Assert.assertEquals;
 
 import java.net.UnknownHostException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -31,7 +33,7 @@ public abstract class AmministratoreIT {
 		Cliente cliente1 = new Cliente("Lorenzo", "Rossi", "nickname2", "pass", database);
 		this.cliente.richiestaRegistrazione();
 		cliente1.richiestaRegistrazione();
-		List<String> listaNickname = new ArrayList<>();
+		Set<String> listaNickname = new HashSet<>();
 		listaNickname.add("nickname");
 		listaNickname.add("nickname2");
 		assertEquals(listaNickname, amministratore.restituzioneListaNickname());

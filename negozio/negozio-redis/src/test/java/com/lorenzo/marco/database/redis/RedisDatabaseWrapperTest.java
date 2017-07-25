@@ -4,7 +4,10 @@ import static org.junit.Assert.assertEquals;
 
 import java.net.UnknownHostException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -72,14 +75,14 @@ public class RedisDatabaseWrapperTest {
 	public void testRestituzioneNickname() throws UnknownHostException {
 		this.redisDatabaseWrapper.registrazioneCliente("Alessio", "Rossi", "nick1", "pass");
 		this.redisDatabaseWrapper.registrazioneCliente("Ugo", "Rolando", "nick2", "pass2");
-		List<String> listaNickname = new ArrayList<>();
-		listaNickname.add("nick1");
+		Set<String> listaNickname = new HashSet<>();
 		listaNickname.add("nick2");
+		listaNickname.add("nick1");
 		assertEquals(listaNickname, this.redisDatabaseWrapper.restituzioneNickname());
 	}
 
 	@Test
-	public void testRestituzioneProfiloCliente() throws UnknownHostException {
+	public void testRestituzioneProfiloClienteConSuccesso() throws UnknownHostException {
 		this.redisDatabaseWrapper.registrazioneCliente("Alessio", "Rossi", "nick1", "pass");
 		List<String> listaValori = new ArrayList<>();
 		listaValori.add("Alessio");
@@ -87,7 +90,35 @@ public class RedisDatabaseWrapperTest {
 		listaValori.add("pass");
 		assertEquals(listaValori, this.redisDatabaseWrapper.restituzioneProfiloCliente("nick1"));
 	}
-
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void testRestituzioneProfiloClienteSenzaSuccesso() throws UnknownHostException {
+		this.redisDatabaseWrapper.registrazioneCliente("Alessio", "Rossi", "nick1", "pass");
+		List<String> listaValori = new ArrayList<>();
+		listaValori.add("Alessio");
+		listaValori.add("Rossi");
+		listaValori.add("pass");
+		assertEquals(listaValori, this.redisDatabaseWrapper.restituzioneProfiloCliente("nick"));
+	}
+	
+	@Test
+	public void testRestituzioneAcquistiCliente() throws UnknownHostException {
+		this.redisDatabaseWrapper.registrazioneCliente("Alessio", "Rossi", "nick", "pass");
+		this.redisDatabaseWrapper.login("nick", "pass");
+		List<String> listaAcquisti = new ArrayList<>();
+		listaAcquisti.add("Maglietta Kobe");
+		listaAcquisti.add("Maglietta Stephen");
+		this.redisDatabaseWrapper.creaListaAcquisti("nick", listaAcquisti);
+		assertEquals(listaAcquisti, this.redisDatabaseWrapper.restituzioneAcquistiCliente("nick"));
+		this.redisDatabaseWrapper.registrazioneCliente("Alessandro", "Verdi", "nickname", "pass1");
+		this.redisDatabaseWrapper.login("nickname", "pass1");
+		List<String> listaAcquisti2 = new ArrayList<>();
+		listaAcquisti2.add("Maglietta Naso");
+		listaAcquisti2.add("Maglietta Stephen Curry");
+		this.redisDatabaseWrapper.creaListaAcquisti("nickname", listaAcquisti2);
+		assertEquals(listaAcquisti2, this.redisDatabaseWrapper.restituzioneAcquistiCliente("nickname"));	
+	}
+	
 	private List<String> profiloCliente(String nickname) {
 		List<String> listaNick = this.jedis.lrange(nickname, 0, 2);
 		return listaNick;

@@ -1,6 +1,7 @@
 package com.lorenzo.marco.amministratore;
 
 import java.util.List;
+import java.util.Set;
 
 import com.lorenzo.marco.database.DatabaseLatoAmministratore;
 
@@ -12,7 +13,7 @@ public class Amministratore {
 		this.databaseLatoAmministratore = databaseLatoAmministratore;
 	}
 
-	public List<String> restituzioneListaNickname() {
+	public Set<String> restituzioneListaNickname() {
 		return this.databaseLatoAmministratore.restituzioneNickname();
 	}
 	

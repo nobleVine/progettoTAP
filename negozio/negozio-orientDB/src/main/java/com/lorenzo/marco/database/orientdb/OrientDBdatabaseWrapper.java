@@ -12,13 +12,14 @@ public class OrientDBdatabaseWrapper implements DatabaseLatoCliente, DatabaseLat
 	private static final String NICKNAME = "nickname";
 	private static final String CAMPOPASS = "password";
 	private List<ODocument> elencoClienti;
-		
+
 	public OrientDBdatabaseWrapper() {
 		this.elencoClienti = new ArrayList<>();
 	}
 
 	@Override
-	public String registrazioneCliente(String nome, String cognome, String nickname, String password) throws UnknownHostException {
+	public String registrazioneCliente(String nome, String cognome, String nickname, String password)
+			throws UnknownHostException {
 		for (ODocument documentoCliente : this.elencoClienti) {
 			if (documentoCliente.field(NICKNAME) == nickname) {
 				throw new IllegalArgumentException("Nickname già esistente");
@@ -36,13 +37,13 @@ public class OrientDBdatabaseWrapper implements DatabaseLatoCliente, DatabaseLat
 		}
 		throw new IllegalAccessError("Credenziali errate!");
 	}
-	
+
 	public List<ODocument> getElencoClienti() {
 		return elencoClienti;
 	}
 
-	public List<String> restituzioneNickname() {
-		List<String> listaNickname = new ArrayList<>();
+	public Set<String> restituzioneNickname() {
+		Set<String> listaNickname = new HashSet<>();
 		for (ODocument documentoCliente : this.elencoClienti) {
 			listaNickname.add(documentoCliente.field(NICKNAME));
 		}
@@ -64,7 +65,7 @@ public class OrientDBdatabaseWrapper implements DatabaseLatoCliente, DatabaseLat
 			return profiloCliente;
 		throw new IllegalArgumentException("Nickname non esistente");
 	}
-	
+
 	private String creazioneCliente(String nome, String cognome, String nickname, String password) {
 		ODocument cliente = new ODocument("Cliente");
 		cliente.field("nome", nome);
@@ -74,6 +75,23 @@ public class OrientDBdatabaseWrapper implements DatabaseLatoCliente, DatabaseLat
 		cliente.save();
 		elencoClienti.add(cliente);
 		return "Registrazione riuscita";
+	}
+
+	public void creazioneListaAcquisti(String nickname, List<String> listaProdotti) {
+		for (ODocument cliente : this.elencoClienti) {
+			if (cliente.field(NICKNAME) == nickname) {
+				cliente.field("acquisti", listaProdotti);
+			}
+		}
+	}
+
+	public List<String> restituzioneAcquistiCliente(String nickname) {
+		for (ODocument cliente : this.elencoClienti) {
+			if (cliente.field(NICKNAME) == nickname) {
+				return cliente.field("acquisti");
+			}
+		}
+		throw new IllegalArgumentException("Nickname non esistente");
 	}
 
 }

@@ -98,7 +98,7 @@ public class OrientDBdatabaseWrapperTest {
 
 	@Test
 	public void testRestituzioneNickname() throws UnknownHostException {
-		List<String> listaNickname = new ArrayList<>();
+		Set<String> listaNickname = new HashSet<>();
 		this.orientDBdatabaseWrapper.registrazioneCliente("Marco1", "James1", "vigna1", "pass1");
 		this.orientDBdatabaseWrapper.registrazioneCliente("Marco2", "James2", "vigna2", "pass2");
 		listaNickname.add(creaCliente("Marco1", "James1", "vigna1", "pass1").field("nickname"));
@@ -120,6 +120,41 @@ public class OrientDBdatabaseWrapperTest {
 	public void testRestituzioneProfiloClienteSbagliato() throws UnknownHostException {
 		this.orientDBdatabaseWrapper.registrazioneCliente("Marco1", "James1", "vigna1", "pass1");
 		this.orientDBdatabaseWrapper.restituzioneProfiloCliente("nick");
+	}
+	
+	@Test
+	public void testRestituzioneAcquistiCliente() throws UnknownHostException {
+		this.orientDBdatabaseWrapper.registrazioneCliente("Marco1", "James1", "vigna1", "pass1");
+		this.orientDBdatabaseWrapper.login("vigna1", "pass1");
+		List<String> listaProdotti = new ArrayList<>();
+		listaProdotti.add("Maglietta");
+		listaProdotti.add("calzini");
+		this.orientDBdatabaseWrapper.creazioneListaAcquisti("vigna1", listaProdotti);
+		assertEquals(listaProdotti, this.orientDBdatabaseWrapper.restituzioneAcquistiCliente("vigna1"));
+	}
+	
+	@Test													
+	public void testRestituzioneAcquistiClienti() throws UnknownHostException {
+		this.orientDBdatabaseWrapper.registrazioneCliente("Marco1", "James1", "vigna1", "pass1");
+		this.orientDBdatabaseWrapper.login("vigna1", "pass1");
+		List<String> listaProdotti = new ArrayList<>();
+		listaProdotti.add("Maglietta");
+		listaProdotti.add("calzini");
+		this.orientDBdatabaseWrapper.creazioneListaAcquisti("vigna1", listaProdotti);
+		assertEquals(listaProdotti, this.orientDBdatabaseWrapper.restituzioneAcquistiCliente("vigna1"));
+		
+		this.orientDBdatabaseWrapper.registrazioneCliente("Marco", "James", "vigna", "pass2");
+		this.orientDBdatabaseWrapper.login("vigna", "pass2");
+		List<String> listaProdotti2 = new ArrayList<>();
+		listaProdotti2.add("Maglietta");
+		listaProdotti2.add("calzini");
+		this.orientDBdatabaseWrapper.creazioneListaAcquisti("vigna", listaProdotti);
+		assertEquals(listaProdotti, this.orientDBdatabaseWrapper.restituzioneAcquistiCliente("vigna"));
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void testRestituzioneAcquistiClientiSenzaSuccesso() {
+		this.orientDBdatabaseWrapper.restituzioneAcquistiCliente("nick");
 	}
 	
 	private ODocument creaCliente(String nome, String cognome, String nickname, String password) {

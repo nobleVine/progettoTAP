@@ -27,11 +27,7 @@ public class RedisDatabaseWrapper implements DatabaseLatoCliente, DatabaseLatoAm
 		this.jedis.rpush(nickname, nome);
 		this.jedis.rpush(nickname, cognome);
 		this.jedis.rpush(nickname, password);
-		List<String> listaCampi = new ArrayList<>();
-		listaCampi.add(nome);
-		listaCampi.add(cognome);
-		listaCampi.add(password);
-		this.campiClienti.put(nickname, listaCampi);
+		memorizzazioneCampiCliente(nome, cognome, nickname, password);
 		return "Registrazione riuscita";
 	}
 
@@ -63,6 +59,14 @@ public class RedisDatabaseWrapper implements DatabaseLatoCliente, DatabaseLatoAm
 
 	public List<String> restituzioneAcquistiCliente(String nickname) {
 		return this.jedis.lrange(nickname, 3, numeroAcquisti + 3l);
+	}
+	
+	private void memorizzazioneCampiCliente(String nome, String cognome, String nickname, String password) {
+		List<String> listaCampi = new ArrayList<>();
+		listaCampi.add(nome);
+		listaCampi.add(cognome);
+		listaCampi.add(password);
+		this.campiClienti.put(nickname, listaCampi);
 	}
 
 }

@@ -25,7 +25,7 @@ public class OrientDBdatabaseWrapper implements DatabaseLatoCliente, DatabaseLat
 				throw new IllegalArgumentException("Nickname già esistente");
 			}
 		}
-		return creazioneCliente(nome, cognome, nickname, password);
+		return inserimentoClienteNelDatabase(nome, cognome, nickname, password);
 	}
 
 	@Override
@@ -51,30 +51,16 @@ public class OrientDBdatabaseWrapper implements DatabaseLatoCliente, DatabaseLat
 	}
 
 	public List<String> restituzioneProfiloCliente(String nickname) {
-		boolean esistente = false;
 		List<String> profiloCliente = new ArrayList<>();
 		for (ODocument documentoCliente : this.elencoClienti) {
 			if (documentoCliente.field(NICKNAME) == nickname) {
-				esistente = true;
 				profiloCliente.add(documentoCliente.field("nome"));
 				profiloCliente.add(documentoCliente.field("cognome"));
 				profiloCliente.add(documentoCliente.field(CAMPOPASS));
+				return profiloCliente;
 			}
 		}
-		if (esistente)
-			return profiloCliente;
 		throw new IllegalArgumentException("Nickname non esistente");
-	}
-
-	private String creazioneCliente(String nome, String cognome, String nickname, String password) {
-		ODocument cliente = new ODocument("Cliente");
-		cliente.field("nome", nome);
-		cliente.field("cognome", cognome);
-		cliente.field(NICKNAME, nickname);
-		cliente.field(CAMPOPASS, password);
-		cliente.save();
-		elencoClienti.add(cliente);
-		return "Registrazione riuscita";
 	}
 
 	public void creazioneListaAcquisti(String nickname, List<String> listaProdotti) {
@@ -92,6 +78,17 @@ public class OrientDBdatabaseWrapper implements DatabaseLatoCliente, DatabaseLat
 			}
 		}
 		throw new IllegalArgumentException("Nickname non esistente");
+	}
+	
+	private String inserimentoClienteNelDatabase(String nome, String cognome, String nickname, String password) {
+		ODocument cliente = new ODocument("Cliente");
+		cliente.field("nome", nome);
+		cliente.field("cognome", cognome);
+		cliente.field(NICKNAME, nickname);
+		cliente.field(CAMPOPASS, password);
+		cliente.save();
+		elencoClienti.add(cliente);
+		return "Registrazione riuscita";
 	}
 
 }

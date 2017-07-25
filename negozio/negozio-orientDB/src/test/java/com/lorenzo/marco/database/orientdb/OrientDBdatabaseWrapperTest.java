@@ -16,13 +16,14 @@ public class OrientDBdatabaseWrapperTest {
 	private ODatabaseDocumentTx db;
 
 	@Before
-	public void setUp() {
+	public void setUp() throws UnknownHostException {
 		this.orientDBdatabaseWrapper = new OrientDBdatabaseWrapper();
 		this.db = new ODatabaseDocumentTx("plocal:localhost/negozioDB");
 		if (!db.exists()) {
 			this.db.create();
 		}
 		this.db.open("admin", "admin");
+		this.orientDBdatabaseWrapper.registrazioneCliente("Marco", "James", "vigna", "pass");
 	}
 
 	@Test
@@ -34,22 +35,21 @@ public class OrientDBdatabaseWrapperTest {
 
 	@Test
 	public void testNessunoRegistrato() {
+		this.orientDBdatabaseWrapper.getElencoClienti().clear();
 		assertTrue(this.orientDBdatabaseWrapper.getElencoClienti().isEmpty());
 	}
 
 	@Test
 	public void testRegistrazioneClienteConSuccesso() throws UnknownHostException {
-		assertEquals("Registrazione riuscita", this.orientDBdatabaseWrapper.registrazioneCliente("Marco", "James", "vigna", "pass"));
-		assertEquals("Marco", this.orientDBdatabaseWrapper.getElencoClienti().get(0).field("nome"));
-		assertEquals("James", this.orientDBdatabaseWrapper.getElencoClienti().get(0).field("cognome"));
-		assertEquals("vigna", this.orientDBdatabaseWrapper.getElencoClienti().get(0).field("nickname"));
-		assertEquals("pass", this.orientDBdatabaseWrapper.getElencoClienti().get(0).field("password"));
-		db.close();
+		assertEquals("Registrazione riuscita", this.orientDBdatabaseWrapper.registrazioneCliente("Marco1", "James1", "vigna1", "pass1"));
+		assertEquals("Marco1", this.orientDBdatabaseWrapper.getElencoClienti().get(1).field("nome"));
+		assertEquals("James1", this.orientDBdatabaseWrapper.getElencoClienti().get(1).field("cognome"));
+		assertEquals("vigna1", this.orientDBdatabaseWrapper.getElencoClienti().get(1).field("nickname"));
+		assertEquals("pass1", this.orientDBdatabaseWrapper.getElencoClienti().get(1).field("password"));
 	}
 
 	@Test
-	public void testRegistrazioneClienti() throws UnknownHostException {
-		this.orientDBdatabaseWrapper.registrazioneCliente("Marco", "James", "vigna", "pass");
+	public void testRegistrazioneClientiConSuccesso() throws UnknownHostException {
 		this.orientDBdatabaseWrapper.registrazioneCliente("Marco2", "James2", "vigna2", "pass2");
 		List<ODocument> listaClienti = new ArrayList<>();
 		listaClienti.add(creaCliente("Marco", "James", "vigna", "pass"));
@@ -68,40 +68,34 @@ public class OrientDBdatabaseWrapperTest {
 
 	@Test(expected = IllegalArgumentException.class)
 	public void testRegistrazioneClienteSbagliata() throws UnknownHostException {
-		this.orientDBdatabaseWrapper.registrazioneCliente("Marco", "James", "vigna", "pass");
 		this.orientDBdatabaseWrapper.registrazioneCliente("Alessio", "Rossi", "vigna", "pass1");
 	}
 
 	@Test
 	public void testLoginConSuccesso() throws UnknownHostException {
-		this.orientDBdatabaseWrapper.registrazioneCliente("Marco", "James", "vigna", "pass");
 		assertEquals("Login riuscito", this.orientDBdatabaseWrapper.login("vigna", "pass"));
 	}
 
 	@Test(expected = IllegalAccessError.class)
-	public void testLoginSbagliatoNickname() throws UnknownHostException {
-		this.orientDBdatabaseWrapper.registrazioneCliente("Marco", "James", "vigna", "pass");
+	public void testLoginNicknameSbagliato() throws UnknownHostException {
 		this.orientDBdatabaseWrapper.login("vigna2", "pass");
 	}
 
 	@Test(expected = IllegalAccessError.class)
-	public void testLoginSbagliatoPassword() throws UnknownHostException {
-		this.orientDBdatabaseWrapper.registrazioneCliente("Marco", "James", "vigna", "pass");
+	public void testLoginPasswordSbagliata() throws UnknownHostException {
 		this.orientDBdatabaseWrapper.login("vigna", "pass2");
 	}
 
 	@Test(expected = IllegalAccessError.class)
-	public void testLoginSbagliato() throws UnknownHostException {
-		this.orientDBdatabaseWrapper.registrazioneCliente("Marco", "James", "vigna", "pass");
+	public void testLoginCredenzialiSbagliate() throws UnknownHostException {
 		this.orientDBdatabaseWrapper.login("vigna2", "pass2");
 	}
 
 	@Test
 	public void testRestituzioneNickname() throws UnknownHostException {
 		Set<String> listaNickname = new HashSet<>();
-		this.orientDBdatabaseWrapper.registrazioneCliente("Marco1", "James1", "vigna1", "pass1");
 		this.orientDBdatabaseWrapper.registrazioneCliente("Marco2", "James2", "vigna2", "pass2");
-		listaNickname.add(creaCliente("Marco1", "James1", "vigna1", "pass1").field("nickname"));
+		listaNickname.add(creaCliente("Marco", "James", "vigna", "pass").field("nickname"));
 		listaNickname.add(creaCliente("Marco2", "James2", "vigna2", "pass2").field("nickname"));
 		assertEquals(listaNickname, this.orientDBdatabaseWrapper.restituzioneNickname());
 	}
@@ -109,57 +103,45 @@ public class OrientDBdatabaseWrapperTest {
 	@Test
 	public void testRestituzioneProfiloClienteConSuccesso() throws UnknownHostException {
 		List<String> profiloCliente = new ArrayList<>();
-		this.orientDBdatabaseWrapper.registrazioneCliente("Marco1", "James1", "vigna1", "pass1");
-		profiloCliente.add("Marco1");
-		profiloCliente.add("James1");
-		profiloCliente.add("pass1");
-		assertEquals(profiloCliente, this.orientDBdatabaseWrapper.restituzioneProfiloCliente("vigna1"));
+		profiloCliente.add("Marco");
+		profiloCliente.add("James");
+		profiloCliente.add("pass");
+		assertEquals(profiloCliente, this.orientDBdatabaseWrapper.restituzioneProfiloCliente("vigna"));
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
 	public void testRestituzioneProfiloClienteSbagliato() throws UnknownHostException {
-		this.orientDBdatabaseWrapper.registrazioneCliente("Marco1", "James1", "vigna1", "pass1");
 		this.orientDBdatabaseWrapper.restituzioneProfiloCliente("nick");
 	}
 	
 	@Test
 	public void testRestituzioneAcquistiCliente() throws UnknownHostException {
-		this.orientDBdatabaseWrapper.registrazioneCliente("Marco1", "James1", "vigna1", "pass1");
-		this.orientDBdatabaseWrapper.login("vigna1", "pass1");
-		List<String> listaProdotti = new ArrayList<>();
-		listaProdotti.add("Maglietta");
-		listaProdotti.add("calzini");
-		this.orientDBdatabaseWrapper.creazioneListaAcquisti("vigna1", listaProdotti);
-		assertEquals(listaProdotti, this.orientDBdatabaseWrapper.restituzioneAcquistiCliente("vigna1"));
+		assertRestituzioneAcquistiCliente("Marco", "James", "vigna", "pass");
 	}
 	
-	@Test													
+	@Test
 	public void testRestituzioneAcquistiClienti() throws UnknownHostException {
+		assertRestituzioneAcquistiCliente("Marco", "James", "vigna", "pass");
 		this.orientDBdatabaseWrapper.registrazioneCliente("Marco1", "James1", "vigna1", "pass1");
-		this.orientDBdatabaseWrapper.login("vigna1", "pass1");
-		List<String> listaProdotti = new ArrayList<>();
-		listaProdotti.add("Maglietta");
-		listaProdotti.add("calzini");
-		this.orientDBdatabaseWrapper.creazioneListaAcquisti("vigna1", listaProdotti);
-		assertEquals(listaProdotti, this.orientDBdatabaseWrapper.restituzioneAcquistiCliente("vigna1"));
-		
-		this.orientDBdatabaseWrapper.registrazioneCliente("Marco", "James", "vigna", "pass2");
-		this.orientDBdatabaseWrapper.login("vigna", "pass2");
-		List<String> listaProdotti2 = new ArrayList<>();
-		listaProdotti2.add("Maglietta");
-		listaProdotti2.add("calzini");
-		this.orientDBdatabaseWrapper.creazioneListaAcquisti("vigna", listaProdotti);
-		assertEquals(listaProdotti, this.orientDBdatabaseWrapper.restituzioneAcquistiCliente("vigna"));
+		assertRestituzioneAcquistiCliente("Marco1", "James1", "vigna1", "pass1");
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
 	public void testRestituzioneAcquistiClientiSenzaSuccesso() {
 		this.orientDBdatabaseWrapper.restituzioneAcquistiCliente("nick");
+	}	
+
+	private void assertRestituzioneAcquistiCliente(String nome, String cognome, String nickname, String password) throws UnknownHostException {
+		this.orientDBdatabaseWrapper.login(nickname, password);
+		List<String> listaProdotti = new ArrayList<>();
+		listaProdotti.add("Maglietta");
+		listaProdotti.add("calzini");
+		this.orientDBdatabaseWrapper.creazioneListaAcquisti(nickname, listaProdotti);
+		assertEquals(listaProdotti, this.orientDBdatabaseWrapper.restituzioneAcquistiCliente(nickname));
 	}
-	
+		
 	private ODocument creaCliente(String nome, String cognome, String nickname, String password) {
-		ODocument cliente = new ODocument();
-		cliente = new ODocument("Cliente");
+		ODocument cliente = new ODocument("Cliente");
 		cliente.field("nome", nome);
 		cliente.field("cognome", cognome);
 		cliente.field("nickname", nickname);

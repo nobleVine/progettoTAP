@@ -20,10 +20,11 @@ public class RedisDatabaseWrapperTest {
 	private Jedis jedis;
 
 	@Before
-	public void setUp() {
+	public void setUp() throws UnknownHostException {
 		this.redisDatabaseWrapper = new RedisDatabaseWrapper();
 		this.jedis = new Jedis("localhost", 6379);
 		this.jedis.flushDB(); // Clean key
+		this.redisDatabaseWrapper.registrazioneCliente("Alessio", "Rossi", "nick", "pass");
 	}
 
 	@Test
@@ -39,9 +40,8 @@ public class RedisDatabaseWrapperTest {
 
 	@Test
 	public void testRegistrazioneAvvenutaConSuccesso() throws UnknownHostException {
-		assertEquals("Registrazione riuscita",
-				this.redisDatabaseWrapper.registrazioneCliente("Marco", "Vignini", "nick", "pass"));
-		List<String> listaNick = profiloCliente("nick");
+		assertEquals("Registrazione riuscita", this.redisDatabaseWrapper.registrazioneCliente("Marco", "Vignini", "nick1", "pass"));
+		List<String> listaNick = profiloCliente("nick1");
 		assertEquals("Marco", listaNick.get(0));
 		assertEquals("Vignini", listaNick.get(1));
 		assertEquals("pass", listaNick.get(2));
@@ -49,74 +49,61 @@ public class RedisDatabaseWrapperTest {
 
 	@Test(expected = IllegalArgumentException.class)
 	public void testRegistrazioneSbagliata() throws UnknownHostException {
-		this.redisDatabaseWrapper.registrazioneCliente("Alessio", "Rossi", "nick", "pass");
 		this.redisDatabaseWrapper.registrazioneCliente("Alberto", "Verdi", "nick", "pass1");
 	}
 
 	@Test
 	public void testLoginCorretto() throws UnknownHostException {
-		this.redisDatabaseWrapper.registrazioneCliente("Alessio", "Rossi", "nick", "pass");
 		assertEquals("Login riuscito", this.redisDatabaseWrapper.login("nick", "pass"));
 	}
 
 	@Test(expected = IllegalAccessError.class)
 	public void testNicknameNonRegistrato() throws UnknownHostException {
-		this.redisDatabaseWrapper.registrazioneCliente("Alessio", "Rossi", "nick", "pass");
 		this.redisDatabaseWrapper.login("Lorenzo", "pass");
 	}
 
 	@Test(expected = IllegalAccessError.class)
 	public void testPasswordErrata() throws UnknownHostException {
-		this.redisDatabaseWrapper.registrazioneCliente("Alessio", "Rossi", "nick", "pass");
 		this.redisDatabaseWrapper.login("nick", "java");
 	}
 
 	@Test
 	public void testRestituzioneNickname() throws UnknownHostException {
-		this.redisDatabaseWrapper.registrazioneCliente("Alessio", "Rossi", "nick1", "pass");
 		this.redisDatabaseWrapper.registrazioneCliente("Ugo", "Rolando", "nick2", "pass2");
 		Set<String> listaNickname = new HashSet<>();
 		listaNickname.add("nick2");
-		listaNickname.add("nick1");
+		listaNickname.add("nick");
 		assertEquals(listaNickname, this.redisDatabaseWrapper.restituzioneNickname());
 	}
 
 	@Test
 	public void testRestituzioneProfiloClienteConSuccesso() throws UnknownHostException {
-		this.redisDatabaseWrapper.registrazioneCliente("Alessio", "Rossi", "nick1", "pass");
-		List<String> listaValori = new ArrayList<>();
-		listaValori.add("Alessio");
-		listaValori.add("Rossi");
-		listaValori.add("pass");
-		assertEquals(listaValori, this.redisDatabaseWrapper.restituzioneProfiloCliente("nick1"));
-	}
-	
-	@Test(expected = IllegalArgumentException.class)
-	public void testRestituzioneProfiloClienteSenzaSuccesso() throws UnknownHostException {
-		this.redisDatabaseWrapper.registrazioneCliente("Alessio", "Rossi", "nick1", "pass");
 		List<String> listaValori = new ArrayList<>();
 		listaValori.add("Alessio");
 		listaValori.add("Rossi");
 		listaValori.add("pass");
 		assertEquals(listaValori, this.redisDatabaseWrapper.restituzioneProfiloCliente("nick"));
 	}
+
+	@Test(expected = IllegalArgumentException.class)
+	public void testRestituzioneProfiloClienteSenzaSuccesso() throws UnknownHostException {
+		this.redisDatabaseWrapper.restituzioneProfiloCliente("nick1");
+	}
 	
 	@Test
 	public void testRestituzioneAcquistiCliente() throws UnknownHostException {
-		this.redisDatabaseWrapper.registrazioneCliente("Alessio", "Rossi", "nick", "pass");
-		this.redisDatabaseWrapper.login("nick", "pass");
+		assertRestituzioneAcquistiClienti("Alessio2", "Rossi2", "nick2", "pass2");
+		assertRestituzioneAcquistiClienti("Alessio1", "Rossi1", "nick1", "pass1");
+	}
+
+	private void assertRestituzioneAcquistiClienti(String nome, String cognome, String nickname, String password) throws UnknownHostException {
+		this.redisDatabaseWrapper.registrazioneCliente(nome, cognome, nickname, password);
+		this.redisDatabaseWrapper.login(nickname, password);
 		List<String> listaAcquisti = new ArrayList<>();
 		listaAcquisti.add("Maglietta Kobe");
 		listaAcquisti.add("Maglietta Stephen");
-		this.redisDatabaseWrapper.creaListaAcquisti("nick", listaAcquisti);
-		assertEquals(listaAcquisti, this.redisDatabaseWrapper.restituzioneAcquistiCliente("nick"));
-		this.redisDatabaseWrapper.registrazioneCliente("Alessandro", "Verdi", "nickname", "pass1");
-		this.redisDatabaseWrapper.login("nickname", "pass1");
-		List<String> listaAcquisti2 = new ArrayList<>();
-		listaAcquisti2.add("Maglietta Naso");
-		listaAcquisti2.add("Maglietta Stephen Curry");
-		this.redisDatabaseWrapper.creaListaAcquisti("nickname", listaAcquisti2);
-		assertEquals(listaAcquisti2, this.redisDatabaseWrapper.restituzioneAcquistiCliente("nickname"));	
+		this.redisDatabaseWrapper.creaListaAcquisti(nickname, listaAcquisti);
+		assertEquals(listaAcquisti, this.redisDatabaseWrapper.restituzioneAcquistiCliente(nickname));
 	}
 	
 	private List<String> profiloCliente(String nickname) {

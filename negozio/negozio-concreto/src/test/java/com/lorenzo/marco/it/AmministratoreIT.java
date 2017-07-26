@@ -15,12 +15,12 @@ import com.lorenzo.marco.amministratore.Amministratore;
 import com.lorenzo.marco.cliente.Cliente;
 import com.lorenzo.marco.database.DatabaseLatoAmministratore;
 
-public abstract class AmministratoreIT {
-	
+public abstract class AmministratoreIT implements ITI {
+
 	protected DatabaseLatoAmministratore database;
 	protected Cliente cliente;
 	protected Amministratore amministratore;
-	
+
 	@Before
 	public void setUp() {
 		inizializzazioneDatabase();
@@ -38,7 +38,7 @@ public abstract class AmministratoreIT {
 		listaNickname.add("nickname2");
 		assertEquals(listaNickname, amministratore.restituzioneListaNickname());
 	}
-	
+
 	@Test
 	public void testProfiloClienteRestituito() throws UnknownHostException {
 		this.cliente.richiestaRegistrazione();
@@ -49,6 +49,16 @@ public abstract class AmministratoreIT {
 		assertEquals(listaValori, amministratore.restituzioneListaCampiCliente("nickname"));
 	}
 	
-	protected abstract void inizializzazioneDatabase();
-	
+	@Test
+	public void testRestituzioneAcquistiCliente() throws UnknownHostException {
+		this.cliente.richiestaRegistrazione();
+		List<String> listaAcquisti = new ArrayList<>();
+		listaAcquisti.add("Maglietta");
+		listaAcquisti.add("Calzini");
+		this.amministratore.creazioneAcquisti("nickname", listaAcquisti);
+		assertEquals(listaAcquisti, amministratore.restituzioneListaAcquistiCliente("nickname"));
+	}
+
+	//public abstract void inizializzazioneDatabase();
+
 }

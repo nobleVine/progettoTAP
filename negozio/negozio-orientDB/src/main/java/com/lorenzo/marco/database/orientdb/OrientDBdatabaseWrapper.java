@@ -63,7 +63,7 @@ public class OrientDBdatabaseWrapper implements DatabaseLatoCliente, DatabaseLat
 		throw new IllegalArgumentException("Nickname non esistente");
 	}
 
-	public void creazioneListaAcquisti(String nickname, List<String> listaProdotti) {
+	public void creaListaAcquisti(String nickname, List<String> listaProdotti) {
 		for (ODocument cliente : this.elencoClienti) {
 			if (cliente.field(NICKNAME) == nickname) {
 				cliente.field("acquisti", listaProdotti);
@@ -90,5 +90,7 @@ public class OrientDBdatabaseWrapper implements DatabaseLatoCliente, DatabaseLat
 		elencoClienti.add(cliente);
 		return "Registrazione riuscita";
 	}
+
+	
 
 }

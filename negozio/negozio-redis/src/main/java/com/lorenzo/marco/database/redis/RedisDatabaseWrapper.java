@@ -12,7 +12,7 @@ public class RedisDatabaseWrapper implements DatabaseLatoCliente, DatabaseLatoAm
 
 	private Jedis jedis;
 	private Map<String, List<String>> campiClienti;
-	private int numeroAcquisti;
+	private long numeroAcquisti;
 
 	public RedisDatabaseWrapper() {
 		jedis = new Jedis();
@@ -54,11 +54,12 @@ public class RedisDatabaseWrapper implements DatabaseLatoCliente, DatabaseLatoAm
 		for (String acquisto : listaAcquisti) {
 			this.jedis.rpush(nickname, acquisto);
 		}
-		numeroAcquisti = listaAcquisti.size();
+		this.numeroAcquisti = listaAcquisti.size();
 	}
 
 	public List<String> restituzioneAcquistiCliente(String nickname) {
-		return this.jedis.lrange(nickname, 3, numeroAcquisti + 3l);
+		long numeroValoriNickname = this.jedis.llen(nickname);
+		return this.jedis.lrange(nickname, numeroValoriNickname - this.numeroAcquisti, numeroValoriNickname);
 	}
 	
 	private void memorizzazioneCampiCliente(String nome, String cognome, String nickname, String password) {

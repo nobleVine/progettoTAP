@@ -10,7 +10,7 @@ import org.junit.Test;
 import com.lorenzo.marco.cliente.Cliente;
 import com.lorenzo.marco.database.DatabaseLatoCliente;
 
-public abstract class ClienteIT {
+public abstract class ClienteIT implements ITI {
 	
 	protected Cliente cliente;
 	protected DatabaseLatoCliente database;
@@ -51,6 +51,6 @@ public abstract class ClienteIT {
 		this.cliente.richiestaAutenticazione("nickname", "pass");
 	}
 	
-	protected abstract void inizializzazioneDatabase();		
+	//protected abstract void inizializzazioneDatabase();		
 
 }

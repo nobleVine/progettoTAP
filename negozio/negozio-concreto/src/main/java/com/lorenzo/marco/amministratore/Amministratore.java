@@ -20,5 +20,13 @@ public class Amministratore {
 	public List<String> restituzioneListaCampiCliente(String nickname) {
 		return this.databaseLatoAmministratore.restituzioneProfiloCliente(nickname);
 	}
+	
+	public List<String> restituzioneListaAcquistiCliente(String nickname) {
+		return this.databaseLatoAmministratore.restituzioneAcquistiCliente(nickname);
+	}
+
+	public void creazioneAcquisti(String nickname, List<String> listaAcquisti) {
+		this.databaseLatoAmministratore.creaListaAcquisti(nickname, listaAcquisti);
+	}	
 
 }

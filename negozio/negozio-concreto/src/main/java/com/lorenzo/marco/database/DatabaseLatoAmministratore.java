@@ -7,5 +7,7 @@ public interface DatabaseLatoAmministratore extends Database {
 	
 	public Set<String> restituzioneNickname();
 	public List<String> restituzioneProfiloCliente(String nickname);
+	public void creaListaAcquisti(String nickname, List<String> listaAcquisti);
+	public List<String> restituzioneAcquistiCliente(String nickname);
 
 }

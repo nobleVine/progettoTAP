@@ -48,9 +48,9 @@ public class AmministratoreTest {
 
 	@Test
 	public void testRestituzioneProfiloClienteConSuccesso() {
-		this.listaCampi.add("Lorenzo");
-		this.listaCampi.add("Marino");
-		this.listaCampi.add("Pass");
+		this.listaCampi.add("nome1");
+		this.listaCampi.add("cognome1");
+		this.listaCampi.add("pass1");
 		when(databaseLatoAmministratore.restituzioneProfiloCliente("nick")).thenReturn(listaCampi);
 		assertEquals(3, this.amministratore.restituzioneListaCampiCliente("nick").size());
 		assertEquals(this.listaCampi, this.amministratore.restituzioneListaCampiCliente("nick"));
@@ -75,13 +75,13 @@ public class AmministratoreTest {
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
-	public void testCreazioneListaAcquistiSenzaSucesso() throws UnknownHostException {
+	public void testCreazioneListaAcquistiSenzaSucesso() {
 		when(databaseLatoAmministratore.creaListaAcquisti("nick", listaAcquisti)).thenThrow(new IllegalArgumentException("Nickname non esistente"));
 		amministratore.creazioneAcquisti("nick", this.listaAcquisti);
 	}
 	
 	@Test
-	public void testRestituzioneListaAcquistiClienteConSuccesso() throws UnknownHostException {
+	public void testRestituzioneListaAcquistiClienteConSuccesso() {
 		Cliente cliente = new Cliente("Marco", "Verdi", "nick", "pass", databaseLatoCliente);
 		cliente.richiestaRegistrazione();
 		listaAcquisti.add("pantaloncini");

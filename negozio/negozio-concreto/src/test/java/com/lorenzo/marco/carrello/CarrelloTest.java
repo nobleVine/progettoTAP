@@ -16,7 +16,7 @@ public class CarrelloTest {
 	@Before
 	public void setUp() {
 		this.carrello = new Carrello();
-		this.prodotto = new ProdottoSingolo("Pack King", 50, "il pacchetto di Lebron");
+		this.prodotto = new ProdottoSingolo("Pacchetto1", 50, "Questo è uno dei pacchetti più interessanti del negozio");
 	}
 	
 	@Test
@@ -27,7 +27,7 @@ public class CarrelloTest {
 	
 	@Test
 	public void testAggiuntaProdotti() {
-		this.pacchetto = new Pacchetto("Starter pack 1", "iniziale");
+		this.pacchetto = new Pacchetto("Pacchetto2", "Pacchetto conveniente");
 		this.carrello.aggiungiAlCarrello(prodotto);
 		this.carrello.aggiungiAlCarrello(pacchetto);
 		this.assertNumeroProdottiAggiunti(2);		
@@ -47,10 +47,10 @@ public class CarrelloTest {
 	
 	@Test
 	public void testSpesaTotale() {
-		ProdottoSingolo prodottoSingolo1 = new ProdottoSingolo("maglia", 50, "lebron");
-		ProdottoSingolo prodottoSingolo2 = new ProdottoSingolo("maglietta", 60, "Steph");
-		ProdottoSingolo prodottoSingolo3 = new ProdottoSingolo("pantaloncini", 50, "Heat");
-		Pacchetto pacchetto = new Pacchetto("pack1", "descrizione");
+		ProdottoSingolo prodottoSingolo1 = new ProdottoSingolo("maglia", 50, "Marca Nike");
+		ProdottoSingolo prodottoSingolo2 = new ProdottoSingolo("felpa", 60, "Marca Adidas");
+		ProdottoSingolo prodottoSingolo3 = new ProdottoSingolo("pantaloncini", 50, "Marca Diadora");
+		Pacchetto pacchetto = new Pacchetto("Pacchetto3", "descrizione");
 		pacchetto.aggiungiProdotto(prodottoSingolo2);
 		pacchetto.aggiungiProdotto(prodottoSingolo3);
 		this.carrello.aggiungiAlCarrello(prodottoSingolo1);
@@ -65,8 +65,8 @@ public class CarrelloTest {
 	
 	private void assertNumeroProdottiAggiunti(int numeroProdottiAggiunti) {
 		assertEquals(numeroProdottiAggiunti, carrello.lunghezzaCarrello());
-		assertEquals("Pack King", prodotto.getNome());
-		assertEquals("il pacchetto di Lebron", prodotto.getDescrizione());
+		assertEquals("Pacchetto1", prodotto.getNome());
+		assertEquals("Questo è uno dei pacchetti più interessanti del negozio", prodotto.getDescrizione());
 	}
 	
 	private void assertCarrelloVuoto() {

@@ -1,9 +1,12 @@
 package com.lorenzo.marco.database.orientdb;
 
-import java.net.UnknownHostException;
-import java.util.*;
-
 import com.lorenzo.marco.database.DatabaseLatoCliente;
+
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 import com.lorenzo.marco.database.DatabaseLatoAmministratore;
 import com.orientechnologies.orient.core.record.impl.ODocument;
 
@@ -19,8 +22,7 @@ public class OrientDBdatabaseWrapper implements DatabaseLatoCliente, DatabaseLat
 	}
 
 	@Override
-	public String registrazioneCliente(String nome, String cognome, String nickname, String password)
-			throws UnknownHostException {
+	public String registrazioneCliente(String nome, String cognome, String nickname, String password) {
 		for (ODocument documentoCliente : this.elencoClienti) {
 			if (documentoCliente.field(NICKNAME) == nickname) {
 				throw new IllegalArgumentException("Nickname già esistente");
@@ -30,7 +32,7 @@ public class OrientDBdatabaseWrapper implements DatabaseLatoCliente, DatabaseLat
 	}
 
 	@Override
-	public String login(String nickname, String password) throws UnknownHostException {
+	public String login(String nickname, String password) {
 		for (ODocument documentoCliente : this.elencoClienti) {
 			if (documentoCliente.field(NICKNAME) == nickname && documentoCliente.field(CAMPOPASS) == password) {
 				return "Login riuscito";

@@ -1,6 +1,6 @@
 package com.lorenzo.marco.it;
 
-public interface ITI {
+public interface InizializzazioneIT {
 	
 	public abstract void inizializzazioneDatabase();		
 

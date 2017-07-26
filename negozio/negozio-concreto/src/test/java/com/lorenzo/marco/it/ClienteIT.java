@@ -10,7 +10,7 @@ import org.junit.Test;
 import com.lorenzo.marco.cliente.Cliente;
 import com.lorenzo.marco.database.DatabaseLatoCliente;
 
-public abstract class ClienteIT implements ITI {
+public abstract class ClienteIT implements InizializzazioneIT {
 	
 	protected Cliente cliente;
 	protected DatabaseLatoCliente database;

@@ -15,7 +15,7 @@ import com.lorenzo.marco.amministratore.Amministratore;
 import com.lorenzo.marco.cliente.Cliente;
 import com.lorenzo.marco.database.DatabaseLatoAmministratore;
 
-public abstract class AmministratoreIT implements ITI {
+public abstract class AmministratoreIT implements InizializzazioneIT {
 
 	protected DatabaseLatoAmministratore database;
 	protected Cliente cliente;

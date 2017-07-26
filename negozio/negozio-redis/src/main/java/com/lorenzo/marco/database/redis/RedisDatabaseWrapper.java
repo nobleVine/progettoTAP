@@ -1,6 +1,5 @@
 package com.lorenzo.marco.database.redis;
 
-import java.net.UnknownHostException;
 import java.util.*;
 
 import com.lorenzo.marco.database.DatabaseLatoCliente;
@@ -21,8 +20,7 @@ public class RedisDatabaseWrapper implements DatabaseLatoCliente, DatabaseLatoAm
 	}
 
 	@Override
-	public String registrazioneCliente(String nome, String cognome, String nickname, String password)
-			throws UnknownHostException {
+	public String registrazioneCliente(String nome, String cognome, String nickname, String password) {
 		if (this.jedis.exists(nickname))
 			throw new IllegalArgumentException("Registrazione fallita: nickname già in uso!");
 		this.jedis.rpush(nickname, nome);
@@ -33,7 +31,7 @@ public class RedisDatabaseWrapper implements DatabaseLatoCliente, DatabaseLatoAm
 	}
 
 	@Override
-	public String login(String nickname, String password) throws UnknownHostException {
+	public String login(String nickname, String password) {
 		if (!this.jedis.exists(nickname))
 			throw new IllegalAccessError("Nickname non registrato!");
 		if (this.campiClienti.get(nickname).get(2).equals(password))

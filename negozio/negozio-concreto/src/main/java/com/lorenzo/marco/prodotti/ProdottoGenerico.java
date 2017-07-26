@@ -20,13 +20,13 @@ public abstract class ProdottoGenerico {
 
 	protected void controlloParametriProdotti(String nome, String descrizione) {
 		if (nome == "" || nome == null) {
-			throw new IllegalArgumentException("Il nome del pacchetto non può essere vuoto");
+			throw new IllegalArgumentException("Il nome del pacchetto non può essere vuoto o null");
 		} else {
 			this.nome = nome;
 		}
 
 		if (descrizione == "" || descrizione == null) {
-			throw new IllegalArgumentException("La descrizione del pacchetto non può essere vuoto");
+			throw new IllegalArgumentException("La descrizione del pacchetto non può essere vuota o null");
 		} else {
 			this.descrizione = descrizione;
 		}

@@ -23,7 +23,7 @@ public class ProfiloBancarioCliente {
 
 	private void controlloParametri(Cliente cliente, int idConto) {
 		if (cliente == null) {
-			throw new IllegalArgumentException("Il parametro cliente non può essere vuoto");
+			throw new IllegalArgumentException("Il parametro cliente non può essere null");
 		} else {
 			this.cliente = cliente;
 		}

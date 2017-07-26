@@ -64,7 +64,7 @@ public class RedisDatabaseWrapperTest {
 
 	@Test(expected = IllegalAccessError.class)
 	public void testPasswordErrata() throws UnknownHostException {
-		this.redisDatabaseWrapper.login("nick", "java");
+		this.redisDatabaseWrapper.login("nick", "passwordErrata");
 	}
 
 	@Test
@@ -103,16 +103,16 @@ public class RedisDatabaseWrapperTest {
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
-	public void testRestituzioneAcquistiClienteSenzaSuccesso() throws UnknownHostException {
+	public void testRestituzioneAcquistiClienteSenzaSuccesso() {
 		this.redisDatabaseWrapper.restituzioneAcquistiCliente("nickNonEsistente");
 	}
 
-	private void assertRestituzioneAcquistiClienti(String nome, String cognome, String nickname, String password) throws UnknownHostException {
+	private void assertRestituzioneAcquistiClienti(String nome, String cognome, String nickname, String password) {
 		this.redisDatabaseWrapper.registrazioneCliente(nome, cognome, nickname, password);
 		this.redisDatabaseWrapper.login(nickname, password);
 		List<String> listaAcquisti = new ArrayList<>();
-		listaAcquisti.add("Maglietta Kobe");
-		listaAcquisti.add("Maglietta Stephen");
+		listaAcquisti.add("Maglietta1");
+		listaAcquisti.add("Maglietta2");
 		assertEquals("Lista creata con successo",this.redisDatabaseWrapper.creaListaAcquisti(nickname, listaAcquisti));
 		assertEquals(listaAcquisti, this.redisDatabaseWrapper.restituzioneAcquistiCliente(nickname));
 	}

@@ -10,6 +10,7 @@ import redis.clients.jedis.Jedis;
 
 public class RedisDatabaseWrapper implements DatabaseLatoCliente, DatabaseLatoAmministratore {
 
+	private static final String NICKNAME_NON_ESISTENTE = "Nickname non esistente";
 	private Jedis jedis;
 	private Map<String, List<String>> campiClienti;
 	private long numeroAcquisti;
@@ -47,21 +48,30 @@ public class RedisDatabaseWrapper implements DatabaseLatoCliente, DatabaseLatoAm
 	public List<String> restituzioneProfiloCliente(String nickname) {
 		if (this.jedis.exists(nickname))
 			return this.jedis.lrange(nickname, 0, this.campiClienti.get(nickname).size());
-		throw new IllegalArgumentException("Nickname non esistente");
+		throw new IllegalArgumentException(NICKNAME_NON_ESISTENTE);
 	}
 
-	public void creaListaAcquisti(String nickname, List<String> listaAcquisti) {
-		for (String acquisto : listaAcquisti) {
-			this.jedis.rpush(nickname, acquisto);
+	public String creaListaAcquisti(String nickname, List<String> listaAcquisti) {
+		if (this.jedis.exists(nickname)) {
+			for (String acquisto : listaAcquisti) {
+				this.jedis.rpush(nickname, acquisto);
+			}
+			this.numeroAcquisti = listaAcquisti.size();
+			return "Lista creata con successo";
+		} else {
+			throw new IllegalArgumentException(NICKNAME_NON_ESISTENTE);
 		}
-		this.numeroAcquisti = listaAcquisti.size();
 	}
 
 	public List<String> restituzioneAcquistiCliente(String nickname) {
-		long numeroValoriNickname = this.jedis.llen(nickname);
-		return this.jedis.lrange(nickname, numeroValoriNickname - this.numeroAcquisti, numeroValoriNickname);
+		if (this.jedis.exists(nickname)) {
+			long numeroValoriNickname = this.jedis.llen(nickname);
+			return this.jedis.lrange(nickname, numeroValoriNickname - this.numeroAcquisti, numeroValoriNickname);
+		} else {
+			throw new IllegalArgumentException(NICKNAME_NON_ESISTENTE);
+		}
 	}
-	
+
 	private void memorizzazioneCampiCliente(String nome, String cognome, String nickname, String password) {
 		List<String> listaCampi = new ArrayList<>();
 		listaCampi.add(nome);

@@ -21,12 +21,12 @@ public class Amministratore {
 		return this.databaseLatoAmministratore.restituzioneProfiloCliente(nickname);
 	}
 	
+	public String creazioneAcquisti(String nickname, List<String> listaAcquisti) {
+		return this.databaseLatoAmministratore.creaListaAcquisti(nickname, listaAcquisti);
+	}
+	
 	public List<String> restituzioneListaAcquistiCliente(String nickname) {
 		return this.databaseLatoAmministratore.restituzioneAcquistiCliente(nickname);
 	}
-
-	public void creazioneAcquisti(String nickname, List<String> listaAcquisti) {
-		this.databaseLatoAmministratore.creaListaAcquisti(nickname, listaAcquisti);
-	}	
 
 }

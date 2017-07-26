@@ -131,12 +131,18 @@ public class OrientDBdatabaseWrapperTest {
 		this.orientDBdatabaseWrapper.restituzioneAcquistiCliente("nick");
 	}	
 	
+	@Test(expected = IllegalArgumentException.class)
+	public void testRestituzioneCreazioneListaAcquistiClientiSenzaSuccesso() {
+		List<String> listaAcquisti = null;
+		this.orientDBdatabaseWrapper.creaListaAcquisti("nick", listaAcquisti);
+	}
+	
 	private void assertRestituzioneAcquistiCliente(String nome, String cognome, String nickname, String password) throws UnknownHostException {
 		this.orientDBdatabaseWrapper.login(nickname, password);
 		List<String> listaProdotti = new ArrayList<>();
 		listaProdotti.add("Maglietta");
 		listaProdotti.add("calzini");
-		this.orientDBdatabaseWrapper.creaListaAcquisti(nickname, listaProdotti);
+		assertEquals("Lista creata con successo", this.orientDBdatabaseWrapper.creaListaAcquisti(nickname, listaProdotti));
 		assertEquals(listaProdotti, this.orientDBdatabaseWrapper.restituzioneAcquistiCliente(nickname));
 	}
 		

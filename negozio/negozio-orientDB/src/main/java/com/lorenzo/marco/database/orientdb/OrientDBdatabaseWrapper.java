@@ -9,6 +9,7 @@ import com.orientechnologies.orient.core.record.impl.ODocument;
 
 public class OrientDBdatabaseWrapper implements DatabaseLatoCliente, DatabaseLatoAmministratore {
 
+	private static final String NICKNAME_NON_ESISTENTE = "Nickname non esistente";
 	private static final String NICKNAME = "nickname";
 	private static final String CAMPOPASS = "password";
 	private List<ODocument> elencoClienti;
@@ -60,15 +61,17 @@ public class OrientDBdatabaseWrapper implements DatabaseLatoCliente, DatabaseLat
 				return profiloCliente;
 			}
 		}
-		throw new IllegalArgumentException("Nickname non esistente");
+		throw new IllegalArgumentException(NICKNAME_NON_ESISTENTE);
 	}
 
-	public void creaListaAcquisti(String nickname, List<String> listaProdotti) {
+	public String creaListaAcquisti(String nickname, List<String> listaProdotti) {
 		for (ODocument cliente : this.elencoClienti) {
 			if (cliente.field(NICKNAME) == nickname) {
 				cliente.field("acquisti", listaProdotti);
+				return "Lista creata con successo";
 			}
 		}
+		throw new IllegalArgumentException(NICKNAME_NON_ESISTENTE);
 	}
 
 	public List<String> restituzioneAcquistiCliente(String nickname) {
@@ -77,7 +80,7 @@ public class OrientDBdatabaseWrapper implements DatabaseLatoCliente, DatabaseLat
 				return cliente.field("acquisti");
 			}
 		}
-		throw new IllegalArgumentException("Nickname non esistente");
+		throw new IllegalArgumentException(NICKNAME_NON_ESISTENTE);
 	}
 	
 	private String inserimentoClienteNelDatabase(String nome, String cognome, String nickname, String password) {

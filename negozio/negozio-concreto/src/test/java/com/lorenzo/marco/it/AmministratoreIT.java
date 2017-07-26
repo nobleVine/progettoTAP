@@ -22,26 +22,25 @@ public abstract class AmministratoreIT implements ITI {
 	protected Amministratore amministratore;
 
 	@Before
-	public void setUp() {
+	public void setUp() throws UnknownHostException {
 		inizializzazioneDatabase();
-		cliente = new Cliente("Marco", "Vignini", "nickname", "password", database);
-		amministratore = new Amministratore(database);
-	}
-
-	@Test
-	public void testNicknameRestiuiti() throws UnknownHostException {
-		Cliente cliente1 = new Cliente("Lorenzo", "Rossi", "nickname2", "pass", database);
+		this.cliente = new Cliente("Marco", "Vignini", "nickname", "password", database);
+		this.amministratore = new Amministratore(database);
 		this.cliente.richiestaRegistrazione();
+	}
+	
+	@Test
+	public void testNicknameRestituiti() throws UnknownHostException {
+		Cliente cliente1 = new Cliente("Lorenzo", "Rossi", "nickname2", "pass", database);
 		cliente1.richiestaRegistrazione();
 		Set<String> listaNickname = new HashSet<>();
 		listaNickname.add("nickname");
 		listaNickname.add("nickname2");
 		assertEquals(listaNickname, amministratore.restituzioneListaNickname());
 	}
-
+	
 	@Test
 	public void testProfiloClienteRestituito() throws UnknownHostException {
-		this.cliente.richiestaRegistrazione();
 		List<String> listaValori = new ArrayList<>();
 		listaValori.add("Marco");
 		listaValori.add("Vignini");
@@ -49,16 +48,29 @@ public abstract class AmministratoreIT implements ITI {
 		assertEquals(listaValori, amministratore.restituzioneListaCampiCliente("nickname"));
 	}
 	
+	@Test(expected = IllegalArgumentException.class)
+	public void testProfiloClienteRestituitoSenzaSuccesso() throws UnknownHostException {
+		this.amministratore.restituzioneListaCampiCliente("nick");
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void testCreazioneListaAcquistiClienteSenzaSuccesso() throws UnknownHostException {
+		List<String> listaAcquisti = new ArrayList<>();
+		this.amministratore.creazioneAcquisti("nick", listaAcquisti);
+	}
+	
 	@Test
 	public void testRestituzioneAcquistiCliente() throws UnknownHostException {
-		this.cliente.richiestaRegistrazione();
 		List<String> listaAcquisti = new ArrayList<>();
 		listaAcquisti.add("Maglietta");
 		listaAcquisti.add("Calzini");
-		this.amministratore.creazioneAcquisti("nickname", listaAcquisti);
+		assertEquals("Lista creata con successo", this.amministratore.creazioneAcquisti("nickname", listaAcquisti));
 		assertEquals(listaAcquisti, amministratore.restituzioneListaAcquistiCliente("nickname"));
 	}
-
-	//public abstract void inizializzazioneDatabase();
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void testRestituzioneAcquistiClienteSenzaSuccesso() throws UnknownHostException {
+		amministratore.restituzioneListaAcquistiCliente("nick");
+	}
 
 }

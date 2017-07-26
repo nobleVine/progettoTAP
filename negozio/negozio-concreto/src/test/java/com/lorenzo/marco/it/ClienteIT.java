@@ -14,43 +14,40 @@ public abstract class ClienteIT implements ITI {
 	
 	protected Cliente cliente;
 	protected DatabaseLatoCliente database;
+	private String esitoRegistrazione;
 	
 	@Before
-	public void setUp() {
+	public void setUp() throws UnknownHostException {
 		inizializzazioneDatabase();		
 		cliente = new Cliente("Marco", "Vignini", "nickname", "password", database);
+		esitoRegistrazione = this.cliente.richiestaRegistrazione();
 	}
 	
 	@Test
 	public void testRegistrazioneConSuccesso() throws UnknownHostException {
-		assertEquals("Registrazione riuscita", this.cliente.richiestaRegistrazione());
+		assertEquals("Registrazione riuscita", esitoRegistrazione);
 	}
 
 	@Test(expected = IllegalArgumentException.class)
 	public void testRegistrazioneSenzaSuccesso() throws UnknownHostException {
 		Cliente cliente1 = new Cliente("Lorenzo", "Rossi", "nickname", "pass", database);
-		assertEquals("Registrazione riuscita", cliente.richiestaRegistrazione());
+		assertEquals("Registrazione riuscita", esitoRegistrazione);
 		cliente1.richiestaRegistrazione();
 	}
 
 	@Test
 	public void testLoginRiuscito() throws UnknownHostException {
-		this.cliente.richiestaRegistrazione();
 		assertEquals("Login riuscito", this.cliente.richiestaAutenticazione("nickname", "password"));
 	}
 
 	@Test(expected = IllegalAccessError.class)
 	public void testNicknameErrato() throws UnknownHostException {
-		this.cliente.richiestaRegistrazione();
 		this.cliente.richiestaAutenticazione("nick", "password");
 	}
 
 	@Test(expected = IllegalAccessError.class)
 	public void testPasswordSbagliata() throws UnknownHostException {
-		this.cliente.richiestaRegistrazione();
 		this.cliente.richiestaAutenticazione("nickname", "pass");
 	}
 	
-	//protected abstract void inizializzazioneDatabase();		
-
 }

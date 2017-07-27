@@ -6,7 +6,6 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
 
-import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -65,7 +64,7 @@ public class AmministratoreTest {
 	}
 
 	@Test
-	public void testCreazioneListaAcquistiConSuccesso() throws UnknownHostException {
+	public void testCreazioneListaAcquistiConSuccesso() {
 		Cliente cliente = new Cliente("Marco", "Verdi", "nick", "pass", databaseLatoCliente);
 		cliente.richiestaRegistrazione();
 		listaAcquisti.add("canotta");
@@ -92,7 +91,7 @@ public class AmministratoreTest {
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
-	public void testRestituzioneListaAcquistiClienteSenzaSuccesso() throws UnknownHostException {
+	public void testRestituzioneListaAcquistiClienteSenzaSuccesso() {
 		when(databaseLatoAmministratore.restituzioneAcquistiCliente("NicknameNonEsistente")).thenThrow(new IllegalArgumentException("Nickname non esistente"));
 		amministratore.restituzioneListaAcquistiCliente("NicknameNonEsistente");
 	}

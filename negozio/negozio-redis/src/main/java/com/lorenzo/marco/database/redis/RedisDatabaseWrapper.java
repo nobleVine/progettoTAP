@@ -14,8 +14,8 @@ public class RedisDatabaseWrapper implements DatabaseLatoCliente, DatabaseLatoAm
 	private Map<String, List<String>> campiClienti;
 	private long numeroAcquisti;
 
-	public RedisDatabaseWrapper() {
-		jedis = new Jedis("localhost", 6379);
+	public RedisDatabaseWrapper(Jedis jedis) {
+		this.jedis = jedis;
 		this.campiClienti = new HashMap<>();
 	}
 

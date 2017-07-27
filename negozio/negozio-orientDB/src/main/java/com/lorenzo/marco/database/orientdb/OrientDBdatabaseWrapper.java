@@ -91,7 +91,6 @@ public class OrientDBdatabaseWrapper implements DatabaseLatoCliente, DatabaseLat
 		cliente.field("cognome", cognome);
 		cliente.field(NICKNAME, nickname);
 		cliente.field(CAMPOPASS, password);
-		//cliente.save();
 		elencoClienti.add(cliente);
 		return "Registrazione riuscita";
 	}

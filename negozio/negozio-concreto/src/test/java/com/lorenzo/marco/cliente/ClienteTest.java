@@ -75,22 +75,22 @@ public class ClienteTest {
 	// Test dei metodi che usano il mock.
 
 	@Test
-	public void testRichiestaAutenticazioneRiuscita() throws UnknownHostException {
+	public void testRichiestaAutenticazioneRiuscita() {
 		assertAutenticazione("Richiesta di autenticatione riuscita", "nick", "pass");
 	}
 
 	@Test
-	public void testRichiestaAutenticazioneNonRiuscita() throws UnknownHostException {
+	public void testRichiestaAutenticazioneNonRiuscita() {
 		this.assertAutenticazione("Richiesta di autenticatione non riuscita", "nick", "pass2");
 	}
 	
 	@Test
-	public void testRichiestaRegistrazioneRiuscita() throws UnknownHostException {
+	public void testRichiestaRegistrazioneRiuscita()  {
 		this.assertRegistrazione("Registrazione riuscita");
 	}
 	
 	@Test
-	public void testRichiestaRegistrazioneNonRiuscita() throws UnknownHostException {
+	public void testRichiestaRegistrazioneNonRiuscita() {
 		this.assertRegistrazione("Registrazione non riuscita");
 	}
 
@@ -98,7 +98,7 @@ public class ClienteTest {
 		return new Cliente(nome, cognome, nickname, password, database);
 	}
 	
-	private void assertAutenticazione(String esitoAutenticazione, String nickname, String password) throws UnknownHostException {
+	private void assertAutenticazione(String esitoAutenticazione, String nickname, String password) {
 		this.cliente = creazioneCliente("Marco", "Vignini", nickname, password);
 		when(database.login(nickname, password)).thenReturn(esitoAutenticazione);
 		assertEquals(esitoAutenticazione, this.cliente.richiestaAutenticazione(nickname, password));
@@ -106,7 +106,7 @@ public class ClienteTest {
 		verifyNoMoreInteractions(this.database);
 	}
 	
-	private void assertRegistrazione(String esitoRegistrazione) throws UnknownHostException {
+	private void assertRegistrazione(String esitoRegistrazione) {
 		this.cliente = creazioneCliente("Marco", "Vignini", "nick", "pass");
 		when(database.registrazioneCliente(cliente.getNome(), cliente.getCognome(), "nick", "pass"))
 				.thenReturn(esitoRegistrazione);

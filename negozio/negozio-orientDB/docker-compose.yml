@@ -1,0 +1,10 @@
+version: '2'
+
+services:
+  app:
+    image: apporient
+ 
+  db:
+    image: orientdb
+    ports:
+      - "2424:2424"

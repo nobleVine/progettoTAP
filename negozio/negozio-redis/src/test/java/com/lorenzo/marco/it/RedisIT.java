@@ -10,7 +10,7 @@ public class RedisIT extends AmministratoreIT implements DatabaseIT {
 
 	@Override
 	public void inizializzazioneDatabase() {
-		database = new RedisDatabaseWrapper();
+		database = new RedisDatabaseWrapper(new Jedis("localhost", 6379));
 		this.jedis = new Jedis("localhost", 6379);
 		this.jedis.flushDB();
 	}

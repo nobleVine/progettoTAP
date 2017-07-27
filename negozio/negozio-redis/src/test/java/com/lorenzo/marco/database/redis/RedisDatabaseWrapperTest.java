@@ -21,7 +21,7 @@ public class RedisDatabaseWrapperTest {
 
 	@Before
 	public void setUp() throws UnknownHostException {
-		this.redisDatabaseWrapper = new RedisDatabaseWrapper();
+		this.redisDatabaseWrapper = new RedisDatabaseWrapper(new Jedis("localhost", 6379));
 		this.jedis = new Jedis("localhost", 6379);
 		this.jedis.flushDB(); // Clean key
 		this.redisDatabaseWrapper.registrazioneCliente("Alessio", "Rossi", "nick", "pass");

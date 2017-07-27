@@ -13,11 +13,11 @@ import org.junit.Test;
 
 import com.lorenzo.marco.amministratore.Amministratore;
 import com.lorenzo.marco.cliente.Cliente;
-import com.lorenzo.marco.database.DatabaseLatoAmministratore;
+import com.lorenzo.marco.database.Database;
 
 public abstract class AmministratoreIT implements InizializzazioneIT {
 
-	protected DatabaseLatoAmministratore database;
+	protected Database database;
 	protected Cliente cliente;
 	protected Amministratore amministratore;
 

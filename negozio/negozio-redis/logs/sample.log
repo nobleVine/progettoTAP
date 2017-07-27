@@ -1,0 +1,352 @@
+2017-07-27 12:10:18 INFO  Main:25 - Registrazione e autenticazione cliente1: 
+2017-07-27 12:10:18 INFO  Main:26 - Registrazione riuscita
+2017-07-27 12:10:18 INFO  Main:27 - Login riuscito
+2017-07-27 12:10:18 INFO  Main:29 - Registrazione e autenticazione cliente2: 
+2017-07-27 12:10:18 INFO  Main:30 - Registrazione riuscita
+2017-07-27 12:10:18 INFO  Main:31 - Login riuscito
+2017-07-27 12:10:18 INFO  Main:35 - Elenco dei nickname appartenenti ai clienti registrati: 
+2017-07-27 12:10:18 INFO  Main:36 - [lore, vigna]
+2017-07-27 12:10:18 INFO  Main:38 - Profilo di cliente1: 
+2017-07-27 12:10:18 INFO  Main:39 - [Marco, Vignini, pass1]
+2017-07-27 12:11:47 INFO  Main:25 - Registrazione e autenticazione cliente1: 
+2017-07-27 12:11:47 INFO  Main:26 - Registrazione riuscita
+2017-07-27 12:11:47 INFO  Main:27 - Login riuscito
+2017-07-27 12:11:47 INFO  Main:29 - Registrazione e autenticazione cliente2: 
+2017-07-27 12:11:47 INFO  Main:30 - Registrazione riuscita
+2017-07-27 12:11:47 INFO  Main:31 - Login riuscito
+2017-07-27 12:11:47 INFO  Main:35 - Elenco dei nickname appartenenti ai clienti registrati: 
+2017-07-27 12:11:47 INFO  Main:36 - [lore, vigna]
+2017-07-27 12:11:47 INFO  Main:38 - Profilo di cliente1: 
+2017-07-27 12:11:47 INFO  Main:39 - [Marco, Vignini, pass1]
+2017-07-27 12:11:47 INFO  Main:41 - Profilo di cliente2: 
+2017-07-27 12:11:47 INFO  Main:42 - [Lorenzo, Marino, pass2]
+2017-07-27 12:16:28 INFO  Main:27 - Registrazione e autenticazione cliente1: 
+2017-07-27 12:16:28 INFO  Main:28 - Registrazione riuscita
+2017-07-27 12:16:28 INFO  Main:29 - Login riuscito
+2017-07-27 12:16:28 INFO  Main:31 - Registrazione e autenticazione cliente2: 
+2017-07-27 12:16:28 INFO  Main:32 - Registrazione riuscita
+2017-07-27 12:16:28 INFO  Main:33 - Login riuscito
+2017-07-27 12:16:28 INFO  Main:37 - Elenco dei nickname appartenenti ai clienti registrati:
+2017-07-27 12:16:28 INFO  Main:38 - [lore, vigna]
+2017-07-27 12:16:28 INFO  Main:40 - Profilo di cliente1: 
+2017-07-27 12:16:28 INFO  Main:41 - [Marco, Vignini, pass1]
+2017-07-27 12:16:28 INFO  Main:43 - Profilo di cliente2: 
+2017-07-27 12:16:28 INFO  Main:44 - [Lorenzo, Marino, pass2]
+2017-07-27 12:16:28 INFO  Main:46 - Creazione lista prodotti di cliente1:
+2017-07-27 12:16:28 INFO  Main:50 - Lista creata con successo
+2017-07-27 12:16:28 INFO  Main:51 - Elenco acquisti di cliente1:
+2017-07-27 12:16:28 INFO  Main:52 - [Maglietta, Pallone da Basket]
+2017-07-27 12:17:51 INFO  Main:27 - Registrazione e autenticazione cliente1: 
+2017-07-27 12:17:51 INFO  Main:28 - Registrazione riuscita
+2017-07-27 12:17:51 INFO  Main:29 - Login riuscito
+2017-07-27 12:17:51 INFO  Main:31 - Registrazione e autenticazione cliente2: 
+2017-07-27 12:17:51 INFO  Main:32 - Registrazione riuscita
+2017-07-27 12:17:51 INFO  Main:33 - Login riuscito
+2017-07-27 12:17:51 INFO  Main:37 - Elenco dei nickname appartenenti ai clienti registrati:
+2017-07-27 12:17:51 INFO  Main:38 - [lore, vigna]
+2017-07-27 12:17:51 INFO  Main:40 - Profilo di cliente1: 
+2017-07-27 12:17:51 INFO  Main:41 - [Marco, Vignini, pass1]
+2017-07-27 12:17:51 INFO  Main:43 - Profilo di cliente2: 
+2017-07-27 12:17:51 INFO  Main:44 - [Lorenzo, Marino, pass2]
+2017-07-27 12:17:51 INFO  Main:46 - Creazione lista prodotti di cliente1:
+2017-07-27 12:17:51 INFO  Main:50 - Lista creata con successo
+2017-07-27 12:17:51 INFO  Main:51 - Elenco acquisti di cliente1:
+2017-07-27 12:17:51 INFO  Main:52 - [Maglietta, Pallone da Basket]
+2017-07-27 12:17:51 INFO  Main:54 - Creazione lista prodotti di cliente2:
+2017-07-27 12:17:51 INFO  Main:58 - Lista creata con successo
+2017-07-27 12:17:51 INFO  Main:59 - Elenco acquisti di cliente2:
+2017-07-27 12:17:51 INFO  Main:60 - []
+2017-07-27 12:18:20 INFO  Main:27 - Registrazione e autenticazione cliente1: 
+2017-07-27 12:18:20 INFO  Main:28 - Registrazione riuscita
+2017-07-27 12:18:20 INFO  Main:29 - Login riuscito
+2017-07-27 12:18:20 INFO  Main:31 - Registrazione e autenticazione cliente2: 
+2017-07-27 12:18:20 INFO  Main:32 - Registrazione riuscita
+2017-07-27 12:18:20 INFO  Main:33 - Login riuscito
+2017-07-27 12:18:20 INFO  Main:37 - Elenco dei nickname appartenenti ai clienti registrati:
+2017-07-27 12:18:20 INFO  Main:38 - [lore, vigna]
+2017-07-27 12:18:20 INFO  Main:40 - Profilo di cliente1: 
+2017-07-27 12:18:20 INFO  Main:41 - [Marco, Vignini, pass1]
+2017-07-27 12:18:20 INFO  Main:43 - Profilo di cliente2: 
+2017-07-27 12:18:20 INFO  Main:44 - [Lorenzo, Marino, pass2]
+2017-07-27 12:18:20 INFO  Main:46 - Creazione lista prodotti di cliente1:
+2017-07-27 12:18:20 INFO  Main:50 - Lista creata con successo
+2017-07-27 12:18:20 INFO  Main:51 - Elenco acquisti di cliente1:
+2017-07-27 12:18:20 INFO  Main:52 - [Maglietta, Pallone da Basket]
+2017-07-27 12:18:20 INFO  Main:54 - Creazione lista prodotti di cliente2:
+2017-07-27 12:18:20 INFO  Main:58 - Lista creata con successo
+2017-07-27 12:18:20 INFO  Main:59 - Elenco acquisti di cliente2:
+2017-07-27 12:18:20 INFO  Main:60 - [Felpa nike, Maglietta basket]
+2017-07-27 12:19:12 INFO  Main:27 - Registrazione e autenticazione cliente1: 
+2017-07-27 12:19:12 INFO  Main:28 - Registrazione riuscita
+2017-07-27 12:19:12 INFO  Main:29 - Login riuscito
+2017-07-27 12:19:12 INFO  Main:31 - Registrazione e autenticazione cliente2: 
+2017-07-27 12:19:12 INFO  Main:32 - Registrazione riuscita
+2017-07-27 12:19:12 INFO  Main:33 - Login riuscito
+2017-07-27 12:19:12 INFO  Main:37 - Elenco dei nickname appartenenti ai clienti registrati:
+2017-07-27 12:19:12 INFO  Main:38 - [lore, vigna]
+2017-07-27 12:19:12 INFO  Main:40 - Profilo di cliente1: 
+2017-07-27 12:19:12 INFO  Main:41 - [Marco, Vignini, pass1]
+2017-07-27 12:19:12 INFO  Main:43 - Profilo di cliente2: 
+2017-07-27 12:19:12 INFO  Main:44 - [Lorenzo, Marino, pass2]
+2017-07-27 12:19:12 INFO  Main:46 - Creazione lista prodotti di cliente1:
+2017-07-27 12:19:12 INFO  Main:50 - Lista creata con successo
+2017-07-27 12:19:12 INFO  Main:51 - Elenco acquisti di cliente1:
+2017-07-27 12:19:12 INFO  Main:52 - [Maglietta, Pallone da Basket]
+2017-07-27 12:19:12 INFO  Main:53 - 
+
+2017-07-27 12:19:12 INFO  Main:54 - 
+
+2017-07-27 12:19:12 INFO  Main:55 - 
+
+2017-07-27 12:19:12 INFO  Main:56 - 
+
+2017-07-27 12:19:12 INFO  Main:57 - 
+
+2017-07-27 12:19:12 INFO  Main:58 - 
+
+2017-07-27 12:19:12 INFO  Main:59 - 
+
+2017-07-27 12:19:12 INFO  Main:61 - Creazione lista prodotti di cliente2:
+2017-07-27 12:19:12 INFO  Main:65 - Lista creata con successo
+2017-07-27 12:19:12 INFO  Main:66 - Elenco acquisti di cliente2:
+2017-07-27 12:19:12 INFO  Main:67 - [Felpa nike, Maglietta basket]
+2017-07-27 12:36:14 INFO  Main:28 - Registrazione e autenticazione cliente1: 
+2017-07-27 12:36:14 INFO  Main:29 - Registrazione riuscita
+2017-07-27 12:36:14 INFO  Main:30 - Login riuscito
+2017-07-27 12:36:14 INFO  Main:32 - Registrazione e autenticazione cliente2: 
+2017-07-27 12:36:14 INFO  Main:33 - Registrazione riuscita
+2017-07-27 12:36:14 INFO  Main:34 - Login riuscito
+2017-07-27 12:36:14 INFO  Main:38 - Elenco dei nickname appartenenti ai clienti registrati:
+2017-07-27 12:36:14 INFO  Main:39 - [nickname, nickname2, lore, vigna]
+2017-07-27 12:36:14 INFO  Main:41 - Profilo di cliente1: 
+2017-07-27 12:36:14 INFO  Main:42 - [Marco, Vignini, pass1]
+2017-07-27 12:36:14 INFO  Main:44 - Profilo di cliente2: 
+2017-07-27 12:36:14 INFO  Main:45 - [Lorenzo, Marino, pass2]
+2017-07-27 12:36:14 INFO  Main:47 - Creazione lista prodotti di cliente1:
+2017-07-27 12:36:14 INFO  Main:51 - Lista creata con successo
+2017-07-27 12:36:14 INFO  Main:52 - Elenco acquisti di cliente1:
+2017-07-27 12:36:14 INFO  Main:53 - [Maglietta, Pallone da Basket]
+2017-07-27 12:36:14 INFO  Main:55 - Creazione lista prodotti di cliente2:
+2017-07-27 12:36:14 INFO  Main:59 - Lista creata con successo
+2017-07-27 12:36:14 INFO  Main:60 - Elenco acquisti di cliente2:
+2017-07-27 12:36:14 INFO  Main:61 - [Felpa nike, Maglietta basket]
+2017-07-27 13:38:07 INFO  Applicazione:27 - Registrazione e autenticazione cliente1: 
+2017-07-27 13:38:07 INFO  Applicazione:28 - Registrazione riuscita
+2017-07-27 13:38:07 INFO  Applicazione:29 - Login riuscito
+2017-07-27 13:38:07 INFO  Applicazione:31 - Registrazione e autenticazione cliente2: 
+2017-07-27 13:38:07 INFO  Applicazione:32 - Registrazione riuscita
+2017-07-27 13:38:07 INFO  Applicazione:33 - Login riuscito
+2017-07-27 13:38:07 INFO  Applicazione:37 - Elenco dei nickname appartenenti ai clienti registrati:
+2017-07-27 13:38:07 INFO  Applicazione:38 - [nickname, nickname2, lore, vigna]
+2017-07-27 13:38:07 INFO  Applicazione:40 - Profilo di cliente1: 
+2017-07-27 13:38:07 INFO  Applicazione:41 - [Marco, Vignini, pass1]
+2017-07-27 13:38:07 INFO  Applicazione:43 - Profilo di cliente2: 
+2017-07-27 13:38:07 INFO  Applicazione:44 - [Lorenzo, Marino, pass2]
+2017-07-27 13:38:07 INFO  Applicazione:46 - Creazione lista prodotti di cliente1:
+2017-07-27 13:38:07 INFO  Applicazione:50 - Lista creata con successo
+2017-07-27 13:38:07 INFO  Applicazione:51 - Elenco acquisti di cliente1:
+2017-07-27 13:38:07 INFO  Applicazione:52 - [Maglietta, Pallone da Basket]
+2017-07-27 13:38:07 INFO  Applicazione:54 - Creazione lista prodotti di cliente2:
+2017-07-27 13:38:07 INFO  Applicazione:58 - Lista creata con successo
+2017-07-27 13:38:07 INFO  Applicazione:59 - Elenco acquisti di cliente2:
+2017-07-27 13:38:07 INFO  Applicazione:60 - [Felpa nike, Maglietta basket]
+2017-07-27 13:41:21 INFO  Applicazione:27 - Registrazione e autenticazione cliente1: 
+2017-07-27 13:41:21 INFO  Applicazione:28 - Registrazione riuscita
+2017-07-27 13:41:21 INFO  Applicazione:29 - Login riuscito
+2017-07-27 13:41:21 INFO  Applicazione:31 - Registrazione e autenticazione cliente2: 
+2017-07-27 13:41:21 INFO  Applicazione:32 - Registrazione riuscita
+2017-07-27 13:41:21 INFO  Applicazione:33 - Login riuscito
+2017-07-27 13:41:21 INFO  Applicazione:37 - Elenco dei nickname appartenenti ai clienti registrati:
+2017-07-27 13:41:21 INFO  Applicazione:38 - [nickname, nickname2, lore, vigna]
+2017-07-27 13:41:21 INFO  Applicazione:40 - Profilo di cliente1: 
+2017-07-27 13:41:21 INFO  Applicazione:41 - [Marco, Vignini, pass1]
+2017-07-27 13:41:21 INFO  Applicazione:43 - Profilo di cliente2: 
+2017-07-27 13:41:21 INFO  Applicazione:44 - [Lorenzo, Marino, pass2]
+2017-07-27 13:41:21 INFO  Applicazione:46 - Creazione lista prodotti di cliente1:
+2017-07-27 13:41:21 INFO  Applicazione:50 - Lista creata con successo
+2017-07-27 13:41:21 INFO  Applicazione:51 - Elenco acquisti di cliente1:
+2017-07-27 13:41:21 INFO  Applicazione:52 - [Maglietta, Pallone da Basket]
+2017-07-27 13:41:21 INFO  Applicazione:54 - Creazione lista prodotti di cliente2:
+2017-07-27 13:41:21 INFO  Applicazione:58 - Lista creata con successo
+2017-07-27 13:41:21 INFO  Applicazione:59 - Elenco acquisti di cliente2:
+2017-07-27 13:41:21 INFO  Applicazione:60 - [Felpa nike, Maglietta basket]
+2017-07-27 13:43:50 INFO  Applicazione:27 - Registrazione e autenticazione cliente1: 
+2017-07-27 13:43:50 INFO  Applicazione:28 - Registrazione riuscita
+2017-07-27 13:43:50 INFO  Applicazione:29 - Login riuscito
+2017-07-27 13:43:50 INFO  Applicazione:31 - Registrazione e autenticazione cliente2: 
+2017-07-27 13:43:50 INFO  Applicazione:32 - Registrazione riuscita
+2017-07-27 13:43:50 INFO  Applicazione:33 - Login riuscito
+2017-07-27 13:43:50 INFO  Applicazione:37 - Elenco dei nickname appartenenti ai clienti registrati:
+2017-07-27 13:43:50 INFO  Applicazione:38 - [nickname, nickname2, lore, vigna]
+2017-07-27 13:43:50 INFO  Applicazione:40 - Profilo di cliente1: 
+2017-07-27 13:43:50 INFO  Applicazione:41 - [Marco, Vignini, pass1]
+2017-07-27 13:43:50 INFO  Applicazione:43 - Profilo di cliente2: 
+2017-07-27 13:43:50 INFO  Applicazione:44 - [Lorenzo, Marino, pass2]
+2017-07-27 13:43:50 INFO  Applicazione:46 - Creazione lista prodotti di cliente1:
+2017-07-27 13:43:50 INFO  Applicazione:50 - Lista creata con successo
+2017-07-27 13:43:50 INFO  Applicazione:51 - Elenco acquisti di cliente1:
+2017-07-27 13:43:50 INFO  Applicazione:52 - [Maglietta, Pallone da Basket]
+2017-07-27 13:43:50 INFO  Applicazione:54 - Creazione lista prodotti di cliente2:
+2017-07-27 13:43:50 INFO  Applicazione:58 - Lista creata con successo
+2017-07-27 13:43:50 INFO  Applicazione:59 - Elenco acquisti di cliente2:
+2017-07-27 13:43:50 INFO  Applicazione:60 - [Felpa nike, Maglietta basket]
+2017-07-27 13:48:56 INFO  Applicazione:27 - Registrazione e autenticazione cliente1: 
+2017-07-27 13:48:56 INFO  Applicazione:28 - Registrazione riuscita
+2017-07-27 13:48:56 INFO  Applicazione:29 - Login riuscito
+2017-07-27 13:48:56 INFO  Applicazione:31 - Registrazione e autenticazione cliente2: 
+2017-07-27 13:48:56 INFO  Applicazione:32 - Registrazione riuscita
+2017-07-27 13:48:56 INFO  Applicazione:33 - Login riuscito
+2017-07-27 13:48:56 INFO  Applicazione:37 - Elenco dei nickname appartenenti ai clienti registrati:
+2017-07-27 13:48:56 INFO  Applicazione:38 - [nickname, nickname2, lore, vigna]
+2017-07-27 13:48:56 INFO  Applicazione:40 - Profilo di cliente1: 
+2017-07-27 13:48:56 INFO  Applicazione:41 - [Marco, Vignini, pass1]
+2017-07-27 13:48:56 INFO  Applicazione:43 - Profilo di cliente2: 
+2017-07-27 13:48:56 INFO  Applicazione:44 - [Lorenzo, Marino, pass2]
+2017-07-27 13:48:56 INFO  Applicazione:46 - Creazione lista prodotti di cliente1:
+2017-07-27 13:48:56 INFO  Applicazione:50 - Lista creata con successo
+2017-07-27 13:48:56 INFO  Applicazione:51 - Elenco acquisti di cliente1:
+2017-07-27 13:48:56 INFO  Applicazione:52 - [Maglietta, Pallone da Basket]
+2017-07-27 13:48:56 INFO  Applicazione:54 - Creazione lista prodotti di cliente2:
+2017-07-27 13:48:56 INFO  Applicazione:58 - Lista creata con successo
+2017-07-27 13:48:56 INFO  Applicazione:59 - Elenco acquisti di cliente2:
+2017-07-27 13:48:56 INFO  Applicazione:60 - [Felpa nike, Maglietta basket]
+2017-07-27 14:41:49 INFO  Applicazione:27 - Registrazione e autenticazione cliente1: 
+2017-07-27 14:41:49 INFO  Applicazione:28 - Registrazione riuscita
+2017-07-27 14:41:49 INFO  Applicazione:29 - Login riuscito
+2017-07-27 14:41:49 INFO  Applicazione:31 - Registrazione e autenticazione cliente2: 
+2017-07-27 14:41:49 INFO  Applicazione:32 - Registrazione riuscita
+2017-07-27 14:41:49 INFO  Applicazione:33 - Login riuscito
+2017-07-27 14:41:49 INFO  Applicazione:37 - Elenco dei nickname appartenenti ai clienti registrati:
+2017-07-27 14:41:49 INFO  Applicazione:38 - [nickname, nickname2, lore, vigna]
+2017-07-27 14:41:49 INFO  Applicazione:40 - Profilo di cliente1: 
+2017-07-27 14:41:49 INFO  Applicazione:41 - [Marco, Vignini, pass1]
+2017-07-27 14:41:49 INFO  Applicazione:43 - Profilo di cliente2: 
+2017-07-27 14:41:49 INFO  Applicazione:44 - [Lorenzo, Marino, pass2]
+2017-07-27 14:41:49 INFO  Applicazione:46 - Creazione lista prodotti di cliente1:
+2017-07-27 14:41:49 INFO  Applicazione:50 - Lista creata con successo
+2017-07-27 14:41:49 INFO  Applicazione:51 - Elenco acquisti di cliente1:
+2017-07-27 14:41:49 INFO  Applicazione:52 - [Maglietta, Pallone da Basket]
+2017-07-27 14:41:49 INFO  Applicazione:54 - Creazione lista prodotti di cliente2:
+2017-07-27 14:41:49 INFO  Applicazione:58 - Lista creata con successo
+2017-07-27 14:41:49 INFO  Applicazione:59 - Elenco acquisti di cliente2:
+2017-07-27 14:41:49 INFO  Applicazione:60 - [Felpa nike, Maglietta basket]
+2017-07-27 14:45:06 INFO  Applicazione:27 - Registrazione e autenticazione cliente1: 
+2017-07-27 14:45:06 INFO  Applicazione:28 - Registrazione riuscita
+2017-07-27 14:45:06 INFO  Applicazione:29 - Login riuscito
+2017-07-27 14:45:06 INFO  Applicazione:31 - Registrazione e autenticazione cliente2: 
+2017-07-27 14:45:06 INFO  Applicazione:32 - Registrazione riuscita
+2017-07-27 14:45:06 INFO  Applicazione:33 - Login riuscito
+2017-07-27 14:45:06 INFO  Applicazione:37 - Elenco dei nickname appartenenti ai clienti registrati:
+2017-07-27 14:45:06 INFO  Applicazione:38 - [nickname, nickname2, lore, vigna]
+2017-07-27 14:45:06 INFO  Applicazione:40 - Profilo di cliente1: 
+2017-07-27 14:45:06 INFO  Applicazione:41 - [Marco, Vignini, pass1]
+2017-07-27 14:45:06 INFO  Applicazione:43 - Profilo di cliente2: 
+2017-07-27 14:45:06 INFO  Applicazione:44 - [Lorenzo, Marino, pass2]
+2017-07-27 14:45:06 INFO  Applicazione:46 - Creazione lista prodotti di cliente1:
+2017-07-27 14:45:06 INFO  Applicazione:50 - Lista creata con successo
+2017-07-27 14:45:06 INFO  Applicazione:51 - Elenco acquisti di cliente1:
+2017-07-27 14:45:06 INFO  Applicazione:52 - [Maglietta, Pallone da Basket]
+2017-07-27 14:45:06 INFO  Applicazione:54 - Creazione lista prodotti di cliente2:
+2017-07-27 14:45:06 INFO  Applicazione:58 - Lista creata con successo
+2017-07-27 14:45:06 INFO  Applicazione:59 - Elenco acquisti di cliente2:
+2017-07-27 14:45:06 INFO  Applicazione:60 - [Felpa nike, Maglietta basket]
+2017-07-27 14:51:44 INFO  Applicazione:27 - Registrazione e autenticazione cliente1: 
+2017-07-27 14:51:44 INFO  Applicazione:28 - Registrazione riuscita
+2017-07-27 14:51:44 INFO  Applicazione:29 - Login riuscito
+2017-07-27 14:51:44 INFO  Applicazione:31 - Registrazione e autenticazione cliente2: 
+2017-07-27 14:51:44 INFO  Applicazione:32 - Registrazione riuscita
+2017-07-27 14:51:44 INFO  Applicazione:33 - Login riuscito
+2017-07-27 14:51:44 INFO  Applicazione:37 - Elenco dei nickname appartenenti ai clienti registrati:
+2017-07-27 14:51:44 INFO  Applicazione:38 - [nickname, nickname2, lore, vigna]
+2017-07-27 14:51:44 INFO  Applicazione:40 - Profilo di cliente1: 
+2017-07-27 14:51:44 INFO  Applicazione:41 - [Marco, Vignini, pass1]
+2017-07-27 14:51:44 INFO  Applicazione:43 - Profilo di cliente2: 
+2017-07-27 14:51:44 INFO  Applicazione:44 - [Lorenzo, Marino, pass2]
+2017-07-27 14:51:44 INFO  Applicazione:46 - Creazione lista prodotti di cliente1:
+2017-07-27 14:51:44 INFO  Applicazione:50 - Lista creata con successo
+2017-07-27 14:51:44 INFO  Applicazione:51 - Elenco acquisti di cliente1:
+2017-07-27 14:51:44 INFO  Applicazione:52 - [Maglietta, Pallone da Basket]
+2017-07-27 14:51:44 INFO  Applicazione:54 - Creazione lista prodotti di cliente2:
+2017-07-27 14:51:44 INFO  Applicazione:58 - Lista creata con successo
+2017-07-27 14:51:44 INFO  Applicazione:59 - Elenco acquisti di cliente2:
+2017-07-27 14:51:44 INFO  Applicazione:60 - [Felpa nike, Maglietta basket]
+2017-07-27 14:57:32 INFO  Applicazione:27 - Registrazione e autenticazione cliente1: 
+2017-07-27 14:57:32 INFO  Applicazione:28 - Registrazione riuscita
+2017-07-27 14:57:32 INFO  Applicazione:29 - Login riuscito
+2017-07-27 14:57:32 INFO  Applicazione:31 - Registrazione e autenticazione cliente2: 
+2017-07-27 14:57:32 INFO  Applicazione:32 - Registrazione riuscita
+2017-07-27 14:57:32 INFO  Applicazione:33 - Login riuscito
+2017-07-27 14:57:32 INFO  Applicazione:37 - Elenco dei nickname appartenenti ai clienti registrati:
+2017-07-27 14:57:32 INFO  Applicazione:38 - [nickname, nickname2, lore, vigna]
+2017-07-27 14:57:32 INFO  Applicazione:40 - Profilo di cliente1: 
+2017-07-27 14:57:32 INFO  Applicazione:41 - [Marco, Vignini, pass1]
+2017-07-27 14:57:32 INFO  Applicazione:43 - Profilo di cliente2: 
+2017-07-27 14:57:32 INFO  Applicazione:44 - [Lorenzo, Marino, pass2]
+2017-07-27 14:57:32 INFO  Applicazione:46 - Creazione lista prodotti di cliente1:
+2017-07-27 14:57:32 INFO  Applicazione:50 - Lista creata con successo
+2017-07-27 14:57:32 INFO  Applicazione:51 - Elenco acquisti di cliente1:
+2017-07-27 14:57:32 INFO  Applicazione:52 - [Maglietta, Pallone da Basket]
+2017-07-27 14:57:32 INFO  Applicazione:54 - Creazione lista prodotti di cliente2:
+2017-07-27 14:57:32 INFO  Applicazione:58 - Lista creata con successo
+2017-07-27 14:57:32 INFO  Applicazione:59 - Elenco acquisti di cliente2:
+2017-07-27 14:57:32 INFO  Applicazione:60 - [Felpa nike, Maglietta basket]
+2017-07-27 15:18:29 INFO  Applicazione:27 - Registrazione e autenticazione cliente1:
+2017-07-27 15:18:29 INFO  Applicazione:28 - Registrazione riuscita
+2017-07-27 15:18:29 INFO  Applicazione:29 - Login riuscito
+2017-07-27 15:18:29 INFO  Applicazione:31 - Registrazione e autenticazione cliente2:
+2017-07-27 15:18:29 INFO  Applicazione:32 - Registrazione riuscita
+2017-07-27 15:18:29 INFO  Applicazione:33 - Login riuscito
+2017-07-27 15:18:29 INFO  Applicazione:37 - Elenco dei nickname appartenenti ai clienti registrati:
+2017-07-27 15:18:29 INFO  Applicazione:38 - [nickname, nickname2, lore, vigna]
+2017-07-27 15:18:29 INFO  Applicazione:40 - Profilo di cliente1: 
+2017-07-27 15:18:29 INFO  Applicazione:41 - [Marco, Vignini, pass1]
+2017-07-27 15:18:29 INFO  Applicazione:43 - Profilo di cliente2: 
+2017-07-27 15:18:29 INFO  Applicazione:44 - [Lorenzo, Marino, pass2]
+2017-07-27 15:18:29 INFO  Applicazione:46 - Creazione lista prodotti di cliente1:
+2017-07-27 15:18:29 INFO  Applicazione:50 - Lista creata con successo
+2017-07-27 15:18:29 INFO  Applicazione:51 - Elenco acquisti di cliente1:
+2017-07-27 15:18:29 INFO  Applicazione:52 - [Maglietta, Pallone da Basket]
+2017-07-27 15:18:29 INFO  Applicazione:54 - Creazione lista prodotti di cliente2:
+2017-07-27 15:18:29 INFO  Applicazione:58 - Lista creata con successo
+2017-07-27 15:18:29 INFO  Applicazione:59 - Elenco acquisti di cliente2:
+2017-07-27 15:18:29 INFO  Applicazione:60 - [Felpa nike, Maglietta basket]
+2017-07-27 15:20:16 INFO  Applicazione:27 - Registrazione e autenticazione cliente1:
+2017-07-27 15:20:16 INFO  Applicazione:28 - Registrazione riuscita
+2017-07-27 15:20:16 INFO  Applicazione:29 - Login riuscito
+2017-07-27 15:20:16 INFO  Applicazione:31 - Registrazione e autenticazione cliente2:
+2017-07-27 15:20:16 INFO  Applicazione:32 - Registrazione riuscita
+2017-07-27 15:20:16 INFO  Applicazione:33 - Login riuscito
+2017-07-27 15:20:16 INFO  Applicazione:37 - Elenco dei nickname appartenenti ai clienti registrati:
+2017-07-27 15:20:16 INFO  Applicazione:38 - [nickname, nickname2, lore, vigna]
+2017-07-27 15:20:16 INFO  Applicazione:40 - Profilo di cliente1: 
+2017-07-27 15:20:16 INFO  Applicazione:41 - [Marco, Vignini, pass1]
+2017-07-27 15:20:16 INFO  Applicazione:43 - Profilo di cliente2: 
+2017-07-27 15:20:16 INFO  Applicazione:44 - [Lorenzo, Marino, pass2]
+2017-07-27 15:20:16 INFO  Applicazione:46 - Creazione lista prodotti di cliente1:
+2017-07-27 15:20:16 INFO  Applicazione:50 - Lista creata con successo
+2017-07-27 15:20:16 INFO  Applicazione:51 - Elenco acquisti di cliente1:
+2017-07-27 15:20:16 INFO  Applicazione:52 - [Maglietta, Pallone da Basket]
+2017-07-27 15:20:16 INFO  Applicazione:54 - Creazione lista prodotti di cliente2:
+2017-07-27 15:20:16 INFO  Applicazione:58 - Lista creata con successo
+2017-07-27 15:20:16 INFO  Applicazione:59 - Elenco acquisti di cliente2:
+2017-07-27 15:20:16 INFO  Applicazione:60 - [Felpa nike, Maglietta basket]
+2017-07-27 15:36:24 INFO  Applicazione:27 - Registrazione e autenticazione cliente1:
+2017-07-27 15:36:24 INFO  Applicazione:28 - Registrazione riuscita
+2017-07-27 15:36:24 INFO  Applicazione:29 - Login riuscito
+2017-07-27 15:36:24 INFO  Applicazione:31 - Registrazione e autenticazione cliente2:
+2017-07-27 15:36:24 INFO  Applicazione:32 - Registrazione riuscita
+2017-07-27 15:36:24 INFO  Applicazione:33 - Login riuscito
+2017-07-27 15:36:24 INFO  Applicazione:37 - Elenco dei nickname appartenenti ai clienti registrati:
+2017-07-27 15:36:24 INFO  Applicazione:38 - [nickname, nickname2, lore, vigna]
+2017-07-27 15:36:24 INFO  Applicazione:40 - Profilo di cliente1: 
+2017-07-27 15:36:24 INFO  Applicazione:41 - [Marco, Vignini, pass1]
+2017-07-27 15:36:24 INFO  Applicazione:43 - Profilo di cliente2: 
+2017-07-27 15:36:24 INFO  Applicazione:44 - [Lorenzo, Marino, pass2]
+2017-07-27 15:36:24 INFO  Applicazione:46 - Creazione lista prodotti di cliente1:
+2017-07-27 15:36:24 INFO  Applicazione:50 - Lista creata con successo
+2017-07-27 15:36:24 INFO  Applicazione:51 - Elenco acquisti di cliente1:
+2017-07-27 15:36:24 INFO  Applicazione:52 - [Maglietta, Pallone da Basket]
+2017-07-27 15:36:24 INFO  Applicazione:54 - Creazione lista prodotti di cliente2:
+2017-07-27 15:36:24 INFO  Applicazione:58 - Lista creata con successo
+2017-07-27 15:36:24 INFO  Applicazione:59 - Elenco acquisti di cliente2:
+2017-07-27 15:36:24 INFO  Applicazione:60 - [Felpa nike, Maglietta basket]

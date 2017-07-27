@@ -1,4 +1,3 @@
-
 package com.lorenzo.marco.cliente;
 
 import com.lorenzo.marco.database.Database;
@@ -27,11 +26,11 @@ public class Cliente {
 	}
 
 	public String richiestaAutenticazione(String nickname, String password) {
-		return ((DatabaseLatoCliente) this.database).login(nickname, password);
+		return ((DatabaseLatoCliente) database).login(nickname, password);
 	}
 
 	public String richiestaRegistrazione() {
-		return ((DatabaseLatoCliente) this.database).registrazioneCliente(nome, cognome, nickname, password);
+		return ((DatabaseLatoCliente) database).registrazioneCliente(nome, cognome, nickname, password);
 	}
 
 	private void controlloParametriDiInizializzazioneCliente(String nome, String cognome, String nickname,

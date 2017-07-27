@@ -3,30 +3,31 @@ package com.lorenzo.marco.amministratore;
 import java.util.List;
 import java.util.Set;
 
+import com.lorenzo.marco.database.Database;
 import com.lorenzo.marco.database.DatabaseLatoAmministratore;
 
 public class Amministratore {
 
-	private DatabaseLatoAmministratore databaseLatoAmministratore;
+	private Database database;
 
-	public Amministratore(DatabaseLatoAmministratore databaseLatoAmministratore) {
-		this.databaseLatoAmministratore = databaseLatoAmministratore;
+	public Amministratore(Database database) {
+		this.database = database;
 	}
 
 	public Set<String> restituzioneListaNickname() {
-		return this.databaseLatoAmministratore.restituzioneNickname();
+		return ((DatabaseLatoAmministratore) this.database).restituzioneNickname();
 	}
 	
 	public List<String> restituzioneListaCampiCliente(String nickname) {
-		return this.databaseLatoAmministratore.restituzioneProfiloCliente(nickname);
+		return ((DatabaseLatoAmministratore) this.database).restituzioneProfiloCliente(nickname);
 	}
 	
 	public String creazioneAcquisti(String nickname, List<String> listaAcquisti) {
-		return this.databaseLatoAmministratore.creaListaAcquisti(nickname, listaAcquisti);
+		return ((DatabaseLatoAmministratore) this.database).creaListaAcquisti(nickname, listaAcquisti);
 	}
 	
 	public List<String> restituzioneListaAcquistiCliente(String nickname) {
-		return this.databaseLatoAmministratore.restituzioneAcquistiCliente(nickname);
+		return ((DatabaseLatoAmministratore) this.database).restituzioneAcquistiCliente(nickname);
 	}
 
 }

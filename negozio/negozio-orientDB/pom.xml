@@ -23,46 +23,70 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-shade-plugin</artifactId>
-				<version>2.4.3</version>
-				<executions>
-					<execution>
-						<phase>package</phase>
-						<goals>
-							<goal>shade</goal>
-						</goals>
-						<configuration>
-							<shadedArtifactAttached>true</shadedArtifactAttached>
-							<shadedClassifierName>all</shadedClassifierName>
-							<transformers>
-								<transformer
-									implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-									<mainClass>com.lorenzo.marco.main.Main</mainClass>
-								</transformer>
-							</transformers>
-						</configuration>
-					</execution>
-				</executions>
 			</plugin>
 			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>exec-maven-plugin</artifactId>
-				<version>1.5.0</version>
+				<groupId>io.fabric8</groupId>
+				<artifactId>docker-maven-plugin</artifactId>
+				<version>0.17.2</version>
+				<configuration>
+					<images>
+						<image>
+							<name>orientdb</name>
+							<run>
+								<ports>
+									<port>2424:2424</port>
+								</ports>
+							</run>
+						</image>
+						<image>
+							<name>apporient</name>
+							<build>
+								<dockerFileDir>${project.basedir}/docker</dockerFileDir>
+								<args>
+									<fatjar>${project.artifactId}-${project.version}-all.jar</fatjar>
+								</args>
+								<assembly>
+									<inline>
+										<files>
+											<file>
+												<source>${project.build.directory}/${project.artifactId}-${project.version}-all.jar</source>
+											</file>
+										</files>
+									</inline>
+								</assembly>
+							</build>
+							<run>
+								<links>
+									<link>orientdb:orientdb-host</link>
+								</links>
+							</run>
+						</image>
+					</images>
+					<showLogs>true</showLogs>
+				</configuration>
 				<executions>
 					<execution>
-						<id>runJarWithDependencies</id>
-						<phase>integration-test</phase>
+						<id>docker:build</id>
+						<phase>package</phase>
 						<goals>
-							<goal>exec</goal>
+							<goal>build</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>docker:start</id>
+						<phase>pre-integration-test</phase>
+						<goals>
+							<goal>start</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>docker:stop</id>
+						<phase>post-integration-test</phase>
+						<goals>
+							<goal>stop</goal>
 						</goals>
 					</execution>
 				</executions>
-				<configuration>
-					<executable>java</executable>
-					<arguments>
-						<argument>-jar</argument>
-						<argument>${project.build.directory}/${project.artifactId}-${project.version}-all.jar</argument>
-					</arguments>
-				</configuration>
 			</plugin>
 		</plugins>
 	</build>

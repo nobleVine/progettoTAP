@@ -12,6 +12,10 @@ import com.lorenzo.marco.database.Database;
 
 public class Applicazione {
 	
+	private static final String LORE = "lore";
+
+	private static final String VIGNA = "vigna";
+
 	private Database database;
 
 	final Logger logger = Logger.getLogger(Applicazione.class);
@@ -21,16 +25,17 @@ public class Applicazione {
 	}
 	
 	public void eseguiApplicazione() {
-		Cliente cliente1 = new Cliente("Marco", "Vignini", "vigna4", "pass1", database);
-		Cliente cliente2 = new Cliente("Lorenzo", "Marino", "lore4", "pass2", database);
+		
+		Cliente cliente1 = new Cliente("Marco", "Vignini", VIGNA, "pass1", database);
+		Cliente cliente2 = new Cliente("Lorenzo", "Marino", LORE, "pass2", database);
 		
 		logger.info("Registrazione e autenticazione cliente1:");
 		logger.info(cliente1.richiestaRegistrazione());
-		logger.info(cliente1.richiestaAutenticazione("vigna4", "pass1"));
+		logger.info(cliente1.richiestaAutenticazione(VIGNA, "pass1"));
 				
 		logger.info("Registrazione e autenticazione cliente2:");
 		logger.info(cliente2.richiestaRegistrazione());
-		logger.info(cliente2.richiestaAutenticazione("lore4", "pass2"));
+		logger.info(cliente2.richiestaAutenticazione(LORE, "pass2"));
 		
 		Amministratore amministratore = new Amministratore(database);
 		Set<String> listaNickname =	amministratore.restituzioneListaNickname();
@@ -38,26 +43,26 @@ public class Applicazione {
 		logger.info(listaNickname);
 	
 		logger.info("Profilo di cliente1: ");
-		logger.info(amministratore.restituzioneListaCampiCliente("vigna4"));
+		logger.info(amministratore.restituzioneListaCampiCliente(VIGNA));
 		
 		logger.info("Profilo di cliente2: ");
-		logger.info(amministratore.restituzioneListaCampiCliente("lore4"));
+		logger.info(amministratore.restituzioneListaCampiCliente(LORE));
 		
 		logger.info("Creazione lista prodotti di cliente1:");
 		List<String> listaAcquisti = new ArrayList<>();
 		listaAcquisti.add("Maglietta");
 		listaAcquisti.add("Pallone da Basket");
-		logger.info(amministratore.creazioneAcquisti("vigna4", listaAcquisti ));
+		logger.info(amministratore.creazioneAcquisti(VIGNA, listaAcquisti ));
 		logger.info("Elenco acquisti di cliente1:");
-		logger.info(amministratore.restituzioneListaAcquistiCliente("vigna4"));
+		logger.info(amministratore.restituzioneListaAcquistiCliente(VIGNA));
 				
 		logger.info("Creazione lista prodotti di cliente2:");
 		List<String> listaAcquisti2 = new ArrayList<>();
 		listaAcquisti2.add("Felpa nike");
 		listaAcquisti2.add("Maglietta basket");
-		logger.info(amministratore.creazioneAcquisti("lore4", listaAcquisti2 ));
+		logger.info(amministratore.creazioneAcquisti(LORE, listaAcquisti2 ));
 		logger.info("Elenco acquisti di cliente2:");
-		logger.info(amministratore.restituzioneListaAcquistiCliente("lore4"));
+		logger.info(amministratore.restituzioneListaAcquistiCliente(LORE));
 		
 	}
 	

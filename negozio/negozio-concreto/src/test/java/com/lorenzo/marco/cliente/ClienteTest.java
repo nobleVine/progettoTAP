@@ -2,8 +2,6 @@ package com.lorenzo.marco.cliente;
 
 import static org.junit.Assert.*;
 
-import java.net.UnknownHostException;
-
 import org.junit.*;
 import static org.mockito.Mockito.*;
 
@@ -16,7 +14,7 @@ public class ClienteTest {
 	private DatabaseLatoCliente database;
 
 	@Before
-	public void setUp() throws UnknownHostException {
+	public void setUp() {
 		database = mock(DatabaseLatoCliente.class);
 	}
 

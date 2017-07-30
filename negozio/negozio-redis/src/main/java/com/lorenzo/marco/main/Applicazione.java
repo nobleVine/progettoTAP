@@ -10,21 +10,21 @@ import com.lorenzo.marco.amministratore.Amministratore;
 import com.lorenzo.marco.cliente.Cliente;
 import com.lorenzo.marco.database.Database;
 
-public class Applicazione {
+public abstract class Applicazione {
 	
 	private static final String LORE = "lore";
 
 	private static final String VIGNA = "vigna";
 
-	private Database database;
+	protected Database database;
 
 	final Logger logger = Logger.getLogger(Applicazione.class);
 	
-	public Applicazione (Database database) {
-		this.database = database;
+	public Applicazione () {
+		inizializzazioneDatabaseSpecifico();
 	}
 	
-	public void eseguiApplicazione() {
+	public int eseguiApplicazione() {
 		
 		Cliente cliente1 = new Cliente("Marco", "Vignini", VIGNA, "pass1", database);
 		Cliente cliente2 = new Cliente("Lorenzo", "Marino", LORE, "pass2", database);
@@ -64,6 +64,10 @@ public class Applicazione {
 		logger.info("Elenco acquisti di cliente2:");
 		logger.info(amministratore.restituzioneListaAcquistiCliente(LORE));
 		
+		return 0;
+		
 	}
+	
+	protected abstract void inizializzazioneDatabaseSpecifico();
 	
 }

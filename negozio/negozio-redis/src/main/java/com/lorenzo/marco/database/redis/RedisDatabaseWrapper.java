@@ -17,6 +17,7 @@ public class RedisDatabaseWrapper implements DatabaseLatoCliente, DatabaseLatoAm
 	public RedisDatabaseWrapper(Jedis jedis) {
 		this.jedis = jedis;
 		this.campiClienti = new HashMap<>();
+		this.jedis.flushDB();
 	}
 
 	@Override

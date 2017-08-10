@@ -4,7 +4,7 @@ import com.lorenzo.marco.database.redis.RedisDatabaseWrapper;
 
 import redis.clients.jedis.Jedis;
 
-public class RedisIT extends AmministratoreIT implements DatabaseIT {
+public class RedisIT extends DatabaseIT {
 
 	private Jedis jedis;
 

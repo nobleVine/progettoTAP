@@ -3,7 +3,7 @@ package com.lorenzo.marco.it;
 import com.lorenzo.marco.database.orientdb.OrientDBdatabaseWrapper;
 import com.orientechnologies.orient.core.db.document.ODatabaseDocumentTx;
 
-public class OrientIT extends AmministratoreIT implements DatabaseIT {
+public class OrientIT extends DatabaseIT {
 
 	private ODatabaseDocumentTx db;
 

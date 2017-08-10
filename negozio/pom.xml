@@ -91,6 +91,9 @@
 					<mutators>
 						<mutator>ALL</mutator>
 					</mutators>
+					<excludedClasses>
+						<param>com.lorenzo.marco.main.*</param>
+					</excludedClasses>
 				</configuration>
 			</plugin>
 		</plugins>

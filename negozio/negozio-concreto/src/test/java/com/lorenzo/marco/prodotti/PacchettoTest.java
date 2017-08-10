@@ -4,7 +4,7 @@ import static org.junit.Assert.*;
 
 import org.junit.*;
 
-public class PacchettoTest extends ProdottoGenericoAstratto {
+public class PacchettoTest extends ProdottoGenericoTest {
 	
 	private Pacchetto pacchetto;
 	
@@ -76,16 +76,6 @@ public class PacchettoTest extends ProdottoGenericoAstratto {
 	@Test(expected = IllegalArgumentException.class)
 	public void testDescrizioneNull() {
 		pacchetto = creazionePacchetto("Pacchetto", null);
-	}
-	
-	@Test
-	public void testTipoNome() {
-		assertTrue(pacchetto.getNome() instanceof String);
-	}
-
-	@Test
-	public void testTipoDescrizione() {
-		assertTrue(pacchetto.getDescrizione() instanceof String);
 	}
 	
 	@Test

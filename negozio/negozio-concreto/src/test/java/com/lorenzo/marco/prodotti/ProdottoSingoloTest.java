@@ -4,7 +4,7 @@ import static org.junit.Assert.*;
 
 import org.junit.*;
 
-public class ProdottoSingoloTest extends ProdottoGenericoAstratto {
+public class ProdottoSingoloTest extends ProdottoGenericoTest {
 
 	@Before
 	public void setUp() {
@@ -54,20 +54,6 @@ public class ProdottoSingoloTest extends ProdottoGenericoAstratto {
 	@Test(expected = IllegalArgumentException.class)
 	public void testDescrizioneNull() {
 		creazioneProdottoSingolo("Maglietta", 5, null);
-	}
-
-	@Test
-	public void testTipoNome() {
-		assertAttributiStringhe(prodotto.getNome());
-	}
-
-	@Test
-	public void testTipoDescrizione() {
-		assertAttributiStringhe(prodotto.getDescrizione());
-	}
-	
-	private void assertAttributiStringhe(String stringaDaTestare) {
-		assertTrue(stringaDaTestare instanceof String);
 	}
 	
 }

@@ -66,7 +66,7 @@ public class OrientDBdatabaseWrapper implements DatabaseLatoCliente, DatabaseLat
 		throw new IllegalArgumentException(NICKNAME_NON_ESISTENTE);
 	}
 
-	public String creaListaAcquisti(String nickname, List<String> listaProdotti) {
+	public String registrazioneListaAcquistiCliente(String nickname, List<String> listaProdotti) {
 		for (ODocument cliente : this.elencoClienti) {
 			if (cliente.field(NICKNAME) == nickname) {
 				cliente.field("acquisti", listaProdotti);

@@ -6,10 +6,12 @@ import java.util.*;
 
 import org.junit.*;
 
+import com.lorenzo.marco.database.DatabaseLatoAmministratoreTest;
+import com.lorenzo.marco.database.DatabaseLatoClienteTest;
 import com.orientechnologies.orient.core.db.document.ODatabaseDocumentTx;
 import com.orientechnologies.orient.core.record.impl.ODocument;
 
-public class OrientDBdatabaseWrapperTest {
+public class OrientDBdatabaseWrapperTest implements DatabaseLatoAmministratoreTest, DatabaseLatoClienteTest {
 
 	private OrientDBdatabaseWrapper orientDBdatabaseWrapper;
 	private ODatabaseDocumentTx db;
@@ -37,6 +39,8 @@ public class OrientDBdatabaseWrapperTest {
 		this.orientDBdatabaseWrapper.getElencoClienti().clear();
 		assertTrue(this.orientDBdatabaseWrapper.getElencoClienti().isEmpty());
 	}
+	
+	/*Cliente*/
 
 	@Test
 	public void testRegistrazioneClienteConSuccesso() {
@@ -45,6 +49,11 @@ public class OrientDBdatabaseWrapperTest {
 		assertEquals("cognome1", this.orientDBdatabaseWrapper.getElencoClienti().get(1).field("cognome"));
 		assertEquals("Nick", this.orientDBdatabaseWrapper.getElencoClienti().get(1).field("nickname"));
 		assertEquals("pass1", this.orientDBdatabaseWrapper.getElencoClienti().get(1).field("password"));
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void testRegistrazioneClienteSenzaSuccesso() {
+		this.orientDBdatabaseWrapper.registrazioneCliente("Alessio", "Rossi", "vigna", "pass1");
 	}
 
 	@Test
@@ -65,23 +74,18 @@ public class OrientDBdatabaseWrapperTest {
 		}
 	}
 
-	@Test(expected = IllegalArgumentException.class)
-	public void testRegistrazioneClienteSbagliata() {
-		this.orientDBdatabaseWrapper.registrazioneCliente("Alessio", "Rossi", "vigna", "pass1");
-	}
-
 	@Test
 	public void testLoginConSuccesso() {
 		assertEquals("Login riuscito", this.orientDBdatabaseWrapper.login("vigna", "pass"));
 	}
 
 	@Test(expected = IllegalAccessError.class)
-	public void testLoginNicknameSbagliato() {
+	public void testLoginNicknameNonRegistrato() {
 		this.orientDBdatabaseWrapper.login("vigna2", "pass");
 	}
 
 	@Test(expected = IllegalAccessError.class)
-	public void testLoginPasswordSbagliata() {
+	public void testLoginPasswordErrata() {
 		this.orientDBdatabaseWrapper.login("vigna", "pass2");
 	}
 
@@ -89,6 +93,8 @@ public class OrientDBdatabaseWrapperTest {
 	public void testLoginCredenzialiSbagliate() {
 		this.orientDBdatabaseWrapper.login("vigna2", "pass2");
 	}
+	
+	/*Amministratore*/
 
 	@Test
 	public void testRestituzioneNickname() {
@@ -109,12 +115,12 @@ public class OrientDBdatabaseWrapperTest {
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
-	public void testRestituzioneProfiloClienteSbagliato() {
+	public void testRestituzioneProfiloClienteSenzaSuccesso() {
 		this.orientDBdatabaseWrapper.restituzioneProfiloCliente("nick");
 	}
 	
 	@Test
-	public void testRestituzioneAcquistiCliente() {
+	public void testRestituzioneAcquistiClienteConSuccesso() {
 		assertRestituzioneAcquistiCliente("Marco", "James", "vigna", "pass");
 	}
 	
@@ -126,14 +132,14 @@ public class OrientDBdatabaseWrapperTest {
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
-	public void testRestituzioneAcquistiClientiSenzaSuccesso() {
+	public void testRestituzioneAcquistiClienteSenzaSuccesso() {
 		this.orientDBdatabaseWrapper.restituzioneAcquistiCliente("nick");
 	}	
 	
 	@Test(expected = IllegalArgumentException.class)
 	public void testRestituzioneCreazioneListaAcquistiClientiSenzaSuccesso() {
 		List<String> listaAcquisti = null;
-		this.orientDBdatabaseWrapper.creaListaAcquisti("nick", listaAcquisti);
+		this.orientDBdatabaseWrapper.registrazioneListaAcquistiCliente("nick", listaAcquisti);
 	}
 	
 	private void assertRestituzioneAcquistiCliente(String nome, String cognome, String nickname, String password)  {
@@ -141,7 +147,7 @@ public class OrientDBdatabaseWrapperTest {
 		List<String> listaProdotti = new ArrayList<>();
 		listaProdotti.add("Maglietta");
 		listaProdotti.add("calzini");
-		assertEquals("Lista creata con successo", this.orientDBdatabaseWrapper.creaListaAcquisti(nickname, listaProdotti));
+		assertEquals("Lista creata con successo", this.orientDBdatabaseWrapper.registrazioneListaAcquistiCliente(nickname, listaProdotti));
 		assertEquals(listaProdotti, this.orientDBdatabaseWrapper.restituzioneAcquistiCliente(nickname));
 	}
 		

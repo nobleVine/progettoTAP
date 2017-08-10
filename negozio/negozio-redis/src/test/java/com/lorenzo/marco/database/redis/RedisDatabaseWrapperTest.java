@@ -2,7 +2,6 @@ package com.lorenzo.marco.database.redis;
 
 import static org.junit.Assert.assertEquals;
 
-import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -11,19 +10,22 @@ import java.util.Set;
 import org.junit.Before;
 import org.junit.Test;
 
+import com.lorenzo.marco.database.DatabaseLatoAmministratoreTest;
+import com.lorenzo.marco.database.DatabaseLatoClienteTest;
+
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.exceptions.JedisConnectionException;
 
-public class RedisDatabaseWrapperTest {
+public class RedisDatabaseWrapperTest implements DatabaseLatoAmministratoreTest, DatabaseLatoClienteTest {
 
 	private RedisDatabaseWrapper redisDatabaseWrapper;
 	private Jedis jedis;
 
 	@Before
-	public void setUp() throws UnknownHostException {
+	public void setUp() {
 		this.redisDatabaseWrapper = new RedisDatabaseWrapper(new Jedis("localhost", 6379));
 		this.jedis = new Jedis("localhost", 6379);
-		this.jedis.flushDB(); // Clean key
+		this.jedis.flushDB();
 		this.redisDatabaseWrapper.registrazioneCliente("Alessio", "Rossi", "nick", "pass");
 	}
 
@@ -37,9 +39,11 @@ public class RedisDatabaseWrapperTest {
 		this.jedis.quit();
 		this.jedis.ping();
 	}
+	
+	/*Cliente*/
 
 	@Test
-	public void testRegistrazioneAvvenutaConSuccesso() throws UnknownHostException {
+	public void testRegistrazioneClienteConSuccesso() {
 		assertEquals("Registrazione riuscita", this.redisDatabaseWrapper.registrazioneCliente("Marco", "Vignini", "nick1", "pass"));
 		List<String> listaNick = profiloCliente("nick1");
 		assertEquals("Marco", listaNick.get(0));
@@ -48,27 +52,34 @@ public class RedisDatabaseWrapperTest {
 	}
 
 	@Test(expected = IllegalArgumentException.class)
-	public void testRegistrazioneSbagliata() throws UnknownHostException {
+	public void testRegistrazioneClienteSenzaSuccesso() {
 		this.redisDatabaseWrapper.registrazioneCliente("Alberto", "Verdi", "nick", "pass1");
 	}
 
 	@Test
-	public void testLoginCorretto() throws UnknownHostException {
+	public void testLoginConSuccesso() {
 		assertEquals("Login riuscito", this.redisDatabaseWrapper.login("nick", "pass"));
 	}
 
 	@Test(expected = IllegalAccessError.class)
-	public void testNicknameNonRegistrato() throws UnknownHostException {
+	public void testLoginNicknameNonRegistrato() {
 		this.redisDatabaseWrapper.login("Lorenzo", "pass");
 	}
 
 	@Test(expected = IllegalAccessError.class)
-	public void testPasswordErrata() throws UnknownHostException {
+	public void testLoginPasswordErrata() {
 		this.redisDatabaseWrapper.login("nick", "passwordErrata");
 	}
+	
+	@Test(expected = IllegalAccessError.class)
+	public void testLoginCredenzialiSbagliate() {
+		this.redisDatabaseWrapper.login("vigna2", "pass2");
+	}
+	
+	/*Amministratore*/
 
 	@Test
-	public void testRestituzioneNickname() throws UnknownHostException {
+	public void testRestituzioneNickname() {
 		this.redisDatabaseWrapper.registrazioneCliente("Ugo", "Rolando", "nick2", "pass2");
 		Set<String> listaNickname = new HashSet<>();
 		listaNickname.add("nick2");
@@ -77,7 +88,7 @@ public class RedisDatabaseWrapperTest {
 	}
 
 	@Test
-	public void testRestituzioneProfiloClienteConSuccesso() throws UnknownHostException {
+	public void testRestituzioneProfiloClienteConSuccesso() {
 		List<String> listaValori = new ArrayList<>();
 		listaValori.add("Alessio");
 		listaValori.add("Rossi");
@@ -86,20 +97,20 @@ public class RedisDatabaseWrapperTest {
 	}
 
 	@Test(expected = IllegalArgumentException.class)
-	public void testRestituzioneProfiloClienteSenzaSuccesso() throws UnknownHostException {
+	public void testRestituzioneProfiloClienteSenzaSuccesso() {
 		this.redisDatabaseWrapper.restituzioneProfiloCliente("nick1");
 	}
 	
 	@Test
-	public void testRestituzioneAcquistiCliente() throws UnknownHostException {
+	public void testRestituzioneAcquistiClienteConSuccesso() {
 		assertRestituzioneAcquistiClienti("Alessio2", "Rossi2", "nick2", "pass2");
 		assertRestituzioneAcquistiClienti("Alessio1", "Rossi1", "nick1", "pass1");
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
-	public void testRestituzioneCreazioneListaAcquistiClienteSenzaSuccesso() throws UnknownHostException {
+	public void testRestituzioneCreazioneListaAcquistiClienteSenzaSuccesso() {
 		List<String> listaAcquisti = new ArrayList<>();
-		this.redisDatabaseWrapper.creaListaAcquisti("nickNonEsistente", listaAcquisti);
+		this.redisDatabaseWrapper.registrazioneListaAcquistiCliente("nickNonEsistente", listaAcquisti);
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
@@ -113,7 +124,7 @@ public class RedisDatabaseWrapperTest {
 		List<String> listaAcquisti = new ArrayList<>();
 		listaAcquisti.add("Maglietta1");
 		listaAcquisti.add("Maglietta2");
-		assertEquals("Lista creata con successo",this.redisDatabaseWrapper.creaListaAcquisti(nickname, listaAcquisti));
+		assertEquals("Lista creata con successo",this.redisDatabaseWrapper.registrazioneListaAcquistiCliente(nickname, listaAcquisti));
 		assertEquals(listaAcquisti, this.redisDatabaseWrapper.restituzioneAcquistiCliente(nickname));
 	}
 	

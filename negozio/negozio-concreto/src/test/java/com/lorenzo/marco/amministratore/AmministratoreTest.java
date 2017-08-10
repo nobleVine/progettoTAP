@@ -68,14 +68,14 @@ public class AmministratoreTest {
 		Cliente cliente = new Cliente("Marco", "Verdi", "nick", "pass", databaseLatoCliente);
 		cliente.richiestaRegistrazione();
 		listaAcquisti.add("canotta");
-		when(databaseLatoAmministratore.creaListaAcquisti("nick", listaAcquisti)).thenReturn("Lista creata con successo");
+		when(databaseLatoAmministratore.registrazioneListaAcquistiCliente("nick", listaAcquisti)).thenReturn("Lista creata con successo");
 		assertEquals("Lista creata con successo", amministratore.creazioneAcquisti("nick", listaAcquisti));
-		verify(databaseLatoAmministratore, times(1)).creaListaAcquisti("nick", this.listaAcquisti);
+		verify(databaseLatoAmministratore, times(1)).registrazioneListaAcquistiCliente("nick", this.listaAcquisti);
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
 	public void testCreazioneListaAcquistiSenzaSucesso() {
-		when(databaseLatoAmministratore.creaListaAcquisti("nick", listaAcquisti)).thenThrow(new IllegalArgumentException("Nickname non esistente"));
+		when(databaseLatoAmministratore.registrazioneListaAcquistiCliente("nick", listaAcquisti)).thenThrow(new IllegalArgumentException("Nickname non esistente"));
 		amministratore.creazioneAcquisti("nick", this.listaAcquisti);
 	}
 	

@@ -18,7 +18,7 @@ public abstract class ProdottoGenerico {
 		return descrizione;
 	}
 
-	protected void controlloParametriProdotti(String nome, String descrizione) {
+	private void controlloParametriProdotti(String nome, String descrizione) {
 		if (nome == "" || nome == null) {
 			throw new IllegalArgumentException("Il nome del pacchetto non può essere vuoto o null");
 		} else {

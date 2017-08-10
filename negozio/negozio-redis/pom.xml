@@ -34,7 +34,7 @@
 				<version>1.5.0</version>
 				<executions>
 					<execution>
-						<id>runJarWithDependencies</id>
+						<id>Esecuzione Applicazione Redis</id>
 						<phase>integration-test</phase>
 						<goals>
 							<goal>exec</goal>

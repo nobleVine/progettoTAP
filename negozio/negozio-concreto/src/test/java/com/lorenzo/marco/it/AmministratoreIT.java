@@ -2,7 +2,6 @@ package com.lorenzo.marco.it;
 
 import static org.junit.Assert.assertEquals;
 
-import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -22,7 +21,7 @@ public abstract class AmministratoreIT implements InizializzazioneIT {
 	protected Amministratore amministratore;
 
 	@Before
-	public void setUp() throws UnknownHostException {
+	public void setUp() {
 		inizializzazioneDatabase();
 		this.cliente = new Cliente("Marco", "Vignini", "nickname", "password", database);
 		this.amministratore = new Amministratore(database);
@@ -30,7 +29,7 @@ public abstract class AmministratoreIT implements InizializzazioneIT {
 	}
 	
 	@Test
-	public void testNicknameRestituiti() throws UnknownHostException {
+	public void testNicknameRestituiti() {
 		Cliente cliente1 = new Cliente("Lorenzo", "Rossi", "nickname2", "pass", database);
 		cliente1.richiestaRegistrazione();
 		Set<String> listaNickname = new HashSet<>();
@@ -40,7 +39,7 @@ public abstract class AmministratoreIT implements InizializzazioneIT {
 	}
 	
 	@Test
-	public void testProfiloClienteRestituito() throws UnknownHostException {
+	public void testProfiloClienteRestituito() {
 		List<String> listaValori = new ArrayList<>();
 		listaValori.add("Marco");
 		listaValori.add("Vignini");
@@ -49,18 +48,18 @@ public abstract class AmministratoreIT implements InizializzazioneIT {
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
-	public void testProfiloClienteRestituitoSenzaSuccesso() throws UnknownHostException {
+	public void testProfiloClienteRestituitoSenzaSuccesso() {
 		this.amministratore.restituzioneListaCampiCliente("nick");
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
-	public void testCreazioneListaAcquistiClienteSenzaSuccesso() throws UnknownHostException {
+	public void testCreazioneListaAcquistiClienteSenzaSuccesso() {
 		List<String> listaAcquisti = new ArrayList<>();
 		this.amministratore.creazioneAcquisti("nick", listaAcquisti);
 	}
 	
 	@Test
-	public void testRestituzioneAcquistiCliente() throws UnknownHostException {
+	public void testRestituzioneAcquistiCliente() {
 		List<String> listaAcquisti = new ArrayList<>();
 		listaAcquisti.add("Maglietta");
 		listaAcquisti.add("Calzini");
@@ -69,7 +68,7 @@ public abstract class AmministratoreIT implements InizializzazioneIT {
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
-	public void testRestituzioneAcquistiClienteSenzaSuccesso() throws UnknownHostException {
+	public void testRestituzioneAcquistiClienteSenzaSuccesso() {
 		amministratore.restituzioneListaAcquistiCliente("nick");
 	}
 

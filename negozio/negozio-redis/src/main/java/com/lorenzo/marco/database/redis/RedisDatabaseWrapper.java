@@ -50,7 +50,7 @@ public class RedisDatabaseWrapper implements DatabaseLatoCliente, DatabaseLatoAm
 		throw new IllegalArgumentException(NICKNAME_NON_ESISTENTE);
 	}
 
-	public String creaListaAcquisti(String nickname, List<String> listaAcquisti) {
+	public String registrazioneListaAcquistiCliente(String nickname, List<String> listaAcquisti) {
 		if (this.jedis.exists(nickname)) {
 			for (String acquisto : listaAcquisti) {
 				this.jedis.rpush(nickname, acquisto);

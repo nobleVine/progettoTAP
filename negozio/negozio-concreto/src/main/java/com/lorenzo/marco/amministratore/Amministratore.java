@@ -23,7 +23,7 @@ public class Amministratore {
 	}
 	
 	public String creazioneAcquisti(String nickname, List<String> listaAcquisti) {
-		return ((DatabaseLatoAmministratore) this.database).creaListaAcquisti(nickname, listaAcquisti);
+		return ((DatabaseLatoAmministratore) this.database).registrazioneListaAcquistiCliente(nickname, listaAcquisti);
 	}
 	
 	public List<String> restituzioneListaAcquistiCliente(String nickname) {

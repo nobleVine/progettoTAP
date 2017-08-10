@@ -1,6 +1,10 @@
 package com.lorenzo.marco.prodotti;
 
-public abstract class ProdottoGenericoAstratto {
+import static org.junit.Assert.assertTrue;
+
+import org.junit.Test;
+
+public abstract class ProdottoGenericoTest {
 	
 	protected ProdottoSingolo prodotto;
 	
@@ -8,12 +12,24 @@ public abstract class ProdottoGenericoAstratto {
 		return new ProdottoSingolo(nome, prezzo, descrizione);
 	}
 	
+	@Test
+	public void testTipoNome() {
+		assertAttributiStringhe(prodotto.getNome());
+	}
+
+	@Test
+	public void testTipoDescrizione() {
+		assertAttributiStringhe(prodotto.getDescrizione());
+	}
+	
+	private void assertAttributiStringhe(String stringaDaTestare) {
+		assertTrue(stringaDaTestare instanceof String);
+	}
+	
 	public abstract void testNome();
 	public abstract void testDescrizione();
 	public abstract void testNomeVuoto();
 	public abstract void testDescrizioneVuota();
-	public abstract void testTipoNome();
-	public abstract void testTipoDescrizione();
 	public abstract void testNomeNull();
 	public abstract void testDescrizioneNull();
 

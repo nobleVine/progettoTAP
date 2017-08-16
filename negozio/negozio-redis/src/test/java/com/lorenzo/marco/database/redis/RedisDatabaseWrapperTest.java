@@ -1,6 +1,6 @@
 package com.lorenzo.marco.database.redis;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -20,13 +20,22 @@ public class RedisDatabaseWrapperTest implements DatabaseLatoAmministratoreTest,
 
 	private RedisDatabaseWrapper redisDatabaseWrapper;
 	private Jedis jedis;
+	int contatoreChiamate = 0;
 
 	@Before
 	public void setUp() {
-		this.redisDatabaseWrapper = new RedisDatabaseWrapper(new Jedis("localhost", 6379));
+		this.jedis = new Jedis("localhost", 6379);
+		this.redisDatabaseWrapper = new RedisDatabaseWrapper(jedis);
+		testZeroChiavi();
 		this.jedis = new Jedis("localhost", 6379);
 		this.jedis.flushDB();
 		this.redisDatabaseWrapper.registrazioneCliente("Alessio", "Rossi", "nick", "pass");
+	}
+	
+	@Test
+	public void testZeroChiavi() {
+		assertEquals(contatoreChiamate, jedis.keys("*").size(), 0);
+		contatoreChiamate++;
 	}
 
 	@Test

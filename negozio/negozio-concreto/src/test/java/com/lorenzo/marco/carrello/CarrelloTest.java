@@ -54,7 +54,7 @@ public class CarrelloTest {
 		pacchetto.aggiungiProdotto(prodottoSingolo3);
 		this.carrello.aggiungiAlCarrello(prodottoSingolo);
 		this.carrello.aggiungiAlCarrello(pacchetto);
-		assertSpesaTotale(160);
+		assertSpesaTotale(149); // 160 scontato del 10% = 149
 	}
 
 	@Test

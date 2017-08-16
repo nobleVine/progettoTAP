@@ -13,7 +13,7 @@ public class Pacchetto extends ProdottoGenerico {
 	public double getPrezzo() {
 		for (ProdottoSingolo prodottoSingolo : listaProdotti)
 			prezzo = prezzo + prodottoSingolo.getPrezzo();
-		return prezzo;
+		return prezzo*0.9;
 	}
 
 	public List<ProdottoSingolo> getListaProdottiSingoli() {

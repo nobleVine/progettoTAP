@@ -17,4 +17,4 @@ jdk:
 - oraclejdk8
 
 script:
-- mvn -f negozio/pom.xml install -Dmaven.javadoc.skip=true -B -V -Pjacoco coveralls:report
+- mvn -f negozio/pom.xml install -Pjacoco coveralls:report

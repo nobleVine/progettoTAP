@@ -55,7 +55,7 @@ public class OrientDBdatabaseWrapperTest implements DatabaseLatoAmministratoreTe
 	public void testRegistrazioneClienteSenzaSuccesso() {
 		this.orientDBdatabaseWrapper.registrazioneCliente("Alessio", "Rossi", "vigna", "pass1");
 	}
-
+	
 	@Test
 	public void testRegistrazioneClientiConSuccesso()  {
 		this.orientDBdatabaseWrapper.registrazioneCliente("Marco2", "James2", "vigna2", "pass2");
@@ -124,22 +124,22 @@ public class OrientDBdatabaseWrapperTest implements DatabaseLatoAmministratoreTe
 		assertRestituzioneAcquistiCliente("Marco", "James", "vigna", "pass");
 	}
 	
-	@Test
-	public void testRestituzioneAcquistiClienti()  {
-		assertRestituzioneAcquistiCliente("Marco", "James", "vigna", "pass");
-		this.orientDBdatabaseWrapper.registrazioneCliente("nome1", "cognome1", "Nick", "pass1");
-		assertRestituzioneAcquistiCliente("nome1", "cognome1", "Nick", "pass1");
-	}
-	
 	@Test(expected = IllegalArgumentException.class)
 	public void testRestituzioneAcquistiClienteSenzaSuccesso() {
 		this.orientDBdatabaseWrapper.restituzioneAcquistiCliente("nick");
-	}	
+	}
 	
 	@Test(expected = IllegalArgumentException.class)
-	public void testRestituzioneCreazioneListaAcquistiClientiSenzaSuccesso() {
+	public void testRegistrazioneListaAcquistiClienteSenzaSuccesso() {
 		List<String> listaAcquisti = null;
 		this.orientDBdatabaseWrapper.registrazioneListaAcquistiCliente("nick", listaAcquisti);
+	}
+	
+	@Test
+	public void testRestituzioneAcquistiClientiConSuccesso() {
+		assertRestituzioneAcquistiCliente("Marco", "James", "vigna", "pass");
+		this.orientDBdatabaseWrapper.registrazioneCliente("nome1", "cognome1", "Nick", "pass1");
+		assertRestituzioneAcquistiCliente("nome1", "cognome1", "Nick", "pass1");
 	}
 	
 	private void assertRestituzioneAcquistiCliente(String nome, String cognome, String nickname, String password)  {

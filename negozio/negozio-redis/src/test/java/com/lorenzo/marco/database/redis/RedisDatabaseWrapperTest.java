@@ -26,18 +26,12 @@ public class RedisDatabaseWrapperTest implements DatabaseLatoAmministratoreTest,
 	public void setUp() {
 		this.jedis = new Jedis("localhost", 6379);
 		this.redisDatabaseWrapper = new RedisDatabaseWrapper(jedis);
-		testZeroChiavi();
+		testNessunoRegistrato();
 		this.jedis = new Jedis("localhost", 6379);
 		this.jedis.flushDB();
 		this.redisDatabaseWrapper.registrazioneCliente("Alessio", "Rossi", "nick", "pass");
 	}
 	
-	@Test
-	public void testZeroChiavi() {
-		assertEquals(contatoreChiamate, jedis.keys("*").size(), 0);
-		contatoreChiamate++;
-	}
-
 	@Test
 	public void testConnessione() {
 		assertEquals("PONG", this.jedis.ping());
@@ -47,6 +41,12 @@ public class RedisDatabaseWrapperTest implements DatabaseLatoAmministratoreTest,
 	public void testNoConnessione() {
 		this.jedis.quit();
 		this.jedis.ping();
+	}
+	
+	@Test
+	public void testNessunoRegistrato() {
+		assertEquals(contatoreChiamate, jedis.keys("*").size(), 0);
+		contatoreChiamate++;
 	}
 	
 	/*Cliente*/
@@ -63,6 +63,12 @@ public class RedisDatabaseWrapperTest implements DatabaseLatoAmministratoreTest,
 	@Test(expected = IllegalArgumentException.class)
 	public void testRegistrazioneClienteSenzaSuccesso() {
 		this.redisDatabaseWrapper.registrazioneCliente("Alberto", "Verdi", "nick", "pass1");
+	}
+	
+	@Override
+	public void testRegistrazioneClientiConSuccesso() {
+		assertEquals("Registrazione riuscita", this.redisDatabaseWrapper.registrazioneCliente("Marco", "Vignini", "nick1", "pass"));
+		assertEquals(2, this.jedis.keys("*").size(), 0);
 	}
 
 	@Test
@@ -110,23 +116,28 @@ public class RedisDatabaseWrapperTest implements DatabaseLatoAmministratoreTest,
 		this.redisDatabaseWrapper.restituzioneProfiloCliente("nick1");
 	}
 	
-	@Test
+	@Override
 	public void testRestituzioneAcquistiClienteConSuccesso() {
-		assertRestituzioneAcquistiClienti("Alessio2", "Rossi2", "nick2", "pass2");
-		assertRestituzioneAcquistiClienti("Alessio1", "Rossi1", "nick1", "pass1");
-	}
-	
-	@Test(expected = IllegalArgumentException.class)
-	public void testRestituzioneCreazioneListaAcquistiClienteSenzaSuccesso() {
-		List<String> listaAcquisti = new ArrayList<>();
-		this.redisDatabaseWrapper.registrazioneListaAcquistiCliente("nickNonEsistente", listaAcquisti);
+		assertRestituzioneAcquistiClienti("Giovanni", "Bianchi", "nick3", "pass3");
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
 	public void testRestituzioneAcquistiClienteSenzaSuccesso() {
 		this.redisDatabaseWrapper.restituzioneAcquistiCliente("nickNonEsistente");
 	}
-
+	
+	@Test
+	public void testRestituzioneAcquistiClientiConSuccesso() {
+		assertRestituzioneAcquistiClienti("Alessio2", "Rossi2", "nick2", "pass2");
+		assertRestituzioneAcquistiClienti("Alessio1", "Rossi1", "nick1", "pass1");
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void testRegistrazioneListaAcquistiClienteSenzaSuccesso() {
+		List<String> listaAcquisti = new ArrayList<>();
+		this.redisDatabaseWrapper.registrazioneListaAcquistiCliente("nickNonEsistente", listaAcquisti);
+	}
+		
 	private void assertRestituzioneAcquistiClienti(String nome, String cognome, String nickname, String password) {
 		this.redisDatabaseWrapper.registrazioneCliente(nome, cognome, nickname, password);
 		this.redisDatabaseWrapper.login(nickname, password);

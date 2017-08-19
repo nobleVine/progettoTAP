@@ -14,12 +14,20 @@
 	<!-- PROP -->
 
 	<properties>
+
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+
 		<jacoco.report.path>${project.reporting.outputDirectory}/jacoco-ut</jacoco.report.path>
 		<jacoco.data.file>${project.build.directory}/coverage-reports/jacoco.exec</jacoco.data.file>
+		<jacoco.report.it.path>${project.reporting.outputDirectory}/jacoco-it</jacoco.report.it.path>
+		<jacoco.data.it.file>${project.build.directory}/coverage-reports/jacoco-it.exec</jacoco.data.it.file>
+
 		<sonar.language>java</sonar.language>
 		<sonar.jacoco.reportPaths>${jacoco.data.file}</sonar.jacoco.reportPaths>
+		<sonar.jacoco.itReportPath>${jacoco.data.it.file}</sonar.jacoco.itReportPath>
+		<sonar.coverage.exclusions>**/Main*.*</sonar.coverage.exclusions>
+
 		<shade.main>MainRedis</shade.main>
 	</properties>
 
@@ -44,6 +52,8 @@
 						<jacocoReport>negozio-concreto/target/site/jacoco-ut/jacoco.xml</jacocoReport>
 						<jacocoReport>negozio-redis/target/site/jacoco-ut/jacoco.xml</jacocoReport>
 						<jacocoReport>negozio-orientDB/target/site/jacoco-ut/jacoco.xml</jacocoReport>
+						<jacocoReport>negozio-redis/target/site/jacoco-it/jacoco.xml</jacocoReport>
+						<jacocoReport>negozio-orientDB/target/site/jacoco-it/jacoco.xml</jacocoReport>
 					</jacocoReports>
 				</configuration>
 			</plugin>
@@ -51,9 +61,15 @@
 				<groupId>org.jacoco</groupId>
 				<artifactId>jacoco-maven-plugin</artifactId>
 				<version>0.7.7.201606060606</version>
+				<configuration>
+					<excludes>
+						<exclude>**/Main*.*</exclude>
+					</excludes>
+				</configuration>
+				<!-- Unit tests -->
 				<executions>
 					<execution>
-						<id>pre-unit-test</id>
+						<id>jacoco-pre-unit-test</id>
 						<goals>
 							<goal>prepare-agent</goal>
 						</goals>
@@ -63,7 +79,7 @@
 						</configuration>
 					</execution>
 					<execution>
-						<id>post-unit-test</id>
+						<id>jacoco-post-unit-test</id>
 						<phase>test</phase>
 						<goals>
 							<goal>report</goal>
@@ -71,6 +87,29 @@
 						<configuration>
 							<dataFile>${jacoco.data.file}</dataFile>
 							<outputDirectory>${jacoco.report.path}</outputDirectory>
+						</configuration>
+					</execution>
+					<!-- Integration tests -->
+					<execution>
+						<id>jacoco-pre-integration-test</id>
+						<phase>pre-integration-test</phase>
+						<goals>
+							<goal>prepare-agent-integration</goal>
+						</goals>
+						<configuration>
+							<destFile>${jacoco.data.it.file}</destFile>
+							<propertyName>failsafeArgLine</propertyName>
+						</configuration>
+					</execution>
+					<execution>
+						<id>jacoco-post-integration-test</id>
+						<phase>post-integration-test</phase>
+						<goals>
+							<goal>report-integration</goal>
+						</goals>
+						<configuration>
+							<dataFile>${jacoco.data.it.file}</dataFile>
+							<outputDirectory>${jacoco.report.it.path}</outputDirectory>
 						</configuration>
 					</execution>
 				</executions>
@@ -103,6 +142,9 @@
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-failsafe-plugin</artifactId>
 					<version>2.19.1</version>
+					<configuration>
+						<argLine>${failsafeArgLine}</argLine>
+					</configuration>
 					<executions>
 						<execution>
 							<goals>

@@ -10,7 +10,7 @@ import com.lorenzo.marco.carrello.Carrello;
 import com.lorenzo.marco.database.DatabaseLatoCliente;
 import com.lorenzo.marco.prodotti.ProdottoSingolo;
 
-public class ProfiloBancarioTest {
+public class ProfiloBancarioClienteTest {
 
 	private ProfiloBancarioCliente profiloBancarioCliente;
 	private Cliente cliente;
@@ -30,7 +30,7 @@ public class ProfiloBancarioTest {
 	}
 
 	@Test
-	public void testGetClient() {
+	public void testGetCliente() {
 		assertEquals(this.profiloBancarioCliente.getCliente().getNome(), this.cliente.getNome());
 		assertEquals(this.profiloBancarioCliente.getCliente().getCognome(), this.cliente.getCognome());
 		assertTrue(this.cliente.equals(this.profiloBancarioCliente.getCliente()));

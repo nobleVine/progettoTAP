@@ -40,7 +40,7 @@ public class OrientDBdatabaseWrapper implements DatabaseLatoCliente, DatabaseLat
 		}
 		throw new IllegalAccessError("Credenziali errate!");
 	}
-
+	
 	public List<ODocument> getElencoClienti() {
 		return elencoClienti;
 	}
@@ -94,7 +94,5 @@ public class OrientDBdatabaseWrapper implements DatabaseLatoCliente, DatabaseLat
 		elencoClienti.add(cliente);
 		return "Registrazione riuscita";
 	}
-
-	
 
 }

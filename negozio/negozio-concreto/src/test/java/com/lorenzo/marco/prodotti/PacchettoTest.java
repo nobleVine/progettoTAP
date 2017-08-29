@@ -55,7 +55,7 @@ public class PacchettoTest extends ProdottoGenericoTest {
 		ProdottoSingolo prodotto2 = creazioneProdottoSingolo("Pantaloncini", 50, "Pantaloncini basket");
 		pacchetto.aggiungiProdotto(prodotto);
 		pacchetto.aggiungiProdotto(prodotto2);
-		assertEquals(90, pacchetto.getPrezzo(), 0);//90
+		assertEquals(90, pacchetto.getPrezzo(), 0);
 	}
 
 	@Test(expected = IllegalArgumentException.class)

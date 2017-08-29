@@ -32,6 +32,8 @@ public class OrientIT extends DatabaseIT {
 		this.orientDBdatabaseWrapper.registrazioneCliente("Giovanni", "Rossi", "n1", "p1");
 		this.orientDBdatabaseWrapper.registrazioneCliente("Giovanni2", "Rossi2", "n2", "p2");
 		assertEquals(2, orientDBdatabaseWrapper.getElencoClienti().size(), 0);
+		assertEquals(this.orientDBdatabaseWrapper.getElencoClienti().get(0).field("nickname"), "n1");
+		assertEquals(this.orientDBdatabaseWrapper.getElencoClienti().get(1).field("nickname"), "n2");
 	}
 
 }

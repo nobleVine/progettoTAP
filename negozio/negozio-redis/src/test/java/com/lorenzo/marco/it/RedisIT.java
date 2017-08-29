@@ -10,9 +10,9 @@ public class RedisIT extends DatabaseIT {
 
 	@Override
 	public void inizializzazioneDatabase() {
-		database = new RedisDatabaseWrapper(new Jedis("localhost", 6379));
 		this.jedis = new Jedis("localhost", 6379);
+		database = new RedisDatabaseWrapper(jedis);
 		this.jedis.flushDB();
 	}
-
+	
 }

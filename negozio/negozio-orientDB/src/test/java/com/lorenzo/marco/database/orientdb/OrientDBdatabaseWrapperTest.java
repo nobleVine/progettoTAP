@@ -157,7 +157,6 @@ public class OrientDBdatabaseWrapperTest implements DatabaseLatoAmministratoreTe
 		cliente.field("cognome", cognome);
 		cliente.field("nickname", nickname);
 		cliente.field("password", password);
-		cliente.save();
 		return cliente;
 	}
 

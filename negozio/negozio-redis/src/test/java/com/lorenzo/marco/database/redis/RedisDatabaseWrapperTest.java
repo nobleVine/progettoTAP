@@ -27,7 +27,6 @@ public class RedisDatabaseWrapperTest implements DatabaseLatoAmministratoreTest,
 		this.jedis = new Jedis("localhost", 6379);
 		this.redisDatabaseWrapper = new RedisDatabaseWrapper(jedis);
 		testNessunoRegistrato();
-		this.jedis = new Jedis("localhost", 6379);
 		this.jedis.flushDB();
 		this.redisDatabaseWrapper.registrazioneCliente("Alessio", "Rossi", "nick", "pass");
 	}

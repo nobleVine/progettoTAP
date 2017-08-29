@@ -47,29 +47,34 @@ public class ProfiloBancarioClienteTest {
 	}
 
 	@Test
-	public void testAcquistoRiuscito() {
-		assertAcquisto("Acquisto riuscito");
+	public void testAcquistoRiuscito1() {
+		assertAcquisto("Acquisto riuscito", 50, 60);
 	}
 	
 	@Test
-	public void testAcquistoNonRiuscito() {
-		assertAcquisto("Acquisto non riuscito");
+	public void testAcquistoRiuscito2() {
+		assertAcquisto("Acquisto riuscito", 70, 90);
 	}
 
-	private void assertAcquisto(String esitoAcquisto) {
+	@Test
+	public void testAcquistoNonRiuscito() {
+		assertAcquisto("Acquisto non riuscito", 50, 60);
+	}
+
+	private void assertAcquisto(String esitoAcquisto, double primoPrezzo, double secondoPrezzo) {
 		Carrello carrello = new Carrello();
-		ProdottoSingolo prodotto1 = new ProdottoSingolo("Maglietta", 50, "Maglietta basket");
-		ProdottoSingolo prodotto2 = new ProdottoSingolo("Maglietta", 60, "Maglietta basket");
+		ProdottoSingolo prodotto1 = new ProdottoSingolo("Maglietta1", primoPrezzo, "Maglietta basket");
+		ProdottoSingolo prodotto2 = new ProdottoSingolo("Maglietta2", secondoPrezzo, "Maglietta basket");
 		carrello.aggiungiAlCarrello(prodotto1);
 		carrello.aggiungiAlCarrello(prodotto2);
-		when(banca.pagamento(this.profiloBancarioCliente.getIdConto(),
-				carrello.spesaTotale())).thenReturn(esitoAcquisto);
+		when(banca.pagamento(this.profiloBancarioCliente.getIdConto(), carrello.spesaTotale()))
+				.thenReturn(esitoAcquisto);
 		String risultatoPagamento = this.profiloBancarioCliente.faiAcquisto(carrello.spesaTotale());
 		assertEquals(esitoAcquisto, risultatoPagamento);
-		verify(banca, times(1)).pagamento(this.profiloBancarioCliente.getIdConto(),
-				110);
+		verify(banca, times(1)).pagamento(this.profiloBancarioCliente.getIdConto(), primoPrezzo + secondoPrezzo);
+		verifyNoMoreInteractions(banca);
 	}
-	
+
 	private ProfiloBancarioCliente creazioneClienteProfiloBancario(Cliente cliente, int contoId) {
 		return new ProfiloBancarioCliente(cliente, contoId, this.banca);
 	}

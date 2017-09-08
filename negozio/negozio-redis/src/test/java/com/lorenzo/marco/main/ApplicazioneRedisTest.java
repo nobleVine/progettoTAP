@@ -4,7 +4,7 @@ public class ApplicazioneRedisTest extends ApplicazioneTest {
 
 	@Override
 	protected void inizializzazioneApplicazioneTest() {
-		this.applicazione = new ApplicazioneRedis();
+		this.applicazione = new DimostrazioneApplicazioneRedis();
 	}
 
 }

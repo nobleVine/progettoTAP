@@ -7,7 +7,7 @@ import org.junit.Test;
 
 public abstract class ApplicazioneTest {
 
-	Applicazione applicazione;
+	DimostrazioneApplicazione applicazione;
 	
 	@Before
 	public void setUp() {

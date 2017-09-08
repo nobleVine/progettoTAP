@@ -10,7 +10,7 @@ import com.lorenzo.marco.amministratore.Amministratore;
 import com.lorenzo.marco.cliente.Cliente;
 import com.lorenzo.marco.database.Database;
 
-public abstract class Applicazione {
+public abstract class DimostrazioneApplicazione {
 	
 	private static final String LORE = "lore";
 
@@ -18,9 +18,9 @@ public abstract class Applicazione {
 
 	protected Database database;
 
-	final Logger logger = Logger.getLogger(Applicazione.class);
+	final Logger logger = Logger.getLogger(DimostrazioneApplicazione.class);
 	
-	public Applicazione () {
+	public DimostrazioneApplicazione () {
 		inizializzazioneDatabaseSpecifico();
 	}
 	

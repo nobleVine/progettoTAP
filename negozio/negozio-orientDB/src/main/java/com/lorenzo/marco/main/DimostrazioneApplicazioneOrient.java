@@ -2,7 +2,7 @@ package com.lorenzo.marco.main;
 
 import com.lorenzo.marco.database.orientdb.OrientDBdatabaseWrapper;
 
-public class ApplicazioneOrient extends Applicazione {
+public class DimostrazioneApplicazioneOrient extends DimostrazioneApplicazione {
 
 	@Override
 	protected void inizializzazioneDatabaseSpecifico() {

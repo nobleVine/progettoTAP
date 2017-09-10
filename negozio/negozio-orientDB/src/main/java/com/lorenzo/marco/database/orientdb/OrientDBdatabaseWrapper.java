@@ -40,7 +40,7 @@ public class OrientDBdatabaseWrapper implements DatabaseLatoCliente, DatabaseLat
 		}
 		throw new IllegalAccessError("Credenziali errate!");
 	}
-	
+
 	public List<ODocument> getElencoClienti() {
 		return elencoClienti;
 	}
@@ -84,7 +84,7 @@ public class OrientDBdatabaseWrapper implements DatabaseLatoCliente, DatabaseLat
 		}
 		throw new IllegalArgumentException(NICKNAME_NON_ESISTENTE);
 	}
-	
+
 	private String inserimentoClienteNelDatabase(String nome, String cognome, String nickname, String password) {
 		ODocument cliente = new ODocument("Cliente");
 		cliente.field("nome", nome);

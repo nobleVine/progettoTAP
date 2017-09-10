@@ -11,5 +11,5 @@ public class DimostrazioneApplicazioneRedis extends DimostrazioneApplicazione {
 		String redisHost = "localhost";
 		this.database = new RedisDatabaseWrapper(new Jedis(redisHost));
 	}
-	
+
 }

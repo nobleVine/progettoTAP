@@ -14071,3 +14071,123 @@
 2017-09-10 14:21:30 INFO  DimostrazioneApplicazione:63 - Lista creata con successo
 2017-09-10 14:21:30 INFO  DimostrazioneApplicazione:64 - Elenco acquisti di cliente2:
 2017-09-10 14:21:30 INFO  DimostrazioneApplicazione:65 - [Felpa nike, Maglietta basket]
+2017-09-10 14:38:08 INFO  DimostrazioneApplicazione:32 - Registrazione e autenticazione cliente1:
+2017-09-10 14:38:08 INFO  DimostrazioneApplicazione:33 - Registrazione riuscita
+2017-09-10 14:38:08 INFO  DimostrazioneApplicazione:34 - Login riuscito
+2017-09-10 14:38:08 INFO  DimostrazioneApplicazione:36 - Registrazione e autenticazione cliente2:
+2017-09-10 14:38:08 INFO  DimostrazioneApplicazione:37 - Registrazione riuscita
+2017-09-10 14:38:08 INFO  DimostrazioneApplicazione:38 - Login riuscito
+2017-09-10 14:38:08 INFO  DimostrazioneApplicazione:42 - Elenco dei nickname appartenenti ai clienti registrati:
+2017-09-10 14:38:08 INFO  DimostrazioneApplicazione:43 - [lore, vigna]
+2017-09-10 14:38:08 INFO  DimostrazioneApplicazione:45 - Profilo di cliente1: 
+2017-09-10 14:38:08 INFO  DimostrazioneApplicazione:46 - [Marco, Vignini, pass1]
+2017-09-10 14:38:08 INFO  DimostrazioneApplicazione:48 - Profilo di cliente2: 
+2017-09-10 14:38:08 INFO  DimostrazioneApplicazione:49 - [Lorenzo, Marino, pass2]
+2017-09-10 14:38:08 INFO  DimostrazioneApplicazione:51 - Creazione lista prodotti di cliente1:
+2017-09-10 14:38:08 INFO  DimostrazioneApplicazione:55 - Lista creata con successo
+2017-09-10 14:38:08 INFO  DimostrazioneApplicazione:56 - Elenco acquisti di cliente1:
+2017-09-10 14:38:08 INFO  DimostrazioneApplicazione:57 - [Maglietta, Pallone da Basket]
+2017-09-10 14:38:08 INFO  DimostrazioneApplicazione:59 - Creazione lista prodotti di cliente2:
+2017-09-10 14:38:08 INFO  DimostrazioneApplicazione:63 - Lista creata con successo
+2017-09-10 14:38:08 INFO  DimostrazioneApplicazione:64 - Elenco acquisti di cliente2:
+2017-09-10 14:38:08 INFO  DimostrazioneApplicazione:65 - [Felpa nike, Maglietta basket]
+2017-09-10 14:38:14 INFO  DimostrazioneApplicazione:32 - Registrazione e autenticazione cliente1:
+2017-09-10 14:38:14 INFO  DimostrazioneApplicazione:33 - Registrazione riuscita
+2017-09-10 14:38:14 INFO  DimostrazioneApplicazione:34 - Login riuscito
+2017-09-10 14:38:14 INFO  DimostrazioneApplicazione:36 - Registrazione e autenticazione cliente2:
+2017-09-10 14:38:14 INFO  DimostrazioneApplicazione:37 - Registrazione riuscita
+2017-09-10 14:38:14 INFO  DimostrazioneApplicazione:38 - Login riuscito
+2017-09-10 14:38:14 INFO  DimostrazioneApplicazione:42 - Elenco dei nickname appartenenti ai clienti registrati:
+2017-09-10 14:38:14 INFO  DimostrazioneApplicazione:43 - [lore, vigna]
+2017-09-10 14:38:14 INFO  DimostrazioneApplicazione:45 - Profilo di cliente1: 
+2017-09-10 14:38:14 INFO  DimostrazioneApplicazione:46 - [Marco, Vignini, pass1]
+2017-09-10 14:38:14 INFO  DimostrazioneApplicazione:48 - Profilo di cliente2: 
+2017-09-10 14:38:14 INFO  DimostrazioneApplicazione:49 - [Lorenzo, Marino, pass2]
+2017-09-10 14:38:14 INFO  DimostrazioneApplicazione:51 - Creazione lista prodotti di cliente1:
+2017-09-10 14:38:14 INFO  DimostrazioneApplicazione:55 - Lista creata con successo
+2017-09-10 14:38:14 INFO  DimostrazioneApplicazione:56 - Elenco acquisti di cliente1:
+2017-09-10 14:38:14 INFO  DimostrazioneApplicazione:57 - [Maglietta, Pallone da Basket]
+2017-09-10 14:38:14 INFO  DimostrazioneApplicazione:59 - Creazione lista prodotti di cliente2:
+2017-09-10 14:38:14 INFO  DimostrazioneApplicazione:63 - Lista creata con successo
+2017-09-10 14:38:14 INFO  DimostrazioneApplicazione:64 - Elenco acquisti di cliente2:
+2017-09-10 14:38:14 INFO  DimostrazioneApplicazione:65 - [Felpa nike, Maglietta basket]
+2017-09-10 14:38:15 INFO  DimostrazioneApplicazione:32 - Registrazione e autenticazione cliente1:
+2017-09-10 14:38:15 INFO  DimostrazioneApplicazione:33 - Registrazione riuscita
+2017-09-10 14:38:15 INFO  DimostrazioneApplicazione:34 - Login riuscito
+2017-09-10 14:38:15 INFO  DimostrazioneApplicazione:36 - Registrazione e autenticazione cliente2:
+2017-09-10 14:38:15 INFO  DimostrazioneApplicazione:37 - Registrazione riuscita
+2017-09-10 14:38:15 INFO  DimostrazioneApplicazione:38 - Login riuscito
+2017-09-10 14:38:15 INFO  DimostrazioneApplicazione:42 - Elenco dei nickname appartenenti ai clienti registrati:
+2017-09-10 14:38:15 INFO  DimostrazioneApplicazione:43 - [lore, vigna]
+2017-09-10 14:38:15 INFO  DimostrazioneApplicazione:45 - Profilo di cliente1: 
+2017-09-10 14:38:15 INFO  DimostrazioneApplicazione:46 - [Marco, Vignini, pass1]
+2017-09-10 14:38:15 INFO  DimostrazioneApplicazione:48 - Profilo di cliente2: 
+2017-09-10 14:38:15 INFO  DimostrazioneApplicazione:49 - [Lorenzo, Marino, pass2]
+2017-09-10 14:38:15 INFO  DimostrazioneApplicazione:51 - Creazione lista prodotti di cliente1:
+2017-09-10 14:38:15 INFO  DimostrazioneApplicazione:55 - Lista creata con successo
+2017-09-10 14:38:15 INFO  DimostrazioneApplicazione:56 - Elenco acquisti di cliente1:
+2017-09-10 14:38:15 INFO  DimostrazioneApplicazione:57 - [Maglietta, Pallone da Basket]
+2017-09-10 14:38:15 INFO  DimostrazioneApplicazione:59 - Creazione lista prodotti di cliente2:
+2017-09-10 14:38:15 INFO  DimostrazioneApplicazione:63 - Lista creata con successo
+2017-09-10 14:38:15 INFO  DimostrazioneApplicazione:64 - Elenco acquisti di cliente2:
+2017-09-10 14:38:15 INFO  DimostrazioneApplicazione:65 - [Felpa nike, Maglietta basket]
+2017-09-10 15:02:56 INFO  DimostrazioneApplicazione:32 - Registrazione e autenticazione cliente1:
+2017-09-10 15:02:56 INFO  DimostrazioneApplicazione:33 - Registrazione riuscita
+2017-09-10 15:02:56 INFO  DimostrazioneApplicazione:34 - Login riuscito
+2017-09-10 15:02:56 INFO  DimostrazioneApplicazione:36 - Registrazione e autenticazione cliente2:
+2017-09-10 15:02:56 INFO  DimostrazioneApplicazione:37 - Registrazione riuscita
+2017-09-10 15:02:56 INFO  DimostrazioneApplicazione:38 - Login riuscito
+2017-09-10 15:02:56 INFO  DimostrazioneApplicazione:42 - Elenco dei nickname appartenenti ai clienti registrati:
+2017-09-10 15:02:56 INFO  DimostrazioneApplicazione:43 - [lore, vigna]
+2017-09-10 15:02:56 INFO  DimostrazioneApplicazione:45 - Profilo di cliente1: 
+2017-09-10 15:02:56 INFO  DimostrazioneApplicazione:46 - [Marco, Vignini, pass1]
+2017-09-10 15:02:56 INFO  DimostrazioneApplicazione:48 - Profilo di cliente2: 
+2017-09-10 15:02:56 INFO  DimostrazioneApplicazione:49 - [Lorenzo, Marino, pass2]
+2017-09-10 15:02:56 INFO  DimostrazioneApplicazione:51 - Creazione lista prodotti di cliente1:
+2017-09-10 15:02:56 INFO  DimostrazioneApplicazione:55 - Lista creata con successo
+2017-09-10 15:02:56 INFO  DimostrazioneApplicazione:56 - Elenco acquisti di cliente1:
+2017-09-10 15:02:56 INFO  DimostrazioneApplicazione:57 - [Maglietta, Pallone da Basket]
+2017-09-10 15:02:56 INFO  DimostrazioneApplicazione:59 - Creazione lista prodotti di cliente2:
+2017-09-10 15:02:56 INFO  DimostrazioneApplicazione:63 - Lista creata con successo
+2017-09-10 15:02:56 INFO  DimostrazioneApplicazione:64 - Elenco acquisti di cliente2:
+2017-09-10 15:02:56 INFO  DimostrazioneApplicazione:65 - [Felpa nike, Maglietta basket]
+2017-09-10 15:03:00 INFO  DimostrazioneApplicazione:32 - Registrazione e autenticazione cliente1:
+2017-09-10 15:03:00 INFO  DimostrazioneApplicazione:33 - Registrazione riuscita
+2017-09-10 15:03:00 INFO  DimostrazioneApplicazione:34 - Login riuscito
+2017-09-10 15:03:00 INFO  DimostrazioneApplicazione:36 - Registrazione e autenticazione cliente2:
+2017-09-10 15:03:00 INFO  DimostrazioneApplicazione:37 - Registrazione riuscita
+2017-09-10 15:03:00 INFO  DimostrazioneApplicazione:38 - Login riuscito
+2017-09-10 15:03:00 INFO  DimostrazioneApplicazione:42 - Elenco dei nickname appartenenti ai clienti registrati:
+2017-09-10 15:03:00 INFO  DimostrazioneApplicazione:43 - [lore, vigna]
+2017-09-10 15:03:00 INFO  DimostrazioneApplicazione:45 - Profilo di cliente1: 
+2017-09-10 15:03:00 INFO  DimostrazioneApplicazione:46 - [Marco, Vignini, pass1]
+2017-09-10 15:03:00 INFO  DimostrazioneApplicazione:48 - Profilo di cliente2: 
+2017-09-10 15:03:00 INFO  DimostrazioneApplicazione:49 - [Lorenzo, Marino, pass2]
+2017-09-10 15:03:00 INFO  DimostrazioneApplicazione:51 - Creazione lista prodotti di cliente1:
+2017-09-10 15:03:00 INFO  DimostrazioneApplicazione:55 - Lista creata con successo
+2017-09-10 15:03:00 INFO  DimostrazioneApplicazione:56 - Elenco acquisti di cliente1:
+2017-09-10 15:03:00 INFO  DimostrazioneApplicazione:57 - [Maglietta, Pallone da Basket]
+2017-09-10 15:03:00 INFO  DimostrazioneApplicazione:59 - Creazione lista prodotti di cliente2:
+2017-09-10 15:03:00 INFO  DimostrazioneApplicazione:63 - Lista creata con successo
+2017-09-10 15:03:00 INFO  DimostrazioneApplicazione:64 - Elenco acquisti di cliente2:
+2017-09-10 15:03:00 INFO  DimostrazioneApplicazione:65 - [Felpa nike, Maglietta basket]
+2017-09-10 15:03:01 INFO  DimostrazioneApplicazione:32 - Registrazione e autenticazione cliente1:
+2017-09-10 15:03:01 INFO  DimostrazioneApplicazione:33 - Registrazione riuscita
+2017-09-10 15:03:01 INFO  DimostrazioneApplicazione:34 - Login riuscito
+2017-09-10 15:03:01 INFO  DimostrazioneApplicazione:36 - Registrazione e autenticazione cliente2:
+2017-09-10 15:03:01 INFO  DimostrazioneApplicazione:37 - Registrazione riuscita
+2017-09-10 15:03:01 INFO  DimostrazioneApplicazione:38 - Login riuscito
+2017-09-10 15:03:01 INFO  DimostrazioneApplicazione:42 - Elenco dei nickname appartenenti ai clienti registrati:
+2017-09-10 15:03:01 INFO  DimostrazioneApplicazione:43 - [lore, vigna]
+2017-09-10 15:03:01 INFO  DimostrazioneApplicazione:45 - Profilo di cliente1: 
+2017-09-10 15:03:01 INFO  DimostrazioneApplicazione:46 - [Marco, Vignini, pass1]
+2017-09-10 15:03:01 INFO  DimostrazioneApplicazione:48 - Profilo di cliente2: 
+2017-09-10 15:03:01 INFO  DimostrazioneApplicazione:49 - [Lorenzo, Marino, pass2]
+2017-09-10 15:03:01 INFO  DimostrazioneApplicazione:51 - Creazione lista prodotti di cliente1:
+2017-09-10 15:03:01 INFO  DimostrazioneApplicazione:55 - Lista creata con successo
+2017-09-10 15:03:01 INFO  DimostrazioneApplicazione:56 - Elenco acquisti di cliente1:
+2017-09-10 15:03:01 INFO  DimostrazioneApplicazione:57 - [Maglietta, Pallone da Basket]
+2017-09-10 15:03:01 INFO  DimostrazioneApplicazione:59 - Creazione lista prodotti di cliente2:
+2017-09-10 15:03:01 INFO  DimostrazioneApplicazione:63 - Lista creata con successo
+2017-09-10 15:03:01 INFO  DimostrazioneApplicazione:64 - Elenco acquisti di cliente2:
+2017-09-10 15:03:01 INFO  DimostrazioneApplicazione:65 - [Felpa nike, Maglietta basket]

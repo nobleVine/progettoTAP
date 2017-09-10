@@ -1,6 +1,6 @@
 package com.lorenzo.marco.main;
 
-public class ApplicazioneRedisTest extends ApplicazioneTest {
+public class DimostrazioneApplicazioneRedisTest extends ApplicazioneTest {
 
 	@Override
 	protected void inizializzazioneApplicazioneTest() {

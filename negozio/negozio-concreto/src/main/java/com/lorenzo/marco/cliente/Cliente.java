@@ -9,7 +9,7 @@ public class Cliente {
 	private String cognome;
 	private String password;
 	private String nickname;
-	
+
 	private Database database;
 
 	public Cliente(String nome, String cognome, String nickname, String password, Database database) {
@@ -52,7 +52,7 @@ public class Cliente {
 		} else {
 			this.nickname = nickname;
 		}
-		
+
 		if (password == "" || password == null) {
 			throw new IllegalArgumentException("La password non può essere vuota o null");
 		} else {
@@ -60,5 +60,5 @@ public class Cliente {
 		}
 
 	}
-	
+
 }

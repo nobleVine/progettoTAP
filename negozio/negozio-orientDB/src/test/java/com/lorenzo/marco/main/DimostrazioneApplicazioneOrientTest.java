@@ -1,6 +1,6 @@
 package com.lorenzo.marco.main;
 
-public class ApplicazioneOrientTest extends ApplicazioneTest {
+public class DimostrazioneApplicazioneOrientTest extends ApplicazioneTest {
 
 	@Override
 	protected void inizializzazioneApplicazioneTest() {

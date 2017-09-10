@@ -8,5 +8,5 @@ public class DimostrazioneApplicazioneOrient extends DimostrazioneApplicazione {
 	protected void inizializzazioneDatabaseSpecifico() {
 		this.database = new OrientDBdatabaseWrapper();
 	}
-	
+
 }

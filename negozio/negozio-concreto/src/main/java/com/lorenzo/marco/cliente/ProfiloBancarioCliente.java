@@ -7,7 +7,7 @@ public class ProfiloBancarioCliente {
 	private Cliente cliente;
 	private int idConto;
 	private Banca banca;
-	
+
 	public ProfiloBancarioCliente(Cliente cliente, int idConto, Banca banca) {
 		this.controlloParametri(cliente, idConto);
 		this.banca = banca;
@@ -33,7 +33,7 @@ public class ProfiloBancarioCliente {
 		} else {
 			this.idConto = idConto;
 		}
-	
+
 	}
 
 	public String faiAcquisto(double spesaTotale) {

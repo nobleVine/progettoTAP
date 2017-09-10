@@ -1,4 +1,5 @@
 package com.lorenzo.marco.prodotti;
+
 import java.util.*;
 
 public class Pacchetto extends ProdottoGenerico {
@@ -13,7 +14,7 @@ public class Pacchetto extends ProdottoGenerico {
 	public double getPrezzo() {
 		for (ProdottoSingolo prodottoSingolo : listaProdotti)
 			prezzo = prezzo + prodottoSingolo.getPrezzo();
-		return prezzo*0.9;
+		return prezzo * 0.9;
 	}
 
 	public List<ProdottoSingolo> getListaProdottiSingoli() {
@@ -36,7 +37,7 @@ public class Pacchetto extends ProdottoGenerico {
 
 	@Override
 	public void controlloPrezzo(double prezzo, int limiteInferiore) {
-		//Controllo sul prezzo non necessario
+		// Controllo sul prezzo non necessario
 	}
 
 }

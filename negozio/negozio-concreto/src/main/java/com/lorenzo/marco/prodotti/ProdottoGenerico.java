@@ -33,6 +33,7 @@ public abstract class ProdottoGenerico {
 	}
 
 	public abstract double getPrezzo();
+
 	public abstract void controlloPrezzo(double prezzo, int limiteInferiore);
 
 }

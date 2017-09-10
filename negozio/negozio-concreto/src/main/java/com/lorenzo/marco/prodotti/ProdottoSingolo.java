@@ -18,7 +18,8 @@ public class ProdottoSingolo extends ProdottoGenerico {
 		if (prezzo > limiteInferiore) {
 			super.prezzo = prezzo;
 		} else {
-			throw new IllegalArgumentException("Il prezzo minimo deve essere maggiore del limite inferiore specificato");
+			throw new IllegalArgumentException(
+					"Il prezzo minimo deve essere maggiore del limite inferiore specificato");
 		}
 
 	}

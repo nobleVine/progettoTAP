@@ -74,42 +74,42 @@ public class ClienteTest {
 
 	@Test
 	public void testRichiestaAutenticazioneRiuscita() {
-		assertAutenticazione("Richiesta di autenticatione riuscita", "nick", "pass");
+		assertAutenticazione("Richiesta di autenticatione riuscita", "Marco", "Vignini", "nick", "pass");
 	}
 
 	@Test
 	public void testRichiestaAutenticazioneNonRiuscita() {
-		this.assertAutenticazione("Richiesta di autenticatione non riuscita", "nick", "pass2");
+		this.assertAutenticazione("Richiesta di autenticatione non riuscita", "Marco", "Vignini", "nick", "pass2");
 	}
 	
 	@Test
 	public void testRichiestaRegistrazioneRiuscita()  {
-		this.assertRegistrazione("Registrazione riuscita");
+		this.assertRegistrazione("Registrazione riuscita", "Marco", "Vignini", "nick", "pass");
 	}
 	
 	@Test
 	public void testRichiestaRegistrazioneNonRiuscita() {
-		this.assertRegistrazione("Registrazione non riuscita");
+		this.assertRegistrazione("Registrazione non riuscita", "Marco", "Vignini", "nick", "pass");
 	}
 
 	private Cliente creazioneCliente(String nome, String cognome, String nickname, String password) {
 		return new Cliente(nome, cognome, nickname, password, database);
 	}
 	
-	private void assertAutenticazione(String esitoAutenticazione, String nickname, String password) {
-		this.cliente = creazioneCliente("Marco", "Vignini", nickname, password);
+	private void assertAutenticazione(String esitoAutenticazione, String nome, String cognome, String nickname, String password) {
+		this.cliente = creazioneCliente(nome, cognome, nickname, password);
 		when(database.login(nickname, password)).thenReturn(esitoAutenticazione);
 		assertEquals(esitoAutenticazione, this.cliente.richiestaAutenticazione(nickname, password));
 		verify(database, times(1)).login(nickname, password);
 		verifyNoMoreInteractions(this.database);
 	}
 	
-	private void assertRegistrazione(String esitoRegistrazione) {
-		this.cliente = creazioneCliente("Marco", "Vignini", "nick", "pass");
-		when(database.registrazioneCliente(cliente.getNome(), cliente.getCognome(), "nick", "pass"))
+	private void assertRegistrazione(String esitoRegistrazione, String nome, String cognome, String nickname, String password) {
+		this.cliente = creazioneCliente(nome, cognome, nickname, password);
+		when(database.registrazioneCliente(cliente.getNome(), cliente.getCognome(), nickname, password))
 				.thenReturn(esitoRegistrazione);
 		assertEquals(esitoRegistrazione, this.cliente.richiestaRegistrazione());
-		verify(database, times(1)).registrazioneCliente(cliente.getNome(), cliente.getCognome(), "nick", "pass");
+		verify(database, times(1)).registrazioneCliente(cliente.getNome(), cliente.getCognome(), nickname, password);
 		verifyNoMoreInteractions(this.database);
 	}
 

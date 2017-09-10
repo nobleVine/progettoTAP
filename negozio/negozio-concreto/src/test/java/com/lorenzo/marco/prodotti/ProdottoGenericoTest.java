@@ -26,11 +26,11 @@ public abstract class ProdottoGenericoTest {
 		assertTrue(stringaDaTestare instanceof String);
 	}
 	
-	public abstract void testNome();
-	public abstract void testDescrizione();
-	public abstract void testNomeVuoto();
-	public abstract void testDescrizioneVuota();
-	public abstract void testNomeNull();
-	public abstract void testDescrizioneNull();
+	protected abstract void testNome();
+	protected abstract void testDescrizione();
+	protected abstract void testNomeVuoto();
+	protected abstract void testDescrizioneVuota();
+	protected abstract void testNomeNull();
+	protected abstract void testDescrizioneNull();
 
 }

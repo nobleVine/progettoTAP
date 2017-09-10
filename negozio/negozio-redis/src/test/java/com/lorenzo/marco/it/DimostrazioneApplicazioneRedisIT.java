@@ -10,5 +10,5 @@ public class DimostrazioneApplicazioneRedisIT implements DimostrazioneApplicazio
 	public void testApplicazioneIT() {
 		MainRedis.main(null);
 	}
-	
+
 }

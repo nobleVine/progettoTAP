@@ -14,5 +14,5 @@ public class RedisIT extends DatabaseIT {
 		database = new RedisDatabaseWrapper(jedis);
 		this.jedis.flushDB();
 	}
-	
+
 }

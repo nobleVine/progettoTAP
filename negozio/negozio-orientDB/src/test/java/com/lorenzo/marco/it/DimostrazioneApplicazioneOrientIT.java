@@ -10,5 +10,5 @@ public class DimostrazioneApplicazioneOrientIT implements DimostrazioneApplicazi
 	public void testApplicazioneIT() {
 		MainOrient.main(null);
 	}
-	
+
 }

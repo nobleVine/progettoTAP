@@ -2,7 +2,6 @@ package com.lorenzo.marco.it;
 
 import static org.junit.Assert.assertEquals;
 
-import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -80,29 +79,29 @@ public abstract class DatabaseIT  {
 	/*Integration test Cliente*/
 	
 	@Test
-	public void testRegistrazioneConSuccesso() throws UnknownHostException {
+	public void testRegistrazioneConSuccesso() {
 		assertEquals("Registrazione riuscita", esitoRegistrazione);
 	}
 
 	@Test(expected = IllegalArgumentException.class)
-	public void testRegistrazioneSenzaSuccesso() throws UnknownHostException {
+	public void testRegistrazioneSenzaSuccesso() {
 		Cliente cliente1 = new Cliente("Lorenzo", "Rossi", "nickname", "pass", database);
 		assertEquals("Registrazione riuscita", esitoRegistrazione);
 		cliente1.richiestaRegistrazione();
 	}
 
 	@Test
-	public void testLoginRiuscito() throws UnknownHostException {
+	public void testLoginRiuscito() {
 		assertEquals("Login riuscito", this.cliente.richiestaAutenticazione("nickname", "password"));
 	}
 
 	@Test(expected = IllegalAccessError.class)
-	public void testNicknameErrato() throws UnknownHostException {
+	public void testNicknameErrato() {
 		this.cliente.richiestaAutenticazione("nick", "password");
 	}
 
 	@Test(expected = IllegalAccessError.class)
-	public void testPasswordSbagliata() throws UnknownHostException {
+	public void testPasswordSbagliata() {
 		this.cliente.richiestaAutenticazione("nickname", "pass");
 	}
 	

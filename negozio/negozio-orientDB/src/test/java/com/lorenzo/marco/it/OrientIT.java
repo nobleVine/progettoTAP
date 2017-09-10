@@ -21,12 +21,12 @@ public class OrientIT extends DatabaseIT {
 		this.db.open("admin", "admin");
 		orientDBdatabaseWrapper = new OrientDBdatabaseWrapper();
 	}
-	
+
 	@Test
 	public void testGetElencoClientiListaVuota() {
 		assertEquals(0, orientDBdatabaseWrapper.getElencoClienti().size(), 0);
 	}
-	
+
 	@Test
 	public void testGetElencoClienti() {
 		this.orientDBdatabaseWrapper.registrazioneCliente("Giovanni", "Rossi", "n1", "p1");

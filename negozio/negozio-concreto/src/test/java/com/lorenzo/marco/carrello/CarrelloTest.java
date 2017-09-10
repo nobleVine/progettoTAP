@@ -64,8 +64,6 @@ public class CarrelloTest {
 	
 	private void assertNumeroProdottiAggiunti(int numeroProdottiAggiunti) {
 		assertEquals(numeroProdottiAggiunti, carrello.lunghezzaCarrello());
-		assertEquals("Pacchetto1", prodottoSingolo.getNome());
-		assertEquals("Questo è uno dei prodotti più interessanti del negozio", prodottoSingolo.getDescrizione());
 	}
 	
 	private void assertSpesaTotale(double spesaTotale) {

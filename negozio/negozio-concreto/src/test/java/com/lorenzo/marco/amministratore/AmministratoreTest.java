@@ -65,8 +65,6 @@ public class AmministratoreTest {
 
 	@Test
 	public void testCreazioneListaAcquistiConSuccesso() {
-		Cliente cliente = new Cliente("Marco", "Verdi", "nick", "pass", databaseLatoCliente);
-		cliente.richiestaRegistrazione();
 		listaAcquisti.add("canotta");
 		when(databaseLatoAmministratore.registrazioneListaAcquistiCliente("nick", listaAcquisti)).thenReturn("Lista creata con successo");
 		assertEquals("Lista creata con successo", amministratore.creazioneAcquisti("nick", listaAcquisti));

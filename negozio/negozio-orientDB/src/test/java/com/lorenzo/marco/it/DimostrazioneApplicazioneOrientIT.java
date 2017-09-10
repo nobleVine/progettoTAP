@@ -4,7 +4,7 @@ import org.junit.Test;
 
 import com.lorenzo.marco.main.MainOrient;;
 
-public class ApplicazioneOrientIT implements ApplicazioneIT {
+public class DimostrazioneApplicazioneOrientIT implements DimostrazioneApplicazioneIT {
 
 	@Test
 	public void testApplicazioneIT() {

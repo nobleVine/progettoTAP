@@ -11,8 +11,6 @@
 	<name>negozio</name>
 	<url>http://maven.apache.org</url>
 
-	<!-- PROP -->
-
 	<properties>
 
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -31,8 +29,6 @@
 		<shade.main>MainRedis</shade.main>
 		
 	</properties>
-
-	<!-- BUILD -->
 
 	<build>
 		<plugins>
@@ -67,7 +63,6 @@
 						<exclude>**/Main*.*</exclude>
 					</excludes>
 				</configuration>
-				<!-- Unit tests -->
 				<executions>
 					<execution>
 						<id>jacoco-pre-unit-test</id>
@@ -90,7 +85,6 @@
 							<outputDirectory>${jacoco.report.path}</outputDirectory>
 						</configuration>
 					</execution>
-					<!-- Integration tests -->
 					<execution>
 						<id>jacoco-pre-integration-test</id>
 						<phase>pre-integration-test</phase>
@@ -193,8 +187,6 @@
 			</plugins>
 		</pluginManagement>
 	</build>
-
-	<!-- DIPENDENZE -->
 
 	<dependencies>
 		<dependency>

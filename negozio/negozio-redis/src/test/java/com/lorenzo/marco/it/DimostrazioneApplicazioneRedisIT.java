@@ -4,7 +4,7 @@ import org.junit.Test;
 
 import com.lorenzo.marco.main.MainRedis;
 
-public class ApplicazioneRedisIT implements ApplicazioneIT {
+public class DimostrazioneApplicazioneRedisIT implements DimostrazioneApplicazioneIT {
 
 	@Test
 	public void testApplicazioneIT() {

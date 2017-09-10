@@ -28,7 +28,7 @@ public class OrientDBdatabaseWrapperTest implements DatabaseLatoAmministratoreTe
 	}
 
 	@Test
-	public void testCreazioneDB() {
+	public void testAperturaChiusuraDB() {
 		assertEquals(false, db.isClosed());
 		db.close();
 		assertEquals(true, db.isClosed());
